@@ -1,0 +1,399 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DR. SAACHI SHINGRANI DENTAL — Design System
+   Theme: Luxe Violet Atelier
+   Direction: Refined luxury with depth — no flat whites, no washed-out spaces.
+   All "white" areas use warm lavender-tinted surfaces to maintain richness.
+   ──────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Core Brand Purple ── */
+  --primary:        #6d28d9;          /* Violet 700 — rich, confident */
+  --primary-light:  #ede9fe;          /* Violet 100 — tinted lilac, not pure white */
+  --primary-mid:    #8b5cf6;          /* Violet 500 — mid accent */
+  --primary-dark:   #3b0764;          /* Violet 950 — near-black purple for type */
+  --accent:         #a78bfa;          /* Violet 400 — soft glow */
+  --accent-warm:    #c4b5fd;          /* Violet 300 — highlight tint */
+
+  /* ── Surface System (replaces flat white) ──
+     Instead of one background, we have 5 layered surfaces.
+     Each is a warm lavender tint so nothing ever looks blank.         */
+  --bg-base:        #f5f0ff;          /* Warm lavender — main page bg */
+  --bg-section:     #f9f6ff;          /* Almost-white with violet warmth */
+  --bg-surface:     #ede9fe;          /* Cards, inputs — clearly tinted */
+  --bg-elevated:    #ffffff;          /* Only for modals / popovers */
+  --bg-deep:        #1e0842;          /* Dark hero / footer areas */
+
+  /* Legacy token remapped — components using var(--background) stay consistent */
+  --background:     var(--bg-base);
+  --surface:        var(--bg-surface);
+
+  /* ── Typography ── */
+  --text:           #1e0842;          /* Deep violet-black — richest ink */
+  --text-secondary: #4c1d95;          /* Violet 900 — subheadings */
+  --text-muted:     #7c3aed;          /* Primary hue for quiet labels */
+  --text-on-dark:   #f5f0ff;          /* Text on --bg-deep sections */
+
+  /* ── Borders & Dividers ── */
+  --border:         rgba(109, 40, 217, 0.15);
+  --border-strong:  rgba(109, 40, 217, 0.35);
+
+  /* ── Shadows ── */
+  --shadow-sm:      0 2px 12px -2px rgba(109, 40, 217, 0.12);
+  --shadow-md:      0 8px 30px -8px rgba(109, 40, 217, 0.22);
+  --shadow-lg:      0 20px 60px -15px rgba(109, 40, 217, 0.30);
+  --shadow-purple:  0 10px 30px -10px rgba(109, 40, 217, 0.25);
+  --shadow-glow:    0 0 40px 0px rgba(139, 92, 246, 0.25);
+
+  /* ── Gradients ── */
+  --gradient-hero:  linear-gradient(135deg, #3b0764 0%, #6d28d9 45%, #a78bfa 100%);
+  --gradient-card:  linear-gradient(145deg, #ede9fe 0%, #f5f3ff 100%);
+  --gradient-subtle: linear-gradient(180deg, #f5f0ff 0%, #ede9fe 100%);
+  --gradient-section: linear-gradient(180deg, #f9f6ff 0%, #f0ebff 100%);
+
+  /* ── Semantic Status ── */
+  --success: oklch(0.70 0.15 145);
+  --success-foreground: oklch(0.98 0 0);
+  --warning: oklch(0.75 0.12 85);
+  --warning-foreground: oklch(0.15 0 0);
+}
+
+.dark {
+  --bg-base:      #0e0420;
+  --bg-section:   #140630;
+  --bg-surface:   #1e0842;
+  --bg-elevated:  #2d1060;
+  --bg-deep:      #07010f;
+
+  --background:   var(--bg-base);
+  --surface:      var(--bg-surface);
+
+  --text:         #f5f0ff;
+  --text-secondary: #c4b5fd;
+  --text-muted:   #a78bfa;
+  --text-on-dark: #f5f0ff;
+
+  --border:       rgba(167, 139, 250, 0.15);
+  --border-strong:rgba(167, 139, 250, 0.35);
+
+  --success: oklch(0.65 0.18 150);
+  --success-foreground: oklch(0.98 0 0);
+  --warning: oklch(0.80 0.15 90);
+  --warning-foreground: oklch(0.15 0 0);
+}
+
+@theme inline {
+  --color-primary:        var(--primary);
+  --color-primary-light:  var(--primary-light);
+  --color-primary-dark:   var(--primary-dark);
+  --color-primary-mid:    var(--primary-mid);
+  --color-accent:         var(--accent);
+  --color-accent-warm:    var(--accent-warm);
+
+  --color-background:     var(--background);
+  --color-surface:        var(--surface);
+  --color-bg-base:        var(--bg-base);
+  --color-bg-section:     var(--bg-section);
+  --color-bg-surface:     var(--bg-surface);
+  --color-bg-elevated:    var(--bg-elevated);
+  --color-bg-deep:        var(--bg-deep);
+
+  --color-text:           var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted:     var(--text-muted);
+  --color-text-on-dark:   var(--text-on-dark);
+
+  --color-border:         var(--border);
+  --color-border-strong:  var(--border-strong);
+
+  --font-serif:    var(--font-instrument), "Playfair Display", serif;
+  --font-display:  var(--font-playfair), serif;
+  --font-sans:     var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-2xl:    1.5rem;
+
+  --shadow-sm:     var(--shadow-sm);
+  --shadow-md:     var(--shadow-md);
+  --shadow-lg:     var(--shadow-lg);
+  --shadow-purple: var(--shadow-purple);
+  --shadow-glow:   var(--shadow-glow);
+
+  --color-success:              var(--success);
+  --color-success-foreground:   var(--success-foreground);
+  --color-warning:              var(--warning);
+  --color-warning-foreground:   var(--warning-foreground);
+}
+
+/* ─── Base Styles ─────────────────────────────────────────────────────────── */
+body {
+  background-color: var(--bg-base);
+  color: var(--text);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+/* Subtle noise grain overlay — adds tactile richness to flat surfaces */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Section Alternation helper — use on every other <section> ──────────── */
+.section-alt {
+  background: var(--gradient-section);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ─── Blob animation ─────────────────────────────────────────────────────── */
+@keyframes blob {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(30px, -50px) scale(1.1); }
+  66%  { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+.animate-blob { animation: blob 12s infinite; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* ─── Aurora hero gradient ───────────────────────────────────────────────── */
+@keyframes aurora-shift {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(5%, -5%) scale(1.05); }
+  50%  { transform: translate(-3%, 8%) scale(1.02); }
+  75%  { transform: translate(6%, 3%) scale(1.08); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+.animate-aurora { animation: aurora-shift 12s ease-in-out infinite; }
+
+/* ─── Marquee ────────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-marquee:hover,
+.animate-marquee:active { animation-play-state: paused; }
+
+/* ─── Gradient text ──────────────────────────────────────────────────────── */
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ─── Accessibility ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ATMOSPHERIC DESIGN LAYER — Luxe Violet Atelier
+   All rules below are purely additive. No existing classes overridden.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Custom Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-mid) 0%, var(--primary) 100%);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ─── Text Selection ────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(109, 40, 217, 0.25);
+  color: var(--primary-dark);
+}
+
+/* ─── Gradient Text utility ─────────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%, var(--accent-warm) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glass morphism card ───────────────────────────────────────────────── */
+.glass {
+  background: rgba(245, 240, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(167, 139, 250, 0.20);
+  box-shadow: 0 8px 32px rgba(109, 40, 217, 0.10), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.glass-dark {
+  background: rgba(30, 8, 66, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(167,139,250,0.15);
+}
+
+/* ─── Shimmer hover effect ──────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.shimmer {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(196, 181, 253, 0.35) 50%,
+    transparent 60%
+  ) var(--bg-surface);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease infinite;
+}
+
+/* ─── Glow card hover ───────────────────────────────────────────────────── */
+.glow-card {
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
+}
+.glow-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.25),
+    0 8px 40px -8px rgba(109, 40, 217, 0.35),
+    0 0 60px -20px rgba(139, 92, 246, 0.20);
+  transform: translateY(-3px);
+}
+
+/* ─── Ambient orbs ──────────────────────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  will-change: transform;
+}
+.orb-violet   { background: radial-gradient(circle, #8b5cf6 0%, transparent 70%); }
+.orb-lavender { background: radial-gradient(circle, #c4b5fd 0%, transparent 70%); }
+.orb-deep     { background: radial-gradient(circle, #4c1d95 0%, transparent 70%); }
+
+/* ─── Pulsing ring badge ────────────────────────────────────────────────── */
+@keyframes ring-pulse {
+  0%   { box-shadow: 0 0 0 0   rgba(139, 92, 246, 0.50); }
+  70%  { box-shadow: 0 0 0 10px rgba(139, 92, 246, 0); }
+  100% { box-shadow: 0 0 0 0   rgba(139, 92, 246, 0); }
+}
+.badge-pulse { animation: ring-pulse 2s ease-out infinite; }
+
+/* ─── Violet divider line ───────────────────────────────────────────────── */
+.divider-violet {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--primary-mid) 30%,
+    var(--accent) 50%,
+    var(--primary-mid) 70%,
+    transparent 100%);
+  opacity: 0.4;
+}
+
+/* ─── Dot grid background ───────────────────────────────────────────────── */
+.bg-dots {
+  background-image: radial-gradient(circle, rgba(139, 92, 246, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ─── Diagonal stripe pattern ───────────────────────────────────────────── */
+.bg-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 12px,
+    rgba(139, 92, 246, 0.04) 12px,
+    rgba(139, 92, 246, 0.04) 13px
+  );
+}
+
+/* ─── Glow focus ring ───────────────────────────────────────────────────── */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.45);
+}
+
+/* ─── Section label with leading line ──────────────────────────────────── */
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary-mid);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1.5px;
+  background: var(--primary-mid);
+  border-radius: 2px;
+}
+
+/* ─── Animated underline on hover ──────────────────────────────────────── */
+.underline-animate {
+  position: relative;
+  display: inline-block;
+}
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 2px;
+  transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.underline-animate:hover::after { width: 100%; }
+
+/* ─── Decorative corner bracket ─────────────────────────────────────────── */
+.corner-accent { position: relative; }
+.corner-accent::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 48px; height: 48px;
+  border-top: 2px solid var(--primary-mid);
+  border-left: 2px solid var(--primary-mid);
+  border-radius: 2px 0 0 0;
+  opacity: 0.45;
+}
+
+/* ─── Pill tag ──────────────────────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--bg-surface);
+  color: var(--primary);
+  border: 1px solid var(--border);
+}
+
+/* ─── gradient-x animation (extended) ──────────────────────────────────── */
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 5s ease infinite;
+}

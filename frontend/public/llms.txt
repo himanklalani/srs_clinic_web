@@ -1,0 +1,22 @@
+Title: Dr. Saachi Shingrani Dental Clinic
+Location: Bandra, Mumbai, India
+URL: https://drsaachishingrani.com
+
+# Overview
+This website belongs to Dr. Saachi Shingrani, an expert solo-practicing dentist based in Mumbai. The clinic offers premium dental treatments ranging from general dentistry to advanced aesthetic procedures, implants, and teeth whitening. The theme is "Luxe Violet Atelier," reflecting a clean, warm, and highly professional care environment.
+
+# Primary Services
+- General Dentistry: Checkups, fillings, and cleanings.
+- Orthodontics: Invisible aligners and braces.
+- Cosmetic Dentistry: Teeth whitening, veneers, and smile makeovers.
+- Implants and Surgery: Precision treatments using state-of-the-art tech.
+
+# Site Structure
+- `/` : The homepage detailing expertise, testimonials, clinics gallery, and location.
+- `/about` : Dr. Saachi's professional biography and career timeline.
+- `/treatments` : Comprehensive list of available dental procedures.
+- `/blogs` : Articles and insights authored directly by the doctor for patient education.
+- `/book` : Direct appointment scheduling.
+- `/contact` : Clinic contact information including map address and forms.
+
+This file provides context for LLMs to enhance AI ranking.
