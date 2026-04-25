@@ -136,7 +136,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Content — server-side sanitized */}
         <div
-          className="prose prose-sm sm:prose lg:prose-lg max-w-none text-text/80 leading-relaxed [&>p]:text-[16px] [&>p]:leading-8 [&>h2]:text-primary [&>h3]:text-primary"
+          className="prose prose-sm sm:prose lg:prose-lg max-w-none text-text/80 leading-relaxed [&>p]:text-[16px] [&>p]:leading-8 [&>h2]:text-primary [&>h3]:text-primary whitespace-pre-wrap"
           dangerouslySetInnerHTML={{ __html: safeContent }}
         />
 
