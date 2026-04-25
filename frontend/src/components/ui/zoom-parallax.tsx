@@ -1,7 +1,7 @@
 'use client';
 
 import { useScroll, useTransform, motion, AnimatePresence } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { X, Volume2, VolumeX, FastForward } from 'lucide-react';
 import LazyVideo from '@/components/ui/LazyVideo';
@@ -11,6 +11,20 @@ export interface ZoomMedia {
 	src: string;
 	alt?: string;
 	objectPosition?: string;
+}
+
+/**
+ * Returns a Cloudinary src optimized for the current viewport.
+ * On mobile (<768px), serves at 400px width to save bandwidth.
+ */
+function useResponsiveSrc(src: string, type: string) {
+	const [optimized, setOptimized] = useState(src);
+	useEffect(() => {
+		if (type === 'image' && window.innerWidth < 768 && src.includes('cloudinary.com')) {
+			setOptimized(src.replace('/upload/', '/upload/w_400,q_auto/'));
+		}
+	}, [src, type]);
+	return optimized;
 }
 
 interface ZoomParallaxProps {
@@ -173,6 +187,7 @@ function VideoModal({ src, onClose }: { src: string, onClose: () => void }) {
  */
 function ImageWithLQIP({ src, alt, objectPosition, eager }: { src: string; alt: string; objectPosition: string; eager?: boolean }) {
 	const [loaded, setLoaded] = useState(false);
+	const responsiveSrc = useResponsiveSrc(src, 'image');
 
 	// Generate a tiny 20px-wide blurred placeholder from Cloudinary
 	const lqipSrc = src.replace('/upload/', '/upload/w_20,q_10,e_blur:500/');
@@ -191,7 +206,7 @@ function ImageWithLQIP({ src, alt, objectPosition, eager }: { src: string; alt: 
 			{/* Full-resolution image — fades in on top */}
 			{/* eslint-disable-next-line @next/next/no-img-element */}
 			<img
-				src={src}
+				src={responsiveSrc}
 				alt={alt}
 				loading={eager ? "eager" : "lazy"}
 				decoding="async"
