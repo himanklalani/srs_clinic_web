@@ -2,12 +2,12 @@ import HeroSection from '@/components/sections/HeroSection';
 import AboutDoctorSection from '@/components/sections/AboutDoctorSection';
 import dynamic from 'next/dynamic';
 const TreatmentsGridSection = dynamic(() => import('@/components/sections/TreatmentsGridSection'));
-const StatsSection = dynamic(() => import('@/components/sections/StatsSection'));
-const TestimonialsSection = dynamic(() => import('@/components/sections/TestimonialsSection'));
-const GallerySection = dynamic(() => import('@/components/sections/GallerySection'));
-const LocationSection = dynamic(() => import('@/components/sections/LocationSection'));
-const ZoomParallax = dynamic(() => import('@/components/ui/zoom-parallax').then(mod => mod.ZoomParallax));
-const DisplayCards = dynamic(() => import('@/components/ui/display-cards'));
+const StatsSection = dynamic(() => import('@/components/sections/StatsSection'), { ssr: false });
+const TestimonialsSection = dynamic(() => import('@/components/sections/TestimonialsSection'), { ssr: false });
+const GallerySection = dynamic(() => import('@/components/sections/GallerySection'), { ssr: false });
+const LocationSection = dynamic(() => import('@/components/sections/LocationSection'), { ssr: false });
+const ZoomParallax = dynamic(() => import('@/components/ui/zoom-parallax').then(mod => mod.ZoomParallax), { ssr: false });
+const DisplayCards = dynamic(() => import('@/components/ui/display-cards'), { ssr: false });
 import { Sparkles, Shield, Heart, Clock } from "lucide-react";
 
 export default function HomeClient() {
