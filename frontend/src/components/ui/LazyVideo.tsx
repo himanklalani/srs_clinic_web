@@ -12,27 +12,12 @@ interface LazyVideoProps {
  * LazyVideo — Only starts downloading/playing when the element
  * enters the viewport (with a 200px root margin for early start).
  * Shows a subtle shimmer placeholder while loading.
- * 
- * Mobile optimizations:
- * - Serves lower-resolution videos on mobile via Cloudinary transforms
- * - Pauses videos when out of viewport to save CPU/GPU/battery
- * - Uses preload="none" on mobile to prevent bandwidth contention
  */
 export default function LazyVideo({ src, className = "", objectPosition = "object-center" }: LazyVideoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isRendered, setIsRendered] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
-  // Optimize Cloudinary video URL for mobile — serve at 480px width
-  const optimizedSrc = isMobile
-    ? src.replace('/upload/', '/upload/w_480,q_auto/')
-    : src;
 
   useEffect(() => {
     const el = containerRef.current;
@@ -53,13 +38,13 @@ export default function LazyVideo({ src, className = "", objectPosition = "objec
             }
         }
       },
-      // Tighter margin on mobile so videos load closer to viewport (saves bandwidth)
-      { rootMargin: isMobile ? "150px 0px" : "300px 0px" } 
+      // Keep rootMargin generous so it starts before user sees it, but pauses when clearly away
+      { rootMargin: "300px 0px" } 
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [isRendered, isMobile]);
+  }, [isRendered]);
 
   return (
     <div ref={containerRef} className={`absolute inset-0 w-full h-full ${className}`}>
@@ -72,12 +57,12 @@ export default function LazyVideo({ src, className = "", objectPosition = "objec
       {isRendered && (
         <video
           ref={videoRef}
-          src={optimizedSrc}
+          src={src}
           autoPlay
           loop
           muted
           playsInline
-          preload={isMobile ? "none" : "metadata"}
+          preload="metadata"
           onCanPlay={() => setIsLoaded(true)}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${objectPosition} ${isLoaded ? "opacity-100" : "opacity-0"}`}
         />

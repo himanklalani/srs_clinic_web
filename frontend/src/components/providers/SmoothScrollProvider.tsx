@@ -11,14 +11,10 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced) return;
 
-    const isMobile = window.innerWidth < 768;
-
     const lenis = new Lenis({
-      // Lighter scroll interpolation on mobile for smoother 60fps
-      duration: isMobile ? 0.8 : 1.2,
+      duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      // Lower touch multiplier on mobile to reduce jank during fast flicks
-      touchMultiplier: isMobile ? 1.0 : 1.5,
+      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;

@@ -9,7 +9,6 @@ export default function HeroSection() {
         className="hero-image-wrapper absolute inset-0 w-full h-full overflow-hidden origin-center will-change-transform bg-[#1e0842]"
       >
         {/* We use an AV1 video directly instead of next/image, prioritizing the poster image for LCP using preload in layout. */}
-        {/* Mobile gets a 720px-wide video; desktop gets full resolution */}
         <video
           src="https://res.cloudinary.com/dswvmoboh/video/upload/q_auto/f_auto/v1775985264/SSclinic-.av1_corvyv.mp4"
           poster="https://res.cloudinary.com/dswvmoboh/video/upload/so_0,w_1280,q_auto,f_avif/v1775985264/SSclinic-.av1_corvyv.jpg"
@@ -17,19 +16,7 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          // @ts-ignore — fetchPriority is valid in modern browsers but React types lag behind
-          fetchPriority="high"
-          className={`w-full h-full object-cover object-center transition-opacity duration-1000 opacity-100 hidden md:block`}
-        />
-        <video
-          src="https://res.cloudinary.com/dswvmoboh/video/upload/w_720,q_auto/f_auto/v1775985264/SSclinic-.av1_corvyv.mp4"
-          poster="https://res.cloudinary.com/dswvmoboh/video/upload/so_0,w_720,q_auto,f_avif/v1775985264/SSclinic-.av1_corvyv.jpg"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className={`w-full h-full object-cover object-center transition-opacity duration-1000 opacity-100 md:hidden`}
+          className={`w-full h-full object-cover object-center transition-opacity duration-1000 opacity-100`}
         />
         {/* Soft dark gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 pointer-events-none" /> 

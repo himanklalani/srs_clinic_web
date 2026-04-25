@@ -133,17 +133,14 @@ body {
 }
 
 /* Subtle noise grain overlay — adds tactile richness to flat surfaces */
-/* Disabled on mobile to save GPU compositing overhead */
-@media (min-width: 768px) {
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.022;
-    pointer-events: none;
-    z-index: 9999;
-  }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9999;
 }
 
 /* ─── Section Alternation helper — use on every other <section> ──────────── */
@@ -168,11 +165,6 @@ body {
 .animate-blob { animation: blob 12s infinite; }
 .animation-delay-2000 { animation-delay: 2s; }
 .animation-delay-4000 { animation-delay: 4s; }
-
-/* Reduce blob animation frequency on mobile to save GPU compositing */
-@media (max-width: 767px) {
-  .animate-blob { animation-duration: 20s; }
-}
 
 /* ─── Aurora hero gradient ───────────────────────────────────────────────── */
 @keyframes aurora-shift {
@@ -288,11 +280,6 @@ body {
   opacity: 0.35;
   pointer-events: none;
   will-change: transform;
-  contain: layout style paint;
-}
-/* Reduce orb blur radius on mobile for GPU savings */
-@media (max-width: 767px) {
-  .orb { filter: blur(50px); opacity: 0.2; }
 }
 .orb-violet   { background: radial-gradient(circle, #8b5cf6 0%, transparent 70%); }
 .orb-lavender { background: radial-gradient(circle, #c4b5fd 0%, transparent 70%); }
