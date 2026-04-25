@@ -50,22 +50,23 @@ export default function DentalFeaturesSection() {
         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-4">
           
           {/* Header/Image (Always on top for mobile) */}
-          <div className="w-full sm:w-2/3 lg:w-1/3 relative flex justify-center items-center order-1 lg:order-2 z-0 min-h-[300px] lg:min-h-[500px]">
-             <ScrollReveal scale>
-               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-blue-50/50 flex items-center justify-center border-[2px] border-dashed border-blue-200 p-8 shadow-inner">
+          <div className="w-full sm:w-2/3 lg:w-1/3 relative flex justify-center items-center order-1 lg:order-2 z-10 min-h-[350px] lg:min-h-[500px]">
+             <ScrollReveal scale once={false}>
+               <div className="relative w-56 h-56 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-blue-50/50 flex items-center justify-center border-[2px] border-dashed border-blue-200 p-8 shadow-inner">
                   <Image 
                     src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?q=80&w=1000&auto=format&fit=crop"
                     alt="Pristine Dental Technology"
                     fill
+                    priority
                     className="object-cover rounded-full p-4 scale-110 drop-shadow-2xl"
                   />
                   {/* Decorative Dots matching the user interface graph */}
-                  <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-blue-500 shadow-md"></div>
-                  <div className="absolute -right-2 top-1/2 w-4 h-4 rounded-full bg-blue-500 shadow-md"></div>
-                  <div className="absolute top-8 left-12 w-3 h-3 rounded-full bg-blue-400 shadow-md"></div>
-                  <div className="absolute top-8 right-12 w-3 h-3 rounded-full bg-blue-400 shadow-md"></div>
-                  <div className="absolute bottom-8 left-12 w-3 h-3 rounded-full bg-blue-400 shadow-md"></div>
-                  <div className="absolute bottom-8 right-12 w-3 h-3 rounded-full bg-blue-400 shadow-md"></div>
+                  <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-blue-600 shadow-lg z-20"></div>
+                  <div className="absolute -right-2 top-1/2 w-4 h-4 rounded-full bg-blue-600 shadow-lg z-20"></div>
+                  <div className="absolute top-8 left-12 w-3 h-3 rounded-full bg-blue-500 shadow-md z-20"></div>
+                  <div className="absolute top-8 right-12 w-3 h-3 rounded-full bg-blue-500 shadow-md z-20"></div>
+                  <div className="absolute bottom-8 left-12 w-3 h-3 rounded-full bg-blue-500 shadow-md z-20"></div>
+                  <div className="absolute bottom-8 right-12 w-3 h-3 rounded-full bg-blue-500 shadow-md z-20"></div>
                </div>
              </ScrollReveal>
           </div>

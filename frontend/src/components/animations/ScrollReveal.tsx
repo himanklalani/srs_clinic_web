@@ -31,7 +31,7 @@ export default function ScrollReveal({
   scale = false,
 }: ScrollRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: "-80px" });
+  const isInView = useInView(ref, { once, margin: "-20px" });
   const prefersReducedMotion = useReducedMotion();
 
   const offset = directionMap[direction] || { y: 40 };
