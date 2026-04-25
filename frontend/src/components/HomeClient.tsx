@@ -1,3 +1,5 @@
+"use client";
+
 import HeroSection from '@/components/sections/HeroSection';
 import AboutDoctorSection from '@/components/sections/AboutDoctorSection';
 import dynamic from 'next/dynamic';
