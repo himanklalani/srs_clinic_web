@@ -19,11 +19,12 @@ export function middleware(request: NextRequest) {
 
   // 2. Base CSP Directives
   const isProd = process.env.NODE_ENV === 'production';
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
   const cspDirectives = [
     "default-src 'self'",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
-    "img-src 'self' data: https://res.cloudinary.com https://source.unsplash.com https://images.unsplash.com https://ui-avatars.com https://fastly.picsum.photos",
+    "img-src 'self' data: https://res.cloudinary.com https://ui-avatars.com",
     "media-src 'self' https://res.cloudinary.com",
     "frame-src https://www.google.com",
     "object-src 'none'",
@@ -32,11 +33,11 @@ export function middleware(request: NextRequest) {
   // 3. Conditional Analytics (GDPR strict CSP)
   if (hasAnalyticsConsent) {
     cspDirectives.push(`script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com${!isProd ? " 'unsafe-eval'" : ""}`);
-    cspDirectives.push("connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net");
+    cspDirectives.push(`connect-src 'self' ${apiUrl} https://res.cloudinary.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net`);
   } else {
     // If no consent, strictly block analytics and tag manager
     cspDirectives.push(`script-src 'self' 'unsafe-inline'${!isProd ? " 'unsafe-eval'" : ""}`);
-    cspDirectives.push("connect-src 'self'");
+    cspDirectives.push(`connect-src 'self' ${apiUrl} https://res.cloudinary.com`);
   }
 
   if (isProd) {

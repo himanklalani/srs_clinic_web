@@ -13,10 +13,6 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { protocol: 'https', hostname: 'ui-avatars.com' },
-      { protocol: 'https', hostname: 'source.unsplash.com' },
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'fiscal-magenta-czkyxsv4zr.edgeone.app' },
-      { protocol: 'https', hostname: 'fastly.picsum.photos' },
       { protocol: 'https', hostname: '*.cloudinary.com' },
     ],
   },
@@ -34,6 +30,13 @@ const nextConfig: NextConfig = {
         source: '/api/(.*)',
         headers: [
           { key: 'Cache-Control', value: 'no-cache, no-store, max-age=0, must-revalidate' },
+        ],
+      },
+      // Immutable cache for optimized images
+      {
+        source: '/_next/image(.*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       // Security headers are now managed by middleware.ts

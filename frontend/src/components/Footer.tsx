@@ -1,6 +1,6 @@
 import PageLink from "@/components/PageLink";
 import CookieSettingsTrigger from "@/components/CookieSettingsTrigger";
-import { FaInstagram, FaFacebookF, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import { Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -32,7 +32,7 @@ export default function Footer() {
                 className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:shadow hover:-translate-y-1 hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface"
                 aria-label="Instagram"
               >
-                <FaInstagram size={20} />
+                <Instagram size={20} />
               </a>
               <a
                 href="https://www.facebook.com/people/DrSaachi-Shingranis-Dental-Care/100063586435589/#"
@@ -41,7 +41,7 @@ export default function Footer() {
                 className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:shadow hover:-translate-y-1 hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface"
                 aria-label="Facebook"
               >
-                <FaFacebookF size={18} />
+                <Facebook size={18} />
               </a>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <FaMapMarkerAlt className="text-primary mt-1 shrink-0" size={18} />
+                <MapPin className="text-primary mt-1 shrink-0" size={18} />
                 <span className="text-text/80 text-[15px] leading-relaxed">
                     Dr. Saachi Shingrani&apos;s, B-1 Nutan Nagar Society,<br />
                     Gurunanak Rd, opposite Bandra Talao,<br />
@@ -101,13 +101,13 @@ export default function Footer() {
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <FaPhone className="text-primary shrink-0" size={18} />
+                <Phone className="text-primary shrink-0" size={18} />
                 <a href="tel:+919004402797" className="text-text/80 hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm min-h-[32px] min-w-[44px] flex items-center">
                   +91 90044 02797
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <FaEnvelope className="text-primary shrink-0" size={18} />
+                <Mail className="text-primary shrink-0" size={18} />
                 <a href="mailto:srsdentalcare@gmail.com" className="text-text/80 hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm min-h-[32px] min-w-[44px] flex items-center break-all">
                   srsdentalcare@gmail.com
                 </a>

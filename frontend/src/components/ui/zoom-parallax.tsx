@@ -2,7 +2,6 @@
 
 import { useScroll, useTransform, motion, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
-import Image from 'next/image';
 import { X, Volume2, VolumeX, FastForward } from 'lucide-react';
 import LazyVideo from '@/components/ui/LazyVideo';
 

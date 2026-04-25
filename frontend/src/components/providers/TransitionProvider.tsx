@@ -126,7 +126,7 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
           >
              <div className="w-28 h-28 mb-6 flex items-center justify-center rounded-full bg-white shadow-[0_0_40px_rgba(255,255,255,0.3)] border border-white/20">
                 <img
-                  src="https://res.cloudinary.com/dswvmoboh/image/upload/ce42deb6-628f-42c0-bfe0-584a1bd0c22d_fno5wf.png"
+                  src="https://res.cloudinary.com/dswvmoboh/image/upload/w_160,q_auto,f_auto/ce42deb6-628f-42c0-bfe0-584a1bd0c22d_fno5wf.png"
                   alt="Dr. Saachi Shingrani Logo"
                   className="w-20 h-20 object-contain drop-shadow-md"
                 />

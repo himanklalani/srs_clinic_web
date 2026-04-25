@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Instrument_Serif } from "next/font/google";
 import ClientProviders from "@/components/providers/ClientProviders";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { TransitionProvider } from '@/components/providers/TransitionProvider';
 import { BackButton } from '@/components/ui/BackButton';
 import FloatingContactButtons from "@/components/ui/FloatingContactButtons";
 import CookieBanner from "@/components/CookieBanner";
@@ -56,6 +54,45 @@ export default function RootLayout({
           type="image/avif"
           fetchPriority="high"
         />
+        {/* JSON-LD Structured Data for Google Rich Results */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Dentist",
+              "name": "Dr. Saachi Shingrani's Dental Clinic",
+              "image": "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png",
+              "url": process.env.NEXT_PUBLIC_SITE_URL || "https://drsaachishingrani.com",
+              "telephone": "+919004402797",
+              "email": "srsdentalcare@gmail.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "B-1 Nutan Nagar Society, Gurunanak Rd, opposite Bandra Talao",
+                "addressLocality": "Bandra West, Mumbai",
+                "postalCode": "400050",
+                "addressCountry": "IN"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 19.0563638,
+                "longitude": 72.8362814
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "10:00",
+                "closes": "20:00"
+              },
+              "priceRange": "$$",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "121"
+              }
+            })
+          }}
+        />
       </head>
       <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} ${instrument.variable} antialiased flex flex-col min-h-screen text-text bg-background relative selection:bg-primary/20 overflow-x-hidden`.trim()}>
         
@@ -77,10 +114,8 @@ export default function RootLayout({
           <AnimatedNavFramer />
           
           <main id="main-content" className="flex-grow z-10 relative">
-            <TransitionProvider>
-              <BackButton />
-              {children}
-            </TransitionProvider>
+            <BackButton />
+            {children}
           </main>
           <Footer />
           <FloatingContactButtons />

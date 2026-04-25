@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import PageLink from '@/components/PageLink';
 import Image from 'next/image';
-import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
 import GallerySection from '@/components/sections/GallerySection';
 
 import { Heart, Cpu, DollarSign } from 'lucide-react';
@@ -55,7 +54,6 @@ const journeyItems: TimelineItem[] = [
 export default function AboutPage() {
   return (
     <main className="flex min-h-screen flex-col bg-[#faf8f5]">
-      <AnimatedNavFramer />
 
       {/* Main Content Area without Hero */}
       <section className="py-24 sm:py-32">

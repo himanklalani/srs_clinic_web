@@ -16,6 +16,8 @@ export default function HeroSection() {
           loop
           muted
           playsInline
+          // @ts-expect-error -- fetchPriority is a valid HTML attribute not yet in React types
+          fetchPriority="high"
           className={`w-full h-full object-cover object-center transition-opacity duration-1000 opacity-100`}
         />
         {/* Soft dark gradient overlay for text readability */}
