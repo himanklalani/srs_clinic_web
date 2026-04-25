@@ -41,7 +41,7 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
         },
         transitionEnd: { display: "none" }
       }));
-    }, 100);
+    }, 1200);
     return () => clearTimeout(timer);
   }, [controls]);
 
