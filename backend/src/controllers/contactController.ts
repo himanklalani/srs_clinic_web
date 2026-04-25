@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import sanitizeHtml from 'sanitize-html';
-import Contact from '@/models/Contact';
-import { verifyBlogToken } from '@/utils/authToken';
+import Contact from '../models/Contact';
+import { verifyBlogToken } from '../utils/authToken';
 
 // ─── POST /api/v1/contacts ───────────────────────────────────────────────
 export async function submitContact(req: Request, res: Response): Promise<void> {

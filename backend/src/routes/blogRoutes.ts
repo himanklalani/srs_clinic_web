@@ -7,8 +7,8 @@ import {
   verifyTokenRoute,
   getAdminBlogs,
   updateBlog,
-} from '@/controllers/blogController';
-import { blogPostRateLimit } from '@/middlewares/blogRateLimit';
+} from '../controllers/blogController';
+import { blogPostRateLimit } from '../middlewares/blogRateLimit';
 
 const router = Router();
 

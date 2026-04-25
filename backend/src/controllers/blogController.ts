@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import sanitizeHtml from 'sanitize-html';
 import slugify from 'slugify';
 import { v2 as cloudinary } from 'cloudinary';
-import Blog from '@/models/Blog';
-import { verifyBlogToken } from '@/utils/authToken';
+import Blog from '../models/Blog';
+import { verifyBlogToken } from '../utils/authToken';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

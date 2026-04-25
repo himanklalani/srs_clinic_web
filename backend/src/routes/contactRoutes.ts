@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { submitContact, getContacts } from '@/controllers/contactController';
-import { contactRateLimit } from '@/middlewares/blogRateLimit';
+import { submitContact, getContacts } from '../controllers/contactController';
+import { contactRateLimit } from '../middlewares/blogRateLimit';
 
 const router = Router();
 

@@ -10,8 +10,8 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import mongoose from 'mongoose';
-import blogRoutes from '@/routes/blogRoutes';
-import contactRoutes from '@/routes/contactRoutes';
+import blogRoutes from './routes/blogRoutes';
+import contactRoutes from './routes/contactRoutes';
 import compression from 'compression';
 
 // ─── Validate Token on Startup ────────────────────────────────────────────────
