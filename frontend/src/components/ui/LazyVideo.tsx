@@ -38,8 +38,8 @@ export default function LazyVideo({ src, className = "", objectPosition = "objec
             }
         }
       },
-      // Reduced rootMargin to prevent 6 videos from playing simultaneously on mobile before they are visible
-      { rootMargin: "100px 0px" } 
+      // Keep rootMargin generous so it starts before user sees it, but pauses when clearly away
+      { rootMargin: "300px 0px" } 
     );
 
     observer.observe(el);
@@ -64,7 +64,7 @@ export default function LazyVideo({ src, className = "", objectPosition = "objec
           playsInline
           preload="metadata"
           onCanPlay={() => setIsLoaded(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 will-change-transform ${objectPosition} ${isLoaded ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${objectPosition} ${isLoaded ? "opacity-100" : "opacity-0"}`}
         />
       )}
     </div>

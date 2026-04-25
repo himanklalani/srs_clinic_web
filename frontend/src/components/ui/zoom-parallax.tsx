@@ -61,6 +61,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 						>
 							<div 
                                 className={`relative rounded-2xl overflow-hidden shadow-2xl pointer-events-auto ${type === 'video' ? 'cursor-pointer' : ''}`}
+                                style={index !== 0 ? { willChange: 'transform' } : undefined}
                                 onClick={() => type === 'video' && setSelectedVideo(src)}
                             >
                                 {type === 'video' ? (
