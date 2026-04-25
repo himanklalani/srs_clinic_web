@@ -61,9 +61,9 @@ export default function RootLayout({
         
         {/* Soft Pastel Gradient Blobs Background */}
         <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#faf8f5]">
-          <div className="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-surface blur-[120px] mix-blend-multiply opacity-50 animate-blob" />
-          <div className="absolute top-[20%] right-[0%] w-[40vw] h-[40vw] rounded-full bg-[#f3e8ff] blur-[100px] mix-blend-multiply opacity-50 animate-blob animation-delay-2000" />
-          <div className="absolute -bottom-[20%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-[#fae8ff] blur-[120px] mix-blend-multiply opacity-40 animate-blob animation-delay-4000" />
+          <div className="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-surface blur-[120px] opacity-50 animate-blob will-change-transform" />
+          <div className="absolute top-[20%] right-[0%] w-[40vw] h-[40vw] rounded-full bg-[#f3e8ff] blur-[100px] opacity-50 animate-blob animation-delay-2000 will-change-transform" />
+          <div className="absolute -bottom-[20%] left-[20%] w-[60vw] h-[60vw] rounded-full bg-[#fae8ff] blur-[120px] opacity-40 animate-blob animation-delay-4000 will-change-transform" />
         </div>
 
         <ClientProviders>
