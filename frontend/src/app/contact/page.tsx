@@ -11,7 +11,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ firstname: '', lastname: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ firstname: '', lastname: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const errorId = 'contact-form-error';
 
@@ -34,13 +34,14 @@ export default function ContactPage() {
           firstname: formData.firstname,
           lastname: formData.lastname,
           email: formData.email,
+          phone: formData.phone,
           message: formData.message,
         }),
       });
 
       if (res.ok) {
         setStatus('success');
-        setFormData({ firstname: '', lastname: '', email: '', message: '' });
+        setFormData({ firstname: '', lastname: '', email: '', phone: '', message: '' });
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
@@ -138,6 +139,18 @@ export default function ContactPage() {
                   aria-required="true"
                   aria-describedby={status === 'error' ? errorId : undefined}
                   placeholder="Email Address"
+                  className="bg-gray-50/50"
+                />
+              </div>
+              <div className="grid w-full items-center gap-2">
+                <Label htmlFor="phone" className="text-sm font-medium text-primary">Phone Number</Label>
+                <Input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number (Optional)"
                   className="bg-gray-50/50"
                 />
               </div>
