@@ -1,14 +1,16 @@
 import HeroSection from '@/components/sections/HeroSection';
-import AboutDoctorSection from '@/components/sections/AboutDoctorSection';
-import TreatmentsGridSection from '@/components/sections/TreatmentsGridSection';
-import StatsSection from '@/components/sections/StatsSection';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
-import GallerySection from '@/components/sections/GallerySection';
-import LocationSection from '@/components/sections/LocationSection';
 import dynamic from 'next/dynamic';
-const ZoomParallax = dynamic(() => import('@/components/ui/zoom-parallax').then(mod => mod.ZoomParallax));
-import DisplayCards from '@/components/ui/display-cards';
 import { Sparkles, Shield, Heart, Clock } from "lucide-react";
+
+// Dynamically import below-the-fold sections to reduce initial JS payload
+const AboutDoctorSection = dynamic(() => import('@/components/sections/AboutDoctorSection'));
+const TreatmentsGridSection = dynamic(() => import('@/components/sections/TreatmentsGridSection'));
+const StatsSection = dynamic(() => import('@/components/sections/StatsSection'));
+const TestimonialsSection = dynamic(() => import('@/components/sections/TestimonialsSection'));
+const GallerySection = dynamic(() => import('@/components/sections/GallerySection'));
+const LocationSection = dynamic(() => import('@/components/sections/LocationSection'));
+const ZoomParallax = dynamic(() => import('@/components/ui/zoom-parallax').then(mod => mod.ZoomParallax));
+const DisplayCards = dynamic(() => import('@/components/ui/display-cards'));
 
 export default function HomeClient() {
   const clinicImages: any[] = [
