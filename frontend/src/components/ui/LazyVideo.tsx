@@ -32,13 +32,12 @@ export default function LazyVideo({ src, className = "", objectPosition = "objec
                 videoRef.current.play().catch(() => {}); // Catch DOMException if playback fails
             }
         } else {
-            // Pause video to save massive CPU/GPU on mobile when out of view
-            if (videoRef.current && !videoRef.current.paused) {
-                videoRef.current.pause();
-            }
+            // Unmount video completely when out of view to free massive mobile GPU/CPU memory
+            setIsRendered(false);
+            setIsLoaded(false);
         }
       },
-      // Keep rootMargin generous so it starts before user sees it, but pauses when clearly away
+      // Keep rootMargin generous so it starts before user sees it, but unmounts when clearly away
       { rootMargin: "300px 0px" } 
     );
 
@@ -62,6 +61,8 @@ export default function LazyVideo({ src, className = "", objectPosition = "objec
           loop
           muted
           playsInline
+          disablePictureInPicture
+          disableRemotePlayback
           preload="metadata"
           onCanPlay={() => setIsLoaded(true)}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${objectPosition} ${isLoaded ? "opacity-100" : "opacity-0"}`}

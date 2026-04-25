@@ -410,11 +410,12 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dswvmoboh
 | `pointer-events-none` on `ProgressiveBlur` overlays | Without it, blur gradient divs block mouse scroll wheel events on desktop |
 | CORS `allowedOrigins` list in `server.ts` | Making this `*` exposes the backend API to the entire internet |
 | `NEXT_PUBLIC_API_URL` env var for API calls | Hardcoding the backend URL breaks production deployments |
-| Selective `will-change: transform` | Never globally apply this to `ZoomParallax` children. It must be excluded from static high-res images, otherwise the browser caches a tiny texture map that looks awful when scaled up. Only apply to the videos. |
+| Selective `will-change: transform` | Never apply this to the massive fullscreen `motion.div` wrappers in `ZoomParallax`. It causes immediate GPU texture exhaustion and severe lag on mobile devices when scaling 9x. Apply it ONLY to the tiny inner media `div`. |
 | `IntersectionObserver` video lazy loading | Changing `LazyVideo.tsx` back to standard `<video>` causes severe bandwidth contention, breaking the hero video load sequence on slower networks. |
 | `pointer-events-none` on ZoomParallax wrappers | Removing it blocks 100% of video clicks because layers overlap full-screen |
 | GSAP ticker sync in `SmoothScrollProvider.tsx` | Removing this causes Lenis and GSAP to run independent update loops, causing severe scroll jitter and layout thrashing. |
 | No `mix-blend-multiply` on background blobs | Re-adding this CSS property to `.animate-blob` in `layout.tsx` forces the CPU to recalculate pixel blends on every scroll tick, causing massive lag. |
+| No CSS `filter: blur` during scaling | Never apply CSS `filter: blur()` to the placeholder images in `ZoomParallax` (`ImageWithLQIP`). Scaling a CSS-blurred element causes a CPU recalculation death loop resulting in severe mobile scroll lag. Rely on Cloudinary's server-side blur instead. |
 
 ---
 

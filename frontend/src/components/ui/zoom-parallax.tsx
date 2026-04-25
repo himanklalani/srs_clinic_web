@@ -60,7 +60,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 							className={`absolute top-0 flex h-full w-full items-center justify-center pointer-events-none ${getLayoutClasses(index)}`}
 						>
 							<div 
-                                className={`relative rounded-2xl overflow-hidden shadow-2xl pointer-events-auto ${type === 'video' ? 'cursor-pointer' : ''}`}
+                                className={`relative rounded-2xl overflow-hidden shadow-none md:shadow-2xl pointer-events-auto ${type === 'video' ? 'cursor-pointer' : ''}`}
                                 style={index !== 0 ? { willChange: 'transform' } : undefined}
                                 onClick={() => type === 'video' && setSelectedVideo(src)}
                             >
