@@ -34,7 +34,7 @@ async function getBlogs(page: number): Promise<BlogsResponse> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
     const res = await fetch(`${apiUrl}/api/v1/blogs?page=${page}&limit=6`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 0 },
     });
     if (!res.ok) throw new Error('Failed to fetch blogs');
     return res.json();
