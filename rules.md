@@ -301,6 +301,7 @@ The site uses a **three-layer animation system**. Follow these strictly — do n
 | Page enter/exit | **TransitionProvider** | Full page transition animations |
 | Content edge masking | **ProgressiveBlur** | Fade content at top/bottom of scrollable containers |
 | Success/Celebration states | **canvas-confetti** | Used for booking confirmations and primary success events |
+| **Component Code Splitting** | `next/dynamic` | Used on below-the-fold sections (`HomeClient.tsx`) to massively reduce initial JS main-thread block time. |
 
 ### Critical animation rules
 - Always use `viewport={{ once: true }}` — prevents re-animation on scroll-back
@@ -308,6 +309,7 @@ The site uses a **three-layer animation system**. Follow these strictly — do n
 - **Function Props**: Never pass function props from Server Components to Client Components — Next.js will crash with a hydration error.
 - **Overlay Interaction**: Use `pointer-events-none` on full-screen wrappers and `pointer-events-auto` on child elements to ensure clicks punch through overlapping layers.
 - **Performance**: Always use `will-change: transform` for high-frequency scroll animations to avoid mobile stutter.
+- **Scroll Sync**: Lenis and GSAP's `ScrollTrigger` MUST be synced via `gsap.ticker.add` in `SmoothScrollProvider` to prevent scroll-fighting and jitter.
 - **Micro-Animations**: Use `.shimmer`, `.glow-card`, and `.orb` utility classes from `Luxe Violet Atelier` for atmospheric richness.
 
 ---
@@ -344,7 +346,8 @@ The design uses a global **Noise Grain** overlay at 2.2% opacity.
 ### Background Decoration (RootLayout)
 Three large animated blur blobs (`animate-blob`) are rendered as fixed elements behind all content
 (`z-[-1]`). They produce the ambient purple/lavender glow visible throughout the site.
-**Do not remove them** — they define the entire visual identity.
+**Do not remove them** — they define the entire visual identity. 
+*Note:* They deliberately use `will-change-transform` and opaque colors instead of `mix-blend-multiply` to ensure GPU hardware acceleration and prevent massive scroll-lag on mobile.
 
 ### Responsive Breakpoints (Tailwind defaults)
 - `sm`: 640px+
@@ -386,6 +389,7 @@ CLOUDINARY_API_SECRET=your_secret
 ### `frontend/.env.local`
 ```
 NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dswvmoboh
 ```
 
@@ -409,6 +413,8 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dswvmoboh
 | Selective `will-change: transform` | Never globally apply this to `ZoomParallax` children. It must be excluded from static high-res images, otherwise the browser caches a tiny texture map that looks awful when scaled up. Only apply to the videos. |
 | `IntersectionObserver` video lazy loading | Changing `LazyVideo.tsx` back to standard `<video>` causes severe bandwidth contention, breaking the hero video load sequence on slower networks. |
 | `pointer-events-none` on ZoomParallax wrappers | Removing it blocks 100% of video clicks because layers overlap full-screen |
+| GSAP ticker sync in `SmoothScrollProvider.tsx` | Removing this causes Lenis and GSAP to run independent update loops, causing severe scroll jitter and layout thrashing. |
+| No `mix-blend-multiply` on background blobs | Re-adding this CSS property to `.animate-blob` in `layout.tsx` forces the CPU to recalculate pixel blends on every scroll tick, causing massive lag. |
 
 ---
 

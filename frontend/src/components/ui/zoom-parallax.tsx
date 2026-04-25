@@ -56,7 +56,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 					return (
 						<motion.div
 							key={index}
-							style={{ scale, ...(index !== 0 && { willChange: 'transform' }) }}
+							style={{ scale }}
 							className={`absolute top-0 flex h-full w-full items-center justify-center pointer-events-none ${getLayoutClasses(index)}`}
 						>
 							<div 
@@ -186,7 +186,7 @@ function ImageWithLQIP({ src, alt, objectPosition, eager }: { src: string; alt: 
 				alt=""
 				aria-hidden="true"
 				className={`absolute inset-0 w-full h-full object-cover ${objectPosition} transition-opacity duration-700 scale-110 ${loaded ? 'opacity-0' : 'opacity-100'}`}
-				style={{ filter: 'blur(20px)', imageRendering: 'auto' }}
+				style={{ imageRendering: 'auto' }}
 			/>
 			{/* Full-resolution image — fades in on top */}
 			{/* eslint-disable-next-line @next/next/no-img-element */}
