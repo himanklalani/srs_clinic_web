@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="flex flex-col space-y-4">
           <PageLink href="/" className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md">
               <img
-                src="https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png"
+                src="https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/w_280/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png"
                 alt="Dr. Saachi Shingrani Dental Clinic"
                 width={280}
                 height={144}

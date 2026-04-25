@@ -45,11 +45,15 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        {/* Preload hero poster image for fast LCP — use fetchpriority on the video element in HeroSection instead */}
+        {/* Preconnect to Cloudinary CDN for faster asset loading */}
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        {/* Preload hero poster image for fast LCP */}
         <link
           rel="preload"
-          href="https://res.cloudinary.com/dswvmoboh/video/upload/so_0,w_1920,q_auto,f_jpg/v1775985264/SSclinic-.av1_corvyv.jpg"
+          href="https://res.cloudinary.com/dswvmoboh/video/upload/so_0,w_1280,q_auto,f_avif/v1775985264/SSclinic-.av1_corvyv.jpg"
           as="image"
+          type="image/avif"
           fetchPriority="high"
         />
       </head>

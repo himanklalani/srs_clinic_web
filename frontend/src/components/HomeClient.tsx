@@ -12,7 +12,7 @@ import { Sparkles, Shield, Heart, Clock } from "lucide-react";
 
 export default function HomeClient() {
   const clinicImages: any[] = [
-    { src: 'https://res.cloudinary.com/dswvmoboh/image/upload/q_100/f_auto/v1775983401/Untitled_design_nmymxg.png', alt: 'Dr. Saachi Shingrani - Centre' },
+    { src: 'https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/w_800/v1775983401/Untitled_design_nmymxg.png', alt: 'Dr. Saachi Shingrani - Centre' },
     { type: 'video', src: 'https://res.cloudinary.com/dswvmoboh/video/upload/q_auto/f_auto/v1777055439/IMG_6550.av1_e8ygjq.mp4', alt: 'Clinic Video 1', objectPosition: 'object-top' },
     { type: 'video', src: 'https://res.cloudinary.com/dswvmoboh/video/upload/q_auto/f_auto/v1775930892/cc403ebd436c4631a351260f8aa7befd.av1_lnfbmg.mp4', alt: 'Clinic Video 2', objectPosition: 'object-[center_15%]' },
     { type: 'video', src: 'https://res.cloudinary.com/dswvmoboh/video/upload/q_auto/f_auto/v1775930895/IMG_7886.av1_zjpqee.mp4', alt: 'Clinic Video 3', objectPosition: 'object-center' },

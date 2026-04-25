@@ -156,20 +156,20 @@ export default function AboutDoctorSection() {
                                         {/* Abstract patient graph */}
                                         <div className="relative flex items-center justify-end gap-2 sm:gap-3 w-[95%] opacity-90 group-hover:opacity-100 transition-opacity">
                                             <span className="block rounded-lg bg-white border border-primary/10 px-2 py-1 text-[10px] sm:text-xs font-medium text-primary shadow-sm">Gentle Care</span>
-                                            <div className="ring-background size-8 sm:size-10 ring-4 rounded-full shadow-sm bg-surface">
-                                                <img className="size-full rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="" aria-hidden="true" />
+                                            <div className="ring-background size-8 sm:size-10 ring-4 rounded-full shadow-sm bg-pink-100 flex items-center justify-center">
+                                                <span className="text-xs font-bold text-pink-600" aria-hidden="true">AP</span>
                                             </div>
                                         </div>
                                         <div className="relative flex items-center gap-2 sm:gap-3 w-[90%] left-[5%] opacity-90 group-hover:opacity-100 transition-opacity">
-                                            <div className="ring-background size-8 sm:size-10 ring-4 rounded-full shadow-sm bg-surface">
-                                                <img className="size-full rounded-full object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="" aria-hidden="true" />
+                                            <div className="ring-background size-8 sm:size-10 ring-4 rounded-full shadow-sm bg-blue-100 flex items-center justify-center">
+                                                <span className="text-xs font-bold text-blue-600" aria-hidden="true">RK</span>
                                             </div>
                                             <span className="block rounded-lg bg-white border border-primary/10 px-2 py-1 text-[10px] sm:text-xs font-medium text-primary shadow-sm">Painless</span>
                                         </div>
                                         <div className="relative flex items-center justify-end gap-2 sm:gap-3 w-[85%] opacity-90 group-hover:opacity-100 transition-opacity">
                                             <span className="block rounded-lg bg-white border border-primary/10 px-2 py-1 text-[10px] sm:text-xs font-medium text-primary shadow-sm">Modern Tools</span>
-                                            <div className="ring-background size-8 sm:size-10 ring-4 rounded-full shadow-sm bg-surface">
-                                                <img className="size-full rounded-full object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="" aria-hidden="true" />
+                                            <div className="ring-background size-8 sm:size-10 ring-4 rounded-full shadow-sm bg-amber-100 flex items-center justify-center">
+                                                <span className="text-xs font-bold text-amber-600" aria-hidden="true">SM</span>
                                             </div>
                                         </div>
 
