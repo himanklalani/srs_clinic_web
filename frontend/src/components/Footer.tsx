@@ -16,8 +16,6 @@ export default function Footer() {
               <img
                 src="https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png"
                 alt="Dr. Saachi Shingrani Dental Clinic"
-                width={280}
-                height={144}
                 className="h-24 sm:h-28 md:h-36 w-auto object-contain max-w-[280px]"
               />
             </PageLink>
