@@ -5,7 +5,7 @@ import { v2 as cloudinary } from 'cloudinary';
 import Blog from '@/models/Blog';
 import { verifyBlogToken } from '@/utils/authToken';
 
-const cloudinaryOptions = () => ({
+cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
@@ -118,7 +118,6 @@ export async function createBlog(req: Request, res: Response): Promise<void> {
         const uploadResponse = await cloudinary.uploader.upload(finalCoverImage, {
           folder: 'dental-clinic/blogs',
           format: 'avif', // Convert incoming picture to AVIF as requested
-          ...cloudinaryOptions()
         });
         finalCoverImage = uploadResponse.secure_url;
       } catch (uploadError) {
@@ -183,7 +182,7 @@ export async function deleteBlog(req: Request, res: Response): Promise<void> {
           const urlParts = deleted.coverImage.split('/');
           const filename = urlParts[urlParts.length - 1]; // e.g., image.avif
           const publicIdWithFolder = `dental-clinic/blogs/${filename.split('.')[0]}`;
-          await cloudinary.uploader.destroy(publicIdWithFolder, cloudinaryOptions());
+          await cloudinary.uploader.destroy(publicIdWithFolder);
         } catch (cloudinaryErr) {
           console.error('[Cloudinary Deletion Error]', cloudinaryErr);
         }
@@ -219,7 +218,6 @@ export async function updateBlog(req: Request, res: Response): Promise<void> {
         const uploadResponse = await cloudinary.uploader.upload(finalCoverImage, {
           folder: 'dental-clinic/blogs',
           format: 'avif', // Convert incoming picture to AVIF as requested
-          ...cloudinaryOptions()
         });
         finalCoverImage = uploadResponse.secure_url;
       } catch (uploadError) {
