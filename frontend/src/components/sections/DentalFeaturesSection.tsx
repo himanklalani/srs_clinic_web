@@ -40,8 +40,8 @@ export default function DentalFeaturesSection() {
     <section className="py-20 sm:py-32 bg-[#faf8f5] relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <ScrollReveal direction="up">
-          <div className="text-center mb-16 sm:mb-24">
-             <h2 className="text-2xl md:text-3xl font-inter text-text/60">
+          <div className="text-center mb-12 sm:mb-24 px-2">
+             <h2 className="text-xl sm:text-2xl md:text-3xl font-inter text-text/60 leading-relaxed">
                Personalized treatments, modern techniques, and a team that truly cares.
              </h2>
           </div>
@@ -50,23 +50,23 @@ export default function DentalFeaturesSection() {
         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-4">
           
           {/* Header/Image (Always on top for mobile) */}
-          <div className="w-full sm:w-2/3 lg:w-1/3 relative flex justify-center items-center order-1 lg:order-2 z-10 min-h-[350px] lg:min-h-[500px]">
+          <div className="w-full sm:w-2/3 lg:w-1/3 relative flex justify-center items-center order-1 lg:order-2 z-10 min-h-[380px] sm:min-h-[450px] lg:min-h-[500px]">
              <ScrollReveal scale once={false}>
-               <div className="relative w-56 h-56 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-blue-50/50 flex items-center justify-center border-[2px] border-dashed border-blue-200 p-8 shadow-inner">
+               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-blue-50/50 flex items-center justify-center border-[2px] border-dashed border-blue-200 p-2 shadow-inner">
                   <Image 
                     src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?q=80&w=1000&auto=format&fit=crop"
                     alt="Pristine Dental Technology"
                     fill
                     priority
-                    className="object-cover rounded-full p-4 scale-110 drop-shadow-2xl"
+                    className="object-cover rounded-full scale-105 drop-shadow-2xl"
                   />
                   {/* Decorative Dots matching the user interface graph */}
-                  <div className="absolute -left-2 top-1/2 w-4 h-4 rounded-full bg-blue-600 shadow-lg z-20"></div>
-                  <div className="absolute -right-2 top-1/2 w-4 h-4 rounded-full bg-blue-600 shadow-lg z-20"></div>
-                  <div className="absolute top-8 left-12 w-3 h-3 rounded-full bg-blue-500 shadow-md z-20"></div>
-                  <div className="absolute top-8 right-12 w-3 h-3 rounded-full bg-blue-500 shadow-md z-20"></div>
-                  <div className="absolute bottom-8 left-12 w-3 h-3 rounded-full bg-blue-500 shadow-md z-20"></div>
-                  <div className="absolute bottom-8 right-12 w-3 h-3 rounded-full bg-blue-500 shadow-md z-20"></div>
+                  <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-600 shadow-lg z-20"></div>
+                  <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-600 shadow-lg z-20"></div>
+                  <div className="absolute top-8 left-10 w-3.5 h-3.5 rounded-full bg-blue-500 shadow-md z-20"></div>
+                  <div className="absolute top-8 right-10 w-3.5 h-3.5 rounded-full bg-blue-500 shadow-md z-20"></div>
+                  <div className="absolute bottom-8 left-10 w-3.5 h-3.5 rounded-full bg-blue-500 shadow-md z-20"></div>
+                  <div className="absolute bottom-8 right-10 w-3.5 h-3.5 rounded-full bg-blue-500 shadow-md z-20"></div>
                </div>
              </ScrollReveal>
           </div>
