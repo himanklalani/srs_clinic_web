@@ -63,14 +63,7 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
 
 // ─── Performance Middlewares ──────────────────────────────────────────────────
 app.use(compression());
-app.use((req: Request, res: Response, next: NextFunction) => {
-  const start = Date.now();
-  res.on('finish', () => {
-    const duration = Date.now() - start;
-    res.setHeader('X-Response-Time', `${duration}ms`);
-  });
-  next();
-});
+// (Removed faulty X-Response-Time middleware that caused ERR_HTTP_HEADERS_SENT)
 
 // ─── CORS: Whitelist from env only ────────────────────────────────────────────
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
