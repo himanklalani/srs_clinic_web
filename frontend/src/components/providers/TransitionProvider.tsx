@@ -35,13 +35,13 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
       controls.start(i => ({
         y: "120%",
         transition: {
-          duration: 0.7,
+          duration: 0.5,
           ease: [0.76, 0, 0.24, 1],
-          delay: i * 0.08, // Stagger left-to-right
+          delay: i * 0.05, // Stagger left-to-right
         },
         transitionEnd: { display: "none" }
       }));
-    }, 1500);
+    }, 100);
     return () => clearTimeout(timer);
   }, [controls]);
 

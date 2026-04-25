@@ -10,6 +10,7 @@ const GallerySection = dynamic(() => import('@/components/sections/GallerySectio
 const LocationSection = dynamic(() => import('@/components/sections/LocationSection'), { ssr: false });
 const ZoomParallax = dynamic(() => import('@/components/ui/zoom-parallax').then(mod => mod.ZoomParallax), { ssr: false });
 const DisplayCards = dynamic(() => import('@/components/ui/display-cards'), { ssr: false });
+import LazyMount from '@/components/ui/LazyMount';
 import { Sparkles, Shield, Heart, Clock } from "lucide-react";
 
 export default function HomeClient() {
@@ -70,9 +71,11 @@ export default function HomeClient() {
       </div>
 
       {/* Full Screen Cinematic Zoom Parallax */}
-      <div className="-mt-16 md:mt-0 relative z-10">
-        <ZoomParallax images={clinicImages} />
-      </div>
+      <LazyMount minHeight="200vh" rootMargin="800px">
+        <div className="-mt-16 md:mt-0 relative z-10">
+          <ZoomParallax images={clinicImages} />
+        </div>
+      </LazyMount>
 
       {/* Atmospheric transition OUT */}
       <div className="w-full py-12 md:py-20 relative z-20 flex flex-col items-center justify-center -mt-8 md:-mt-16 bg-gradient-to-b from-transparent to-background">
@@ -92,15 +95,28 @@ export default function HomeClient() {
           <p className="text-lg text-text/70">From the moment you walk in, experience a seamless blend of luxury, advanced medical technology, and profound empathy.</p>
         </div>
         <div className="w-full max-w-sm flex justify-center">
-          <DisplayCards cards={valueCards} />
+          <LazyMount minHeight="400px" rootMargin="400px">
+            <DisplayCards cards={valueCards} />
+          </LazyMount>
         </div>
       </section>
       
-      {/* 5. Testimonials Section */}
-      <StatsSection />
-      <TestimonialsSection />
-      <GallerySection />
-      <LocationSection />
+      {/* Bottom Sections */}
+      <LazyMount minHeight="200px" rootMargin="400px">
+        <StatsSection />
+      </LazyMount>
+
+      <LazyMount minHeight="600px" rootMargin="400px">
+        <TestimonialsSection />
+      </LazyMount>
+
+      <LazyMount minHeight="800px" rootMargin="400px">
+        <GallerySection />
+      </LazyMount>
+
+      <LazyMount minHeight="600px" rootMargin="400px">
+        <LocationSection />
+      </LazyMount>
     </>
   );
 }
