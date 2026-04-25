@@ -34,22 +34,22 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 	const scales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
 	const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
-  const getLayoutClasses = (index: number) => {
-    switch (index) {
-      case 0: return '[&>div]:h-[18vh] [&>div]:w-[44vw] md:[&>div]:h-[25vh] md:[&>div]:w-[25vw]';
-      case 1: return '[&>div]:-top-[18vh] [&>div]:left-[0vw] [&>div]:h-[14vh] [&>div]:w-[44vw] md:[&>div]:!-top-[30vh] md:[&>div]:!left-[5vw] md:[&>div]:!h-[30vh] md:[&>div]:!w-[35vw]';
-      case 2: return '[&>div]:-top-[10vh] [&>div]:-left-[35vw] [&>div]:h-[13vh] [&>div]:w-[22vw] md:[&>div]:!-top-[10vh] md:[&>div]:!-left-[25vw] md:[&>div]:!h-[45vh] md:[&>div]:!w-[20vw]';
-      case 3: return '[&>div]:top-[18vh] [&>div]:-left-[13vw] [&>div]:h-[14vh] [&>div]:w-[24vw] md:[&>div]:!top-[2vh] md:[&>div]:!left-[27.5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[25vw]';
-      case 4: return '[&>div]:top-[0vh] [&>div]:left-[35vw] [&>div]:h-[28vh] [&>div]:w-[22vw] md:[&>div]:!top-[27.5vh] md:[&>div]:!left-[5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[20vw]';
-      case 5: return '[&>div]:top-[5vh] [&>div]:-left-[35vw] [&>div]:h-[13vh] [&>div]:w-[22vw] md:[&>div]:!top-[27.5vh] md:[&>div]:!-left-[22.5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[30vw]';
-      case 6: return '[&>div]:top-[18vh] [&>div]:left-[11vw] [&>div]:h-[14vh] [&>div]:w-[20vw] md:[&>div]:!top-[22.5vh] md:[&>div]:!left-[25vw] md:[&>div]:!h-[15vh] md:[&>div]:!w-[15vw]';
-      default: return '';
-    }
-  };
+    const getLayoutClasses = (index: number) => {
+      switch (index) {
+        case 0: return '[&>div]:h-[18svh] [&>div]:w-[44vw] md:[&>div]:h-[25vh] md:[&>div]:w-[25vw]';
+        case 1: return '[&>div]:-top-[18svh] [&>div]:left-[0vw] [&>div]:h-[14svh] [&>div]:w-[44vw] md:[&>div]:!-top-[30vh] md:[&>div]:!left-[5vw] md:[&>div]:!h-[30vh] md:[&>div]:!w-[35vw]';
+        case 2: return '[&>div]:-top-[10svh] [&>div]:-left-[35vw] [&>div]:h-[13svh] [&>div]:w-[22vw] md:[&>div]:!-top-[10vh] md:[&>div]:!-left-[25vw] md:[&>div]:!h-[45vh] md:[&>div]:!w-[20vw]';
+        case 3: return '[&>div]:top-[18svh] [&>div]:-left-[13vw] [&>div]:h-[14svh] [&>div]:w-[24vw] md:[&>div]:!top-[2vh] md:[&>div]:!left-[27.5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[25vw]';
+        case 4: return '[&>div]:top-[0svh] [&>div]:left-[35vw] [&>div]:h-[28svh] [&>div]:w-[22vw] md:[&>div]:!top-[27.5vh] md:[&>div]:!left-[5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[20vw]';
+        case 5: return '[&>div]:top-[5svh] [&>div]:-left-[35vw] [&>div]:h-[13svh] [&>div]:w-[22vw] md:[&>div]:!top-[27.5vh] md:[&>div]:!-left-[22.5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[30vw]';
+        case 6: return '[&>div]:top-[18svh] [&>div]:left-[11vw] [&>div]:h-[14svh] [&>div]:w-[20vw] md:[&>div]:!top-[22.5vh] md:[&>div]:!left-[25vw] md:[&>div]:!h-[15vh] md:[&>div]:!w-[15vw]';
+        default: return '';
+      }
+    };
 
 	return (
-		<div ref={container} className="relative h-[150vh] md:h-[300vh] bg-[#faf8f5]">
-			<div className="sticky top-0 h-screen overflow-hidden">
+		<div ref={container} className="relative h-[150svh] md:h-[300vh] bg-[#faf8f5]">
+			<div className="sticky top-0 h-[100svh] overflow-hidden">
 				{images.map(({ type = 'image', src, alt, objectPosition = 'object-center' }, index) => {
 					const scale = scales[index % scales.length];
 
@@ -60,7 +60,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 							className={`absolute top-0 flex h-full w-full items-center justify-center pointer-events-none ${getLayoutClasses(index)}`}
 						>
 							<div 
-                                className={`relative rounded-2xl overflow-hidden shadow-none md:shadow-2xl pointer-events-auto ${type === 'video' ? 'cursor-pointer' : ''}`}
+                                className={`relative rounded-2xl overflow-hidden shadow-none md:shadow-2xl pointer-events-auto transform-gpu backface-visibility-hidden ${type === 'video' ? 'cursor-pointer' : ''}`}
                                 style={index !== 0 ? { willChange: 'transform' } : undefined}
                                 onClick={() => type === 'video' && setSelectedVideo(src)}
                             >
