@@ -33,6 +33,17 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
 	const scales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
 	const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
+    // Track mobile state to avoid loading 6 heavy videos simultaneously on phones
+    const [isMobile, setIsMobile] = useState(
+      typeof window !== 'undefined' ? window.innerWidth < 768 : false
+    );
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const getLayoutClasses = (index: number) => {
       switch (index) {
         case 0: return '[&>div]:h-[18svh] [&>div]:w-[44vw] md:[&>div]:h-[25vh] md:[&>div]:w-[25vw]';
@@ -65,15 +76,34 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
                             >
                                 {type === 'video' ? (
                                     <>
-                                        <LazyVideo
-                                            src={src}
-                                            objectPosition={objectPosition}
-                                        />
-                                        <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity hidden md:flex items-center justify-center z-10">
-                                            <div className="bg-white/30 backdrop-blur-md p-3 rounded-full text-white shadow-lg">
-                                                <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                            </div>
-                                        </div>
+                                        {isMobile ? (
+                                            <>
+                                                {/* On Mobile: Load static thumbnail to save bandwidth and CPU */}
+                                                <ImageWithLQIP
+                                                    src={src.replace(/\.(mp4|webm|ogg)$/i, '.jpg')}
+                                                    alt={alt || "Video thumbnail"}
+                                                    objectPosition={objectPosition}
+                                                />
+                                                <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-10 transition-opacity">
+                                                    <div className="bg-white/30 backdrop-blur-md p-2 rounded-full text-white shadow-lg flex items-center justify-center">
+                                                        <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                {/* On Desktop: Autoplay video smoothly */}
+                                                <LazyVideo
+                                                    src={src}
+                                                    objectPosition={objectPosition}
+                                                />
+                                                <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity hidden md:flex items-center justify-center z-10">
+                                                    <div className="bg-white/30 backdrop-blur-md p-3 rounded-full text-white shadow-lg">
+                                                        <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )}
                                     </>
                                 ) : (
                                     <ImageWithLQIP
