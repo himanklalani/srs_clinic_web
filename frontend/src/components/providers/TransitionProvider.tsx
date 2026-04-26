@@ -114,9 +114,9 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
         ))}
       </div>
       
-      {/* Centered Logo for Initial Load AND Navigation */}
+      {/* Centered Logo for Initial Load only */}
       <AnimatePresence>
-        {(isInitialLoad || isNavigating) && (
+        {isInitialLoad && (
           <motion.div
             className="fixed inset-0 z-[10000] pointer-events-none flex items-center justify-center flex-col"
             initial={{ opacity: 0 }}
