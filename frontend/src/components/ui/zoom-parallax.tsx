@@ -1,7 +1,7 @@
 'use client';
 
 import { useScroll, useTransform, motion, AnimatePresence } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { X, Volume2, VolumeX, FastForward } from 'lucide-react';
 import LazyVideo from '@/components/ui/LazyVideo';
 
