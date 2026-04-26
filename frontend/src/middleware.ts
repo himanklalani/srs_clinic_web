@@ -20,6 +20,7 @@ export function middleware(request: NextRequest) {
   // 2. Base CSP Directives
   const isProd = process.env.NODE_ENV === 'production';
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+  const bookingApiUrl = process.env.NEXT_PUBLIC_BOOKING_API_URL || 'https://review-booking-system.onrender.com';
   const cspDirectives = [
     "default-src 'self'",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
@@ -33,11 +34,11 @@ export function middleware(request: NextRequest) {
   // 3. Conditional Analytics (GDPR strict CSP)
   if (hasAnalyticsConsent) {
     cspDirectives.push(`script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com${!isProd ? " 'unsafe-eval'" : ""}`);
-    cspDirectives.push(`connect-src 'self' ${apiUrl} https://res.cloudinary.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net`);
+    cspDirectives.push(`connect-src 'self' ${apiUrl} ${bookingApiUrl} https://res.cloudinary.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net`);
   } else {
     // If no consent, strictly block analytics and tag manager
     cspDirectives.push(`script-src 'self' 'unsafe-inline'${!isProd ? " 'unsafe-eval'" : ""}`);
-    cspDirectives.push(`connect-src 'self' ${apiUrl} https://res.cloudinary.com`);
+    cspDirectives.push(`connect-src 'self' ${apiUrl} ${bookingApiUrl} https://res.cloudinary.com`);
   }
 
   if (isProd) {
