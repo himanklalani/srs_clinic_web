@@ -52,7 +52,7 @@ export default function TreatmentsClient() {
       <AnimatedNavFramer />
 
       {/* 3D Rolling Text Banner */}
-      <div className="w-full bg-background pt-32 pb-10 md:py-24 overflow-hidden flex justify-center px-4 min-h-[140px] sm:min-h-[200px] lg:min-h-[400px]">
+      <div className="w-full bg-background pt-28 pb-6 md:pt-32 md:pb-10 overflow-hidden flex justify-center items-center px-4">
         <AnimatePresence>
           {!isInitialLoad && (
             <motion.div
@@ -61,7 +61,7 @@ export default function TreatmentsClient() {
               transition={{ duration: 0.8, delay: 0.5 }}
             >
               <TextRoll 
-                className="text-3xl sm:text-5xl md:text-6xl lg:text-[6rem] xl:text-[7.5rem] font-bold text-primary-dark/30 hover:text-primary hover:opacity-100 transition-all duration-1000 font-instrument uppercase tracking-tighter whitespace-nowrap cursor-default drop-shadow-sm hover:drop-shadow-[0_0_30px_rgba(109,40,217,0.4)]"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] font-bold text-primary-dark/30 hover:text-primary hover:opacity-100 transition-all duration-1000 font-instrument uppercase tracking-tighter whitespace-nowrap cursor-default drop-shadow-sm hover:drop-shadow-[0_0_30px_rgba(109,40,217,0.4)]"
               >
                 EXPERIENCE PERFECTION
               </TextRoll>
@@ -74,7 +74,7 @@ export default function TreatmentsClient() {
       <DentalFeaturesSection />
 
       {/* Treatments Grid */}
-      <section className="py-16 sm:py-24">
+      <section className="py-10 sm:py-14">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
 
           {/* Section Header */}
@@ -100,13 +100,13 @@ export default function TreatmentsClient() {
           </div>
 
           {/* Treatments Cards — 2-col on mobile, 4-col on desktop */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 items-stretch">
             {TREATMENTS_DATA.map((t) => {
               const pair = BEFORE_AFTER_PAIRS[t.pair];
               return (
                 <div
                   key={t.title}
-                  className="bg-white rounded-2xl shadow-sm border border-surface/50 overflow-hidden flex flex-col hover:shadow-md transition-shadow group"
+                  className="bg-white rounded-2xl shadow-sm border border-surface/50 overflow-hidden flex flex-col hover:shadow-md transition-shadow group h-full"
                 >
                   {/* Before / After Slider */}
                   <div className="w-full rounded-t-2xl overflow-hidden border-b border-primary/10">
@@ -137,7 +137,7 @@ export default function TreatmentsClient() {
           </div>
 
           {/* Single CTA below the grid */}
-          <div className="flex flex-col items-center gap-3 mt-12 sm:mt-16">
+          <div className="flex flex-col items-center gap-3 mt-8 sm:mt-10">
             <p className="text-text/60 text-sm">Ready to transform your smile?</p>
             <PageLink
               href="/book"

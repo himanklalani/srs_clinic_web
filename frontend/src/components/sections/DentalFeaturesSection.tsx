@@ -37,10 +37,10 @@ const features = [
 
 export default function DentalFeaturesSection() {
   return (
-    <section className="py-20 sm:py-32 bg-[#faf8f5] relative overflow-hidden">
+    <section className="py-10 sm:py-20 bg-[#faf8f5] relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <ScrollReveal direction="up">
-          <div className="text-center mb-12 sm:mb-24 px-2">
+          <div className="text-center mb-8 sm:mb-16 px-2">
              <h2 className="text-xl sm:text-2xl md:text-3xl font-inter text-text/60 leading-relaxed">
                Personalized treatments, modern techniques, and a team that truly cares.
              </h2>
@@ -49,8 +49,8 @@ export default function DentalFeaturesSection() {
 
         <div className="relative flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-4">
           
-          {/* Header/Image (Always on top for mobile) */}
-          <div className="w-full sm:w-2/3 lg:w-1/3 relative flex justify-center items-center order-1 lg:order-2 z-10 min-h-[380px] sm:min-h-[450px] lg:min-h-[500px]">
+          {/* Header/Image — hidden on mobile, shown on desktop */}
+          <div className="hidden lg:flex w-full lg:w-1/3 relative justify-center items-center order-1 lg:order-2 z-10 min-h-[500px]">
              <ScrollReveal scale once={false}>
                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-blue-50/50 flex items-center justify-center border-[2px] border-dashed border-blue-200 p-2 shadow-inner">
                   <Image 
@@ -72,10 +72,10 @@ export default function DentalFeaturesSection() {
           </div>
 
           {/* Unified Grid for Mobile (3 rows of 2 cards each) */}
-          <div className="lg:hidden grid grid-cols-2 gap-4 sm:gap-6 w-full order-2 z-10">
+          <div className="lg:hidden grid grid-cols-2 gap-4 sm:gap-6 w-full z-10 items-stretch">
             {features.map((feat, idx) => (
-              <ScrollReveal direction="up" delay={idx * 0.1} key={`mobile-${feat.title}`}>
-                <div className="bg-white rounded-2xl p-4 shadow-sm border border-surface/50 flex flex-col items-center text-center gap-3">
+              <ScrollReveal direction="up" delay={idx * 0.1} key={`mobile-${feat.title}`} className="w-full h-full">
+                <div className="bg-white rounded-2xl p-4 shadow-sm border border-surface/50 flex flex-col items-center text-center gap-3 w-full h-full">
                   <div className="shrink-0 bg-white shadow-sm p-3 rounded-full border border-surface/50 text-blue-500">
                     <feat.icon className="w-6 h-6" />
                   </div>

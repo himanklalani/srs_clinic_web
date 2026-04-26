@@ -182,7 +182,7 @@ export default function AboutDoctorSection() {
                 </div>
 
                 {/* 2. DOCTOR BIOGRAPHY & DETAILS */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mt-24">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mt-12 sm:mt-24">
                     
                     <div className="lg:col-span-5 relative about-content max-w-sm sm:max-w-md mx-auto lg:mx-0 w-full">
                         <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
