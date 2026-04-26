@@ -66,7 +66,7 @@ export default function HomeClient() {
       {/* Atmospheric transition IN */}
       <div className="w-full relative z-20 flex flex-col items-center justify-center pointer-events-none -mb-12 md:mb-12 scale-90 md:scale-100 py-4">
         <div className="orb orb-violet w-72 h-72 opacity-25" />
-        <span className="section-label mb-3">State of the Art</span>
+        <span className="section-label mb-3">Video Testimonials</span>
         <div className="divider-violet w-32 md:w-64" />
       </div>
 
