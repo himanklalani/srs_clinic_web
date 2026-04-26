@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://drsaachishingrani.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://srsdentalcare.in';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = ['', '/about', '/treatments', '/blogs', '/contact', '/book'].map((route) => ({

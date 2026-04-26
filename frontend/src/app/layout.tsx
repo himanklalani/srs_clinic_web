@@ -62,7 +62,7 @@ export default function RootLayout({
               "@type": "Dentist",
               "name": "Dr. Saachi Shingrani's Dental Clinic",
               "image": "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png",
-              "url": process.env.NEXT_PUBLIC_SITE_URL || "https://drsaachishingrani.com",
+              "url": process.env.NEXT_PUBLIC_SITE_URL || "https://srsdentalcare.in",
               "telephone": "+919004402797",
               "email": "srsdentalcare@gmail.com",
               "address": {
