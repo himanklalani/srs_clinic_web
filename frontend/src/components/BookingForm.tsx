@@ -168,7 +168,21 @@ export default function BookingForm() {
               Preferred Date <span aria-hidden="true" className="text-red-400">*</span>
               <span className="sr-only">(required)</span>
             </Label>
-            <Input required type="date" id="date" name="date" className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-ring focus:border-primary-mid h-12 rounded-xl [color-scheme:dark]" />
+            <Input 
+              required 
+              type="date" 
+              id="date" 
+              name="date" 
+              min={new Date().toISOString().split("T")[0]}
+              onChange={(e) => {
+                const selectedDate = new Date(e.target.value);
+                if (selectedDate.getDay() === 0) {
+                  alert("Clinic is closed on Sundays. Please select another day.");
+                  e.target.value = "";
+                }
+              }}
+              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-ring focus:border-primary-mid h-12 rounded-xl [color-scheme:dark]" 
+            />
           </div>
           <fieldset className="grid w-full items-center gap-2">
             <legend className="text-[10px] uppercase tracking-widest font-semibold text-primary-light/80 mb-2">
