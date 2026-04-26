@@ -37,7 +37,11 @@ export default function BookingForm() {
       };
 
       const apiUrl = process.env.NEXT_PUBLIC_BOOKING_API_URL || 'https://review-booking-system.onrender.com';
-      const response = await fetch(`${apiUrl}/api/public/book`, {
+      
+      // Clean up the URL to prevent double /api/api if the user included /api in the env variable
+      const cleanApiUrl = apiUrl.endsWith('/api') ? apiUrl.slice(0, -4) : apiUrl;
+      
+      const response = await fetch(`${cleanApiUrl}/api/public/book`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
