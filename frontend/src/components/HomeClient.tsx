@@ -71,7 +71,7 @@ export default function HomeClient() {
       </div>
 
       {/* Full Screen Cinematic Zoom Parallax */}
-      <LazyMount minHeight="200vh" rootMargin="800px">
+      <LazyMount minHeight="200vh" rootMargin="200px">
         <div className="-mt-16 md:mt-0 relative z-10">
           <ZoomParallax images={clinicImages} />
         </div>
