@@ -10,15 +10,59 @@ import Textarea from "@/components/ui/Textarea";
 export default function BookingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (cooldown > 0) {
+      alert(`Please wait ${cooldown} seconds before submitting another request.`);
+      return;
+    }
+
     setIsSubmitting(true);
     
-    // Simulate network request for booking
-    setTimeout(() => {
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      
+      const payload = {
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        date: new Date(formData.get("date") as string).toISOString(),
+        service_type: formData.get("treatment"),
+        preferred_slot: formData.get("slot"),
+        notes: formData.get("notes"),
+        business_id: process.env.NEXT_PUBLIC_BOOKING_BUSINESS_ID,
+        api_key: process.env.NEXT_PUBLIC_BOOKING_API_KEY
+      };
+
+      const apiUrl = process.env.NEXT_PUBLIC_BOOKING_API_URL || 'https://review-booking-system.onrender.com';
+      const response = await fetch(`${apiUrl}/api/public/book`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit booking');
+      }
+
       setIsSubmitting(false);
       setIsSuccess(true);
+      
+      // Start 60-second cooldown to prevent spamming
+      setCooldown(60);
+      const timer = setInterval(() => {
+        setCooldown((prev) => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
       
       // Fire confetti animation (Balloons & Poppers vibe)
       const duration = 2.5 * 1000;
@@ -42,7 +86,11 @@ export default function BookingForm() {
         confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }, colors }));
       }, 250);
       
-    }, 1200);
+    } catch (error) {
+      console.error("Booking error:", error);
+      alert("Something went wrong while submitting your request. Please try again or call the clinic directly.");
+      setIsSubmitting(false);
+    }
   };
 
   const randomInRange = (min: number, max: number) => {
