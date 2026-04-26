@@ -35,6 +35,7 @@ export function middleware(request: NextRequest) {
     "img-src 'self' data: https://res.cloudinary.com https://ui-avatars.com",
     "media-src 'self' https://res.cloudinary.com",
     "frame-src https://www.google.com",
+    "worker-src 'self' blob:",
     "object-src 'none'",
   ];
 
