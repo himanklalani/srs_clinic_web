@@ -11,7 +11,7 @@ export default function HeroSection() {
         {/* We use an AV1 video directly instead of next/image, prioritizing the poster image for LCP using preload in layout. */}
         <video
           src="https://res.cloudinary.com/dswvmoboh/video/upload/q_auto/f_auto/v1775985264/SSclinic-.av1_corvyv.mp4"
-          poster="https://res.cloudinary.com/dswvmoboh/video/upload/so_0,w_1280,q_auto,f_avif/v1775985264/SSclinic-.av1_corvyv.jpg"
+          poster="https://res.cloudinary.com/dswvmoboh/video/upload/so_0,w_1280,q_auto,f_auto/v1775985264/SSclinic-.av1_corvyv.jpg"
           autoPlay
           loop
           muted

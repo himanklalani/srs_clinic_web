@@ -41,7 +41,7 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
         },
         transitionEnd: { display: "none" }
       }));
-    }, 1200);
+    }, 600); // Set exactly to 600ms as requested
     return () => clearTimeout(timer);
   }, [controls]);
 
@@ -114,14 +114,15 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
         ))}
       </div>
       
-      {/* Centered Logo for Initial Load only */}
+      {/* Centered Logo for Initial Load AND Navigation */}
       <AnimatePresence>
-        {isInitialLoad && (
+        {(isInitialLoad || isNavigating) && (
           <motion.div
             className="fixed inset-0 z-[10000] pointer-events-none flex items-center justify-center flex-col"
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             key="loader-logo"
           >
              <div className="w-28 h-28 mb-6 flex items-center justify-center rounded-full bg-white shadow-[0_0_40px_rgba(255,255,255,0.3)] border border-white/20">
@@ -131,7 +132,7 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
                   className="w-20 h-20 object-contain drop-shadow-md"
                 />
               </div>
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-white tracking-tight leading-none drop-shadow-lg">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-white tracking-tight leading-none drop-shadow-lg text-center px-4">
               Dr. Saachi Shingrani's Clinic
             </h1>
             <div className="h-0.5 w-16 bg-white/40 mx-auto mt-4 rounded-full" />

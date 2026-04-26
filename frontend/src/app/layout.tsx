@@ -49,9 +49,8 @@ export default function RootLayout({
         {/* Preload hero poster image for fast LCP */}
         <link
           rel="preload"
-          href="https://res.cloudinary.com/dswvmoboh/video/upload/so_0,w_1280,q_auto,f_avif/v1775985264/SSclinic-.av1_corvyv.jpg"
+          href="https://res.cloudinary.com/dswvmoboh/video/upload/so_0,w_1280,q_auto,f_auto/v1775985264/SSclinic-.av1_corvyv.jpg"
           as="image"
-          type="image/avif"
           fetchPriority="high"
         />
         {/* JSON-LD Structured Data for Google Rich Results */}
