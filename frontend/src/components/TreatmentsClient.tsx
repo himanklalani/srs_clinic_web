@@ -3,7 +3,7 @@
 import { useTransition } from "@/components/providers/TransitionProvider";
 import PageLink from '@/components/PageLink';
 import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
-import { Smile, Activity, Crown, Sparkles, Baby, Leaf, Palette, CalendarCheck, Shield, HeartPulse, Stethoscope, Syringe } from 'lucide-react';
+import { Smile, Activity, Crown, Sparkles, Baby, Leaf, Palette, CalendarCheck, Shield, HeartPulse, Stethoscope, Syringe, Zap } from 'lucide-react';
 import DentalFeaturesSection from "@/components/sections/DentalFeaturesSection";
 import dynamic from 'next/dynamic';
 const TextRoll = dynamic(() => import('@/components/ui/text-roll').then(mod => mod.TextRoll));
@@ -13,6 +13,45 @@ import {
   ImageComparisonSlider
 } from "@/components/ui/image-comparison";
 import { AnimatePresence, motion } from "framer-motion";
+import { Marquee } from "@/components/ui/marquee";
+
+const marqueeData = [
+  "Best dental clinic in Bandra?",
+  "How much do invisible aligners cost in Mumbai?",
+  "Is teeth whitening safe for enamel?",
+  "Where can I get a painless root canal?",
+  "What to expect during full mouth rehab?",
+  "How long do dental implants last?",
+  "Best pediatric dentist near me?",
+  "Can cosmetic dentistry fix a gummy smile?",
+  "What is the recovery time for wisdom tooth surgery?",
+  "Are ceramic braces better than metal?",
+  "How to fix bleeding gums naturally?",
+  "Emergency dental clinic open now in Bandra?",
+];
+
+const seoFeatures = [
+  {
+    description: "No pain, just comfort — experience our signature gentle touch for all your dental needs.",
+    icon: Shield,
+    title: "Painless Treatments",
+  },
+  {
+    description: "Our specialists bring years of expertise and international protocols right to your smile.",
+    icon: Stethoscope,
+    title: "Expert Specialists",
+  },
+  {
+    description: "From 3D scanners to laser dentistry, we use the latest technology for precise results.",
+    icon: Zap,
+    title: "State-of-the-Art Clinic",
+  },
+  {
+    description: "From your first consultation to your final follow-up, we are with you every step of the way.",
+    icon: HeartPulse,
+    title: "Comprehensive Care",
+  },
+];
 
 const BEFORE_AFTER_PAIRS = [
   { before: "", after: "" }, // 0: Smile Design
@@ -200,6 +239,101 @@ export default function TreatmentsClient() {
             </PageLink>
           </div>
 
+        </div>
+      </section>
+
+      {/* SEO & FAQ Marquee Section */}
+      <section className="relative bg-[#f5f0ff] py-20 sm:py-28 overflow-hidden border-t border-primary/10">
+        
+        {/* Decorative background blobs */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10">
+          {/* Header */}
+          <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-5 px-6 text-center mb-12 sm:mb-16">
+            <div className="pill">
+              <span>Questions We Hear Every Day</span>
+            </div>
+            <h2 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-primary-dark leading-tight">
+              Removing the roadblocks to your perfect smile
+            </h2>
+            <p className="text-text/60 text-base sm:text-lg max-w-xl leading-relaxed">
+              We filter out the noise and focus on what truly matters — giving you the clarity and confidence to take the next step for your smile.
+            </p>
+          </div>
+
+          {/* Marquee rows — 3 rows, alternating direction, no pause, perfect CSS mask fade */}
+          <div 
+            className="relative w-full overflow-hidden py-4 space-y-3 sm:space-y-6"
+            style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
+          >
+            {/* Row 1 — left */}
+            <Marquee className="[--duration:38s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={8}>
+              {marqueeData.slice(0, 4).map((q) => (
+                <div
+                  key={q}
+                  className="flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm select-none pointer-events-none shrink-0"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0" />
+                  {q}
+                </div>
+              ))}
+            </Marquee>
+
+            {/* Row 2 — right */}
+            <Marquee className="[--duration:48s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={8} reverse>
+              {marqueeData.slice(4, 8).map((q) => (
+                <div
+                  key={q}
+                  className="flex items-center gap-2 rounded-full border border-accent/30 bg-primary/5 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm select-none pointer-events-none shrink-0"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                  {q}
+                </div>
+              ))}
+            </Marquee>
+
+            {/* Row 3 — left */}
+            <Marquee className="[--duration:43s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={8}>
+              {marqueeData.slice(8, 12).map((q) => (
+                <div
+                  key={q}
+                  className="flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm select-none pointer-events-none shrink-0"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/30 shrink-0" />
+                  {q}
+                </div>
+              ))}
+            </Marquee>
+          </div>
+
+          {/* Feature grid */}
+          <div className="mx-auto max-w-7xl mt-16 sm:mt-20 px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-dashed border-primary/20 rounded-2xl overflow-hidden">
+              {seoFeatures.map((feature, idx) => {
+                const Icon = feature.icon;
+                return (
+                  <div
+                    key={feature.title}
+                    className="group flex flex-col gap-4 p-6 sm:p-8 bg-white/50 hover:bg-white/90 transition-all duration-300 border-b border-dashed border-primary/20 last:border-b-0 sm:[&:nth-child(2)]:border-b lg:border-b-0 lg:[&:not(:last-child)]:border-r"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-sm">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div className="flex flex-col gap-2 pt-2 sm:pt-4">
+                      <h3 className="font-semibold text-base sm:text-lg tracking-tight text-primary-dark">
+                        {feature.title}
+                      </h3>
+                      <p className="leading-relaxed text-text/60 text-sm">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </main>

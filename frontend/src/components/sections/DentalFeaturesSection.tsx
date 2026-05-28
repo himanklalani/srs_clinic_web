@@ -1,6 +1,8 @@
 import Image from "next/image";
-import { UserCheck, ShieldCheck, HeartPulse, Star, MapPin, Zap } from "lucide-react";
+import { UserCheck, ShieldCheck, HeartPulse, Star, MapPin, Zap, Plus, X } from "lucide-react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 
 const features = [
   {
@@ -71,21 +73,47 @@ export default function DentalFeaturesSection() {
              </ScrollReveal>
           </div>
 
-          {/* Unified Grid for Mobile (3 rows of 2 cards each) */}
-          <div className="lg:hidden grid grid-cols-2 gap-4 sm:gap-6 w-full z-10 items-stretch">
-            {features.map((feat, idx) => (
-              <ScrollReveal direction="up" delay={idx * 0.1} key={`mobile-${feat.title}`} className="w-full h-full">
-                <div className="bg-white rounded-2xl p-4 shadow-sm border border-surface/50 flex flex-col items-center text-center gap-3 w-full h-full">
-                  <div className="shrink-0 bg-white shadow-sm p-3 rounded-full border border-surface/50 text-blue-500">
-                    <feat.icon className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-sm font-bold text-primary-dark mb-1 leading-tight">{feat.title}</h3>
-                    <p className="text-text/70 text-[10px] leading-relaxed line-clamp-3">{feat.description}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
+          {/* Mobile Accordion View */}
+          <div className="lg:hidden w-full z-10 px-2 sm:px-0">
+            <Accordion type="single" defaultValue={features[0].title} collapsible className="w-full space-y-3">
+              {features.map((feat, idx) => (
+                <ScrollReveal direction="up" delay={idx * 0.1} key={`mobile-${feat.title}`} className="w-full">
+                  <AccordionItem value={feat.title} className="bg-white border border-primary/10 shadow-sm rounded-xl overflow-hidden data-[state=open]:border-primary/30 transition-colors">
+                    <AccordionTrigger className="group px-4 py-3 sm:px-5 sm:py-4 hover:no-underline cursor-pointer [&>svg:last-child]:hidden border-b-0">
+                      <div className="flex w-full items-center gap-3 min-w-0">
+                        <div className="shrink-0 bg-primary/5 p-2 rounded-full text-primary group-data-[state=open]:bg-primary group-data-[state=open]:text-white transition-colors duration-300">
+                          <feat.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </div>
+                        <h3 className="text-[13px] sm:text-[15px] font-bold text-primary-dark leading-tight flex-1 text-left min-w-0 pr-2">{feat.title}</h3>
+                        <div className="relative shrink-0 text-primary w-5 h-5 flex justify-center items-center ml-auto">
+                          <Plus
+                            strokeWidth={2.5}
+                            className={cn(
+                              "absolute transition-all duration-500 w-4 h-4 sm:w-5 sm:h-5",
+                              "group-data-[state=open]:opacity-0 group-data-[state=closed]:opacity-100",
+                              "group-data-[state=open]:rotate-180 group-data-[state=closed]:rotate-0"
+                            )}
+                          />
+                          <X
+                            strokeWidth={2.5}
+                            className={cn(
+                              "absolute transition-all duration-500 w-4 h-4 sm:w-5 sm:h-5",
+                              "group-data-[state=closed]:opacity-0 group-data-[state=open]:opacity-100",
+                              "group-data-[state=closed]:-rotate-180 group-data-[state=open]:rotate-0"
+                            )}
+                          />
+                        </div>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0">
+                      <div className="pl-11 sm:pl-14 text-text/70 text-[12px] sm:text-[13px] leading-relaxed pr-2">
+                        {feat.description}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </ScrollReveal>
+              ))}
+            </Accordion>
           </div>
 
           {/* Desktop Left Column */}
