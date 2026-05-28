@@ -18,7 +18,7 @@ export function StickyScrollCards({ cards }: { cards: StickyCardData[] }) {
       {cards.map((card, i) => (
         <figure 
           key={i} 
-          className="sticky top-0 min-h-[60vh] md:h-screen flex items-center justify-center w-full"
+          className="sticky top-[38vh] md:top-0 min-h-[50vh] md:h-screen flex items-start md:items-center justify-center w-full"
         >
           <article
             className={cn(

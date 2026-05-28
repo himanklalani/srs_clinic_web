@@ -96,11 +96,11 @@ export default function HomeClient() {
       <section className="bg-background relative z-10 w-full overflow-visible">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between w-full">
           {/* Sticky Left Content */}
-          <div className="w-full md:w-1/2 md:sticky md:top-0 md:h-screen flex items-center pt-8 md:pt-0 mb-4 md:mb-0">
-            <div className="max-w-xl text-center md:text-left">
-              <span className="text-primary font-bold tracking-widest text-xs sm:text-sm uppercase mb-3 block">Why Choose Us</span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-semibold text-text mb-4 md:mb-6 md:leading-[1.1]">Redefining Dental Standards.</h2>
-              <p className="text-base md:text-lg text-text/70 max-w-md font-light leading-relaxed mx-auto md:mx-0">
+          <div className="w-full md:w-1/2 sticky top-24 md:top-0 h-auto md:h-screen flex items-start md:items-center pt-2 md:pt-0 mb-8 md:mb-0 z-0 pointer-events-none">
+            <div className="max-w-xl text-center md:text-left mx-auto">
+              <span className="text-primary font-bold tracking-widest text-[10px] sm:text-sm uppercase mb-2 md:mb-3 block">Why Choose Us</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-semibold text-text mb-3 md:mb-6 md:leading-[1.1]">Redefining Dental Standards.</h2>
+              <p className="text-sm md:text-lg text-text/70 max-w-md font-light leading-relaxed mx-auto md:mx-0">
                 From the moment you walk in, experience a seamless blend of luxury, advanced medical technology, and profound empathy.
               </p>
             </div>
