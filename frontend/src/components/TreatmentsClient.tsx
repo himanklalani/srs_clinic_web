@@ -3,7 +3,7 @@
 import { useTransition } from "@/components/providers/TransitionProvider";
 import PageLink from '@/components/PageLink';
 import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
-import { Smile, Activity, Crown, Sparkles, Baby, Leaf, Palette, CalendarCheck } from 'lucide-react';
+import { Smile, Activity, Crown, Sparkles, Baby, Leaf, Palette, CalendarCheck, Shield, HeartPulse, Stethoscope, Syringe } from 'lucide-react';
 import DentalFeaturesSection from "@/components/sections/DentalFeaturesSection";
 import dynamic from 'next/dynamic';
 const TextRoll = dynamic(() => import('@/components/ui/text-roll').then(mod => mod.TextRoll));
@@ -15,33 +15,69 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 
 const BEFORE_AFTER_PAIRS = [
-  {
-    before: "",
-    after:  "",
+  { before: "", after: "" }, // 0: Smile Design
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952394/copy_of_img_1456_yqfusi.heic", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953394/IMG_1441_xrzlbm.heic" 
+  }, // 1: Teeth Whitening
+  { before: "", after: "" }, // 2: Implants
+  { // 3: Aligners & Braces
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952235/IMG_0992_vow8gg.heic",
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952072/after_a_b_pkbkea.heic"
   },
-  {
-    before: "",
-    after:  "",
+  { // 4: Full Mouth Rehab
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950607/fmg_after_pnqadw.png",
+    after:  "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950606/fmh_before_lzmnze.png",
   },
-  {
-    before: "",
-    after:  "",
-  },
-  {
-    before: "",
-    after:  "",
-  },
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952763/Untitled_design_3_iqtn8x.png", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952763/Untitled_design_2_dgnbgf.png" 
+  }, // 5: Pediatric
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953726/IMG_1759_sm3cbi.heic", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953772/IMG_1743_bxrvlp.heic",
+    single: ""
+  }, // 6: Cosmetic Dentistry
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953908/IMG_4462_tbwz0r.jpg", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953907/IMG_7728_sqaa60.jpg",
+    single: ""
+  }, // 7: Dentures
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779954013/IMG_4353_d0l9go.heic", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779954013/IMG_1829_emkjsf.jpg",
+    single: ""
+  }, // 8: Geriatric
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953239/IMG_0052_oneqip.heic", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953238/IMG_9605_yrsvm4.heic",
+    single: ""
+  }, // 9: Diagnosis of Oral Lesions
+  { 
+    before: "", 
+    after: "", 
+    single: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953151/37D41653-0775-4AAE-9998-96BF037F70B6_xeclpj.jpg" 
+  }, // 10: Wisdom Tooth Surgery
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953524/Untitled_design_6_wzvuiy.png", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953601/Untitled_design_7_jeh7td.png",
+    single: ""
+  }, // 11: Crowns and Bridges
 ];
 
 const TREATMENTS_DATA = [
-  { icon: Smile,    title: 'Teeth Whitening',    description: 'Brighten your smile with our safe, effective whitening procedures.',       pair: 0 },
-  { icon: Activity, title: 'Braces',             description: 'Straighten teeth with modern braces for all ages.',                        pair: 1 },
-  { icon: Crown,    title: 'Root Canal',         description: 'Save damaged teeth with precise, pain-free root canal therapy.',           pair: 2 },
-  { icon: Crown,    title: 'Implants',           description: 'Restore missing teeth with durable, natural-looking implants.',            pair: 3 },
-  { icon: Sparkles, title: 'Cosmetic Dentistry', description: 'Enhance aesthetics with veneers, bonding, and smile redesigns.',          pair: 0 },
-  { icon: Baby,     title: 'Pediatric Care',     description: 'Gentle, fear-free dental care designed especially for children.',         pair: 1 },
-  { icon: Leaf,     title: 'Gum Treatment',      description: 'Treat gum disease with advanced periodontal therapy.',                    pair: 2 },
-  { icon: Palette,  title: 'Smile Design',       description: 'Custom smile makeovers tailored to your unique facial features.',         pair: 3 },
+  { icon: Palette,    title: 'Smile Design',       description: 'Custom smile makeovers tailored to your unique facial features.',         pair: 0 },
+  { icon: Sparkles,   title: 'Teeth Whitening',    description: 'Brighten your smile with our safe, effective whitening procedures.',       pair: 1 },
+  { icon: Crown,      title: 'Implants',           description: 'Restore missing teeth with durable, natural-looking implants.',            pair: 2 },
+  { icon: Activity,   title: 'Aligners & Braces',  description: 'Invisible, comfortable alignment solutions tailored for both teens and adults.', pair: 3 },
+  { icon: Shield,     title: 'Full Mouth Rehab',   description: 'Comprehensive restoration of your oral health and aesthetics.',          pair: 4 },
+  { icon: Baby,       title: 'Pediatric',          description: 'Gentle, anxiety-free dental care designed exclusively for our youngest patients.', pair: 5 },
+  { icon: Sparkles,   title: 'Cosmetic Dentistry', description: 'Enhance aesthetics with veneers, bonding, and smile redesigns.',          pair: 6 },
+  { icon: Activity,   title: 'Dentures',           description: 'High-quality, comfortable dentures to restore function and confidence.',   pair: 7 },
+  { icon: HeartPulse, title: 'Geriatric',          description: 'Specialized dental care focused on the unique needs of older adults.',     pair: 8 },
+  { icon: Stethoscope,title: 'Diagnosis of Oral Lesions', description: 'Expert diagnosis and treatment of oral lesions and mucosal diseases.', pair: 9 },
+  { icon: Syringe,    title: 'Wisdom Tooth Surgery', description: 'Safe, painless extraction of impacted wisdom teeth by specialists.', pair: 10 },
+  { icon: Crown,      title: 'Crowns and Bridges', description: 'Restore damaged or missing teeth with durable, custom-fitted crowns.', pair: 11 },
 ];
 
 export default function TreatmentsClient() {
@@ -108,21 +144,37 @@ export default function TreatmentsClient() {
                   key={t.title}
                   className="bg-white rounded-2xl shadow-sm border border-surface/50 overflow-hidden flex flex-col hover:shadow-md transition-shadow group h-full"
                 >
-                  {/* Before / After Slider */}
+                  {/* Before / After Slider or Single Image */}
                   <div className="w-full rounded-t-2xl overflow-hidden border-b border-primary/10">
-                    <ImageComparison className="aspect-[4/3] w-full" enableHover>
-                      <ImageComparisonImage src={pair.before} alt={`${t.title} Before`} position="left" />
-                      <ImageComparisonImage src={pair.after}  alt={`${t.title} After`}  position="right" />
-                      <ImageComparisonSlider className="w-1 bg-white/60 backdrop-blur-sm shadow-md">
-                        <div className="absolute top-1/2 left-1/2 h-6 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white flex items-center justify-center shadow-lg border border-primary/20">
-                          <div className="w-[2px] h-2 bg-primary/40 rounded-full" />
+                    {pair.single ? (
+                      <div className="aspect-[4/3] w-full relative">
+                        <img 
+                          src={pair.single} 
+                          alt={t.title} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : pair.before && pair.after ? (
+                      <>
+                        <ImageComparison className="aspect-[4/3] w-full" enableHover>
+                          <ImageComparisonImage src={pair.before} alt={`${t.title} Before`} position="left" />
+                          <ImageComparisonImage src={pair.after}  alt={`${t.title} After`}  position="right" />
+                          <ImageComparisonSlider className="w-1 bg-white/60 backdrop-blur-sm shadow-md">
+                            <div className="absolute top-1/2 left-1/2 h-6 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white flex items-center justify-center shadow-lg border border-primary/20">
+                              <div className="w-[2px] h-2 bg-primary/40 rounded-full" />
+                            </div>
+                          </ImageComparisonSlider>
+                        </ImageComparison>
+                        <div className="flex justify-between px-3 py-1 bg-surface text-[9px] sm:text-[10px] font-medium text-primary uppercase tracking-wider">
+                          <span>Before</span>
+                          <span>After</span>
                         </div>
-                      </ImageComparisonSlider>
-                    </ImageComparison>
-                    <div className="flex justify-between px-3 py-1 bg-surface text-[9px] sm:text-[10px] font-medium text-primary uppercase tracking-wider">
-                      <span>Before</span>
-                      <span>After</span>
-                    </div>
+                      </>
+                    ) : (
+                      <div className="aspect-[4/3] w-full bg-surface flex items-center justify-center">
+                        <span className="text-[10px] text-primary/40 uppercase tracking-widest font-medium">Coming Soon</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Card Content */}

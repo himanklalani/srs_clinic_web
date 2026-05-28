@@ -9,27 +9,7 @@ import {
   ImageComparisonImage,
   ImageComparisonSlider
 } from "@/components/ui/image-comparison";
-
-function NavigationButton({
-  onClick,
-  children,
-  disabled
-}: {
-  onClick: () => void,
-  children: React.ReactNode,
-  disabled?: boolean
-}) {
-  return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      type="button"
-      className="relative flex h-10 sm:h-12 shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg border border-primary/20 bg-white px-4 md:px-6 text-sm sm:text-base font-medium text-primary transition-all hover:bg-primary/5 hover:text-primary-dark focus-visible:ring-2 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
-    >
-      {children}
-    </button>
-  );
-}
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 export function TreatmentsTransitionPanel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -38,40 +18,41 @@ export function TreatmentsTransitionPanel() {
 
   const TREATMENTS = [
     {
+      title: "Smile Design",
+      description: "Custom smile makeovers tailored to your unique facial features and aesthetic goals.",
+      beforeImage: "",
+      afterImage: "",
+    },
+    {
       title: "Teeth Whitening",
       description: "Professional brightening for a radiant, confident smile using high-end gentle formulas.",
-      beforeImage: "",
-      afterImage: "",
+      beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952394/copy_of_img_1456_yqfusi.heic",
+      afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953394/IMG_1441_xrzlbm.heic",
     },
     {
-      title: "Braces & Aligners",
-      description: "Invisible, comfortable alignment solutions tailored for both teens and adults.",
-      beforeImage: "",
-      afterImage: "",
-    },
-    {
-      title: "Root Canal",
-      description: "Painless, single-sitting endodontic therapy utilizing the latest microscopic precision.",
-      beforeImage: "",
-      afterImage: "",
-    },
-    {
-      title: "Dental Implants",
+      title: "Implants",
       description: "Permanent, natural-looking tooth replacements ensuring lifelong durability.",
       beforeImage: "",
       afterImage: "",
     },
     {
-      title: "Cosmetic Dentistry",
-      description: "Veneers and composite bonding crafted perfectly to match your facial aesthetics.",
-      beforeImage: "",
-      afterImage: "",
+      title: "Aligners & Braces",
+      description: "Invisible, comfortable alignment solutions tailored for both teens and adults.",
+      beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952235/IMG_0992_vow8gg.heic",
+      afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952072/after_a_b_pkbkea.heic",
     },
     {
-      title: "Pediatric Dentistry",
+      title: "Full Mouth Rehab",
+      description: "Comprehensive restoration of your oral health and aesthetics for a perfect smile.",
+      beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950607/fmg_after_pnqadw.png",
+      afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950606/fmh_before_lzmnze.png",
+      
+    },
+    {
+      title: "Pediatric",
       description: "Gentle, anxiety-free dental care designed exclusively for our youngest patients.",
-      beforeImage: "",
-      afterImage: "",
+      beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952763/Untitled_design_3_iqtn8x.png",
+      afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952763/Untitled_design_2_dgnbgf.png",
     }
   ];
 
@@ -86,9 +67,29 @@ export function TreatmentsTransitionPanel() {
   }, [activeIndex]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto overflow-hidden rounded-3xl border border-primary/10 shadow-xl bg-white shadow-primary/5">
-      <TransitionPanel
-        activeIndex={activeIndex}
+    <div className="relative w-full max-w-4xl mx-auto">
+      {/* Navigation Arrows */}
+      <button 
+        onClick={() => handleSetActiveIndex(activeIndex - 1)}
+        disabled={activeIndex === 0}
+        className="absolute -left-3 sm:-left-6 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 bg-white border border-primary/20 rounded-full shadow-lg text-primary hover:bg-primary hover:text-white transition-all disabled:opacity-0 disabled:pointer-events-none focus:outline-none"
+        aria-label="Previous treatment"
+      >
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+
+      <button 
+        onClick={() => handleSetActiveIndex(activeIndex + 1)}
+        disabled={activeIndex === TREATMENTS.length - 1}
+        className="absolute -right-3 sm:-right-6 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 bg-white border border-primary/20 rounded-full shadow-lg text-primary hover:bg-primary hover:text-white transition-all disabled:opacity-0 disabled:pointer-events-none focus:outline-none"
+        aria-label="Next treatment"
+      >
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+
+      <div className="overflow-hidden rounded-3xl border border-primary/10 shadow-xl bg-white shadow-primary/5">
+        <TransitionPanel
+          activeIndex={activeIndex}
         variants={{
           enter: (direction) => ({
             x: direction > 0 ? 364 : -364,
@@ -116,6 +117,17 @@ export function TreatmentsTransitionPanel() {
           opacity: { duration: 0.2 },
         }}
         custom={direction}
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={1}
+        onDragEnd={(e, { offset }) => {
+          const swipeDistance = offset.x;
+          if (swipeDistance < -50 && activeIndex < TREATMENTS.length - 1) {
+            handleSetActiveIndex(activeIndex + 1);
+          } else if (swipeDistance > 50 && activeIndex > 0) {
+            handleSetActiveIndex(activeIndex - 1);
+          }
+        }}
       >
         {TREATMENTS.map((treatment, index) => (
           <div key={index} className="px-6 py-12 md:p-16 lg:p-24 text-center flex flex-col items-center justify-center min-h-[300px]" ref={ref}>
@@ -135,8 +147,11 @@ export function TreatmentsTransitionPanel() {
               Book Consultation
             </PageLink>
             
-            {typeof treatment.beforeImage === 'string' && typeof treatment.afterImage === 'string' && (
-              <div className="w-full max-w-2xl mx-auto rounded-xl overflow-hidden shadow-lg border border-primary/20">
+            {typeof treatment.beforeImage === 'string' && treatment.beforeImage !== '' && typeof treatment.afterImage === 'string' && treatment.afterImage !== '' && (
+              <div 
+                className="w-full max-w-2xl mx-auto rounded-xl overflow-hidden shadow-lg border border-primary/20"
+                onPointerDownCapture={(e) => e.stopPropagation()}
+              >
                 <ImageComparison className="aspect-[16/9] w-full" enableHover>
                   <ImageComparisonImage
                     src={treatment.beforeImage}
@@ -163,17 +178,19 @@ export function TreatmentsTransitionPanel() {
                 </div>
               </div>
             )}
+
+            <PageLink 
+              href="/treatments" 
+              className="mt-6 md:mt-8 inline-flex items-center gap-1.5 text-primary hover:text-primary-dark font-medium transition-colors text-sm sm:text-base group"
+            >
+              View all treatments
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </PageLink>
           </div>
         ))}
       </TransitionPanel>
-      <div className="flex justify-between items-center p-6 sm:p-8 bg-[#faf8f5]/50 border-t border-primary/10">
-        <NavigationButton 
-          onClick={() => handleSetActiveIndex(activeIndex - 1)}
-          disabled={activeIndex === 0}
-        >
-          Previous
-        </NavigationButton>
-        <div className="flex gap-2 sm:gap-3 flex-1 justify-center">
+      <div className="flex items-center justify-center p-6 sm:p-8 bg-[#faf8f5]/50 border-t border-primary/10">
+        <div className="flex gap-2 sm:gap-3 justify-center">
           {TREATMENTS.map((_, i) => (
             <button
               key={i}
@@ -185,13 +202,8 @@ export function TreatmentsTransitionPanel() {
             />
           ))}
         </div>
-        <NavigationButton
-          onClick={() => handleSetActiveIndex(activeIndex + 1)}
-          disabled={activeIndex === TREATMENTS.length - 1}
-        >
-          Next
-        </NavigationButton>
       </div>
+    </div>
     </div>
   );
 }
