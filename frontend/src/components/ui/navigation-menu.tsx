@@ -14,7 +14,8 @@ const navItems = [
   { name: "Contact", href: "/contact" },
 ];
 
-const EXPAND_SCROLL_THRESHOLD = 80;
+const COLLAPSE_SCROLL_THRESHOLD = 50;
+const EXPAND_SCROLL_THRESHOLD = 200;
 
 const containerVariants: Variants = {
   expanded: {
@@ -79,16 +80,27 @@ export function AnimatedNavFramer() {
   
   const { scrollY } = useScroll();
   const lastScrollY = React.useRef(0);
-  const scrollPositionOnCollapse = React.useRef(0);
+  const scrollDirection = React.useRef<"up" | "down">("down");
+  const continuousScrollStart = React.useRef(0);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = lastScrollY.current;
-    
-    if (isExpanded && latest > previous && latest > 150) {
+    const currentDirection = latest > previous ? "down" : "up";
+
+    // Reset continuous scroll tracker when direction changes
+    if (currentDirection !== scrollDirection.current) {
+      scrollDirection.current = currentDirection;
+      continuousScrollStart.current = latest;
+    }
+
+    const scrollDistance = Math.abs(latest - continuousScrollStart.current);
+
+    if (isExpanded && currentDirection === "down" && latest > 150 && scrollDistance > COLLAPSE_SCROLL_THRESHOLD) {
+      // Collapse when scrolling down continuously past the threshold
       setExpanded(false);
       setLinksReady(false);
-      scrollPositionOnCollapse.current = latest; 
-    } else if (!isExpanded && latest < previous && (scrollPositionOnCollapse.current - latest > EXPAND_SCROLL_THRESHOLD)) {
+    } else if (!isExpanded && currentDirection === "up" && scrollDistance > EXPAND_SCROLL_THRESHOLD) {
+      // Expand when scrolling up continuously past the threshold
       setExpanded(true);
     }
     
