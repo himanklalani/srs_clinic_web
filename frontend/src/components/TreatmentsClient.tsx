@@ -153,7 +153,13 @@ export default function TreatmentsClient() {
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
 
           {/* Section Header */}
-          <div className="text-center mb-10 sm:mb-14">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10 sm:mb-14"
+          >
             <span className="text-primary font-medium tracking-widest text-xs uppercase mb-3 block">What We Offer</span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-semibold text-text mb-4">
               Our Treatments
@@ -161,7 +167,7 @@ export default function TreatmentsClient() {
             <p className="text-text/70 max-w-2xl mx-auto text-sm sm:text-base">
               Comprehensive dental solutions for every need — each backed by the latest technology and a compassionate approach.
             </p>
-          </div>
+          </motion.div>
 
           {/* Single CTA above the grid */}
           <div className="flex justify-center mb-10 sm:mb-14">
@@ -176,10 +182,14 @@ export default function TreatmentsClient() {
 
           {/* Treatments Cards — 2-col on mobile, 4-col on desktop */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 items-stretch">
-            {TREATMENTS_DATA.map((t) => {
+            {TREATMENTS_DATA.map((t, idx) => {
               const pair = BEFORE_AFTER_PAIRS[t.pair];
               return (
-                <div
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: (idx % 4) * 0.1, ease: "easeOut" }}
                   key={t.title}
                   className="bg-white rounded-2xl shadow-sm border border-surface/50 overflow-hidden flex flex-col hover:shadow-md transition-shadow group h-full"
                 >
@@ -191,6 +201,8 @@ export default function TreatmentsClient() {
                           src={pair.single} 
                           alt={t.title} 
                           className="w-full h-full object-cover"
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     ) : pair.before && pair.after ? (
@@ -222,7 +234,7 @@ export default function TreatmentsClient() {
                     <h3 className="text-sm sm:text-base font-semibold text-text mb-1 sm:mb-2 leading-tight">{t.title}</h3>
                     <p className="text-text/60 text-[10px] sm:text-xs leading-relaxed line-clamp-3">{t.description}</p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -251,7 +263,13 @@ export default function TreatmentsClient() {
 
         <div className="relative z-10">
           {/* Header */}
-          <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-5 px-6 text-center mb-12 sm:mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-5 px-6 text-center mb-12 sm:mb-16"
+          >
             <div className="pill">
               <span>Questions We Hear Every Day</span>
             </div>
@@ -261,7 +279,7 @@ export default function TreatmentsClient() {
             <p className="text-text/60 text-base sm:text-lg max-w-xl leading-relaxed">
               We filter out the noise and focus on what truly matters giving you the clarity and confidence to take the next step for your smile.
             </p>
-          </div>
+          </motion.div>
 
           {/* Marquee rows — 3 rows, alternating direction, no pause, perfect CSS mask fade */}
           <div 
@@ -269,7 +287,7 @@ export default function TreatmentsClient() {
             style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
           >
             {/* Row 1 — left */}
-            <Marquee className="[--duration:38s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={8}>
+            <Marquee className="[--duration:38s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={5}>
               {marqueeData.slice(0, 4).map((q) => (
                 <div
                   key={q}
@@ -282,7 +300,7 @@ export default function TreatmentsClient() {
             </Marquee>
 
             {/* Row 2 — right */}
-            <Marquee className="[--duration:48s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={8} reverse>
+            <Marquee className="[--duration:48s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={5} reverse>
               {marqueeData.slice(4, 8).map((q) => (
                 <div
                   key={q}
@@ -295,7 +313,7 @@ export default function TreatmentsClient() {
             </Marquee>
 
             {/* Row 3 — left */}
-            <Marquee className="[--duration:43s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={8}>
+            <Marquee className="[--duration:43s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={5}>
               {marqueeData.slice(8, 12).map((q) => (
                 <div
                   key={q}
@@ -314,7 +332,11 @@ export default function TreatmentsClient() {
               {seoFeatures.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: idx * 0.15, ease: "easeOut" }}
                     key={feature.title}
                     className="group flex flex-col gap-4 p-6 sm:p-8 bg-white/50 hover:bg-white/90 transition-all duration-300 border-b border-dashed border-primary/20 last:border-b-0 sm:[&:nth-child(2)]:border-b lg:border-b-0 lg:[&:not(:last-child)]:border-r"
                   >
@@ -329,7 +351,7 @@ export default function TreatmentsClient() {
                         {feature.description}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
