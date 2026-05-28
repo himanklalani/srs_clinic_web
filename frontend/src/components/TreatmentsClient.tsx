@@ -259,7 +259,7 @@ export default function TreatmentsClient() {
               Removing the roadblocks to your perfect smile
             </h2>
             <p className="text-text/60 text-base sm:text-lg max-w-xl leading-relaxed">
-              We filter out the noise and focus on what truly matters — giving you the clarity and confidence to take the next step for your smile.
+              We filter out the noise and focus on what truly matters giving you the clarity and confidence to take the next step for your smile.
             </p>
           </div>
 
