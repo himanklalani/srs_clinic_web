@@ -69,6 +69,9 @@ app.use(compression());
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 const allowedOrigins = [
   FRONTEND_URL,
+  'https://srsdentalcare.in',
+  'https://www.srsdentalcare.in',
+  'https://srs-website-tan.vercel.app',
   // Allow local dev origins only in development
   ...(process.env.NODE_ENV !== 'production'
     ? ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://192.168.29.161:3000']
