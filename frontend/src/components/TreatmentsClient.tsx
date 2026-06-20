@@ -15,20 +15,21 @@ import {
 } from "@/components/ui/image-comparison";
 import { AnimatePresence, motion } from "framer-motion";
 import { Marquee } from "@/components/ui/marquee";
+import { treatmentsData } from "@/lib/data/treatments";
 
 const marqueeData = [
-  { question: "Best dental clinic in Bandra?", slug: "best-dental-clinic-in-bandra" },
-  { question: "How much do invisible aligners cost in Mumbai?", slug: "invisible-aligners-cost-mumbai" },
-  { question: "Is teeth whitening safe for enamel?", slug: "is-teeth-whitening-safe" },
-  { question: "Where can I get a painless root canal?", slug: "painless-root-canal-bandra" },
-  { question: "What to expect during full mouth rehab?", slug: "full-mouth-rehab-expectations" },
+  { question: "Best dental clinic in Bandra?", slug: "best-dental-clinic-in-bandra-what-to-look-for" },
+  { question: "How much do invisible aligners cost in Mumbai?", slug: "how-much-do-invisible-aligners-cost-in-mumbai" },
+  { question: "Is teeth whitening safe for enamel?", slug: "is-teeth-whitening-safe-for-enamel" },
+  { question: "Where can I get a painless root canal?", slug: "where-can-i-get-a-painless-root-canal-in-bandra" },
+  { question: "What to expect during full mouth rehab?", slug: "what-to-expect-during-full-mouth-rehab" },
   { question: "How long do dental implants last?", slug: "how-long-do-dental-implants-last" },
-  { question: "Best pediatric dentist near me?", slug: "best-pediatric-dentist-bandra" },
-  { question: "Can cosmetic dentistry fix a gummy smile?", slug: "fix-gummy-smile-cosmetic-dentistry" },
-  { question: "What is the recovery time for wisdom tooth surgery?", slug: "wisdom-tooth-surgery-recovery-time" },
-  { question: "Are ceramic braces better than metal?", slug: "ceramic-vs-metal-braces" },
-  { question: "How to fix bleeding gums naturally?", slug: "how-to-fix-bleeding-gums" },
-  { question: "Emergency dental clinic open now in Bandra?", slug: "emergency-dental-clinic-bandra" },
+  { question: "Best pediatric dentist near me?", slug: "best-pediatric-dentist-near-me-a-parents-guide" },
+  { question: "Can cosmetic dentistry fix a gummy smile?", slug: "can-cosmetic-dentistry-fix-a-gummy-smile" },
+  { question: "What is the recovery time for wisdom tooth surgery?", slug: "what-is-the-recovery-time-for-wisdom-tooth-surgery" },
+  { question: "Are ceramic braces better than metal?", slug: "are-ceramic-braces-better-than-metal" },
+  { question: "How to fix bleeding gums naturally?", slug: "how-to-fix-bleeding-gums-naturally" },
+  { question: "Emergency dental clinic open now in Bandra?", slug: "emergency-dental-clinic-open-now-in-bandra" },
 ];
 
 const seoFeatures = [
@@ -371,6 +372,85 @@ export default function TreatmentsClient() {
                 );
               })}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Treatments Overview Section */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-playfair font-semibold text-primary-dark mb-4">
+              Comprehensive Treatment Details
+            </h2>
+            <p className="text-text/70 text-sm sm:text-base max-w-2xl mx-auto">
+              Explore our clinical expertise across a wide range of specialized dental procedures in Mumbai.
+            </p>
+          </motion.div>
+
+          <div className="space-y-16">
+            {treatmentsData.map((treatment, idx) => (
+              <motion.div 
+                key={treatment.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5 }}
+                className="group relative"
+              >
+                {/* Decorative side line */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/30 to-transparent rounded-full" />
+                
+                <div className="pl-6 sm:pl-10">
+                  <h3 className="text-2xl sm:text-3xl font-playfair font-semibold text-primary-dark mb-4">
+                    {treatment.title}
+                  </h3>
+                  
+                  <div className="prose prose-sm sm:prose-base text-text/80 max-w-none space-y-4">
+                    <p className="font-medium text-primary/80 text-lg border-b border-primary/10 pb-4 inline-block">
+                      {treatment.shortDescription}
+                    </p>
+                    
+                    <div className="space-y-4 mt-4">
+                      {treatment.fullDescription.map((para, pIdx) => (
+                        <p key={pIdx} className="leading-relaxed">
+                          {para}
+                        </p>
+                      ))}
+                    </div>
+
+                    {/* Quick Benefits list for SEO depth */}
+                    <div className="mt-6 pt-4">
+                      <h4 className="text-sm font-semibold tracking-wider text-text uppercase mb-3">Key Benefits</h4>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 m-0 p-0 list-none">
+                        {treatment.benefits.slice(0, 4).map((benefit, bIdx) => (
+                          <li key={bIdx} className="flex items-start gap-2 text-sm text-text/70">
+                            <span className="text-primary mt-0.5">•</span>
+                            <span>{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-8">
+                    <Link 
+                      href={`/treatments/${treatment.slug}`}
+                      className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark transition-colors"
+                    >
+                      Read full procedure & FAQs
+                      <span className="text-lg">→</span>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
