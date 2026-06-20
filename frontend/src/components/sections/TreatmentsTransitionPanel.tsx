@@ -32,8 +32,8 @@ export function TreatmentsTransitionPanel() {
     {
       title: "Implants",
       description: "Permanent, natural-looking tooth replacements ensuring lifelong durability.",
-      beforeImage: "",
-      afterImage: "",
+      beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781958221/Untitled_design_8_mlx0xp.png",
+      afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781958221/Untitled_design_9_vlxwjp.png",
     },
     {
       title: "Aligners & Braces",
@@ -53,6 +53,12 @@ export function TreatmentsTransitionPanel() {
       description: "Gentle, anxiety-free dental care designed exclusively for our youngest patients.",
       beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952763/Untitled_design_3_iqtn8x.png",
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952763/Untitled_design_2_dgnbgf.png",
+    },
+    {
+      title: "Dental Cleaning",
+      description: "Professional cleaning and polishing for a healthy, plaque-free smile and optimal gum health.",
+      beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957292/copy_of_dental_cleaning1_siotd3.jpg",
+      afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957491/copy_of_dentalcleaning2_dq1qgn.jpg",
     }
   ];
 

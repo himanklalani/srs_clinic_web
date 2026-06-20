@@ -25,22 +25,21 @@ export default function BlogCard({ title, slug, excerpt, coverImage, author, tag
     <article className="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col group hover:shadow-md transition-shadow duration-300">
       {/* Cover Image - Only show if it exists */}
       {coverImage && (
-        <div className="relative h-48 w-full overflow-hidden bg-purple-50">
+        <div className="relative h-48 w-full overflow-hidden bg-purple-50/50">
           {coverImage.includes('cloudinary.com') ? (
             <CldImage
               src={coverImage}
               alt={title}
               fill
-              crop="fill"
               format="avif"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
             <Image
               src={coverImage}
               alt={title}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
             />
           )}
         </div>

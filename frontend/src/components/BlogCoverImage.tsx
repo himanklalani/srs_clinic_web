@@ -15,9 +15,8 @@ export default function BlogCoverImage({ src, alt }: BlogCoverImageProps) {
         src={src}
         alt={alt}
         fill
-        crop="fill"
         format="avif"
-        className="object-cover"
+        className="object-contain"
         priority
       />
     );
@@ -28,7 +27,7 @@ export default function BlogCoverImage({ src, alt }: BlogCoverImageProps) {
       src={src}
       alt={alt}
       fill
-      className="object-cover"
+      className="object-contain"
       priority
     />
   );

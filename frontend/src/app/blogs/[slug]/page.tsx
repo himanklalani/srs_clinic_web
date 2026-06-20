@@ -144,9 +144,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {blog.coverImage && (
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-purple-200/10 rounded-[40px] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000" />
-              <div className="relative h-64 sm:h-80 md:h-[520px] w-full rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/50">
+              <div className="relative h-64 sm:h-80 md:h-[520px] w-full rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/50 bg-purple-50/50 backdrop-blur-sm">
                 <BlogCoverImage src={blog.coverImage} alt={blog.title} />
-                <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[24px] sm:rounded-[32px]" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[24px] sm:rounded-[32px] pointer-events-none" />
               </div>
             </div>
           )}

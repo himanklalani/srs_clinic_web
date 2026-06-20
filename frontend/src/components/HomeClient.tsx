@@ -39,7 +39,7 @@ export default function HomeClient() {
       title: "Painless Care",
       description: "Compassionate, gentle approach to every procedure.",
       date: "Anxiety-Free",
-      rotation: "rotate-1",
+      rotation: "rotate-0",
       color: "var(--bg-section)"
     },
     {
@@ -47,7 +47,7 @@ export default function HomeClient() {
       title: "Efficient",
       description: "Zero wait times & swift procedures that respect your schedule.",
       date: "Respecting your time",
-      rotation: "-rotate-1",
+      rotation: "rotate-0",
       color: "var(--bg-base)"
     },
     {

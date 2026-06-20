@@ -59,7 +59,10 @@ const BEFORE_AFTER_PAIRS = [
     before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952394/copy_of_img_1456_yqfusi.heic", 
     after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953394/IMG_1441_xrzlbm.heic" 
   }, // 1: Teeth Whitening
-  { before: "", after: "" }, // 2: Implants
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781958221/Untitled_design_8_mlx0xp.png", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781958221/Untitled_design_9_vlxwjp.png" 
+  }, // 2: Implants
   { // 3: Aligners & Braces
     before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952235/IMG_0992_vow8gg.heic",
     after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952072/after_a_b_pkbkea.heic"
@@ -98,10 +101,15 @@ const BEFORE_AFTER_PAIRS = [
     single: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953151/37D41653-0775-4AAE-9998-96BF037F70B6_xeclpj.jpg" 
   }, // 10: Wisdom Tooth Surgery
   { 
-    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953524/Untitled_design_6_wzvuiy.png", 
-    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953601/Untitled_design_7_jeh7td.png",
+    before: "", 
+    after: "",
     single: ""
   }, // 11: Crowns and Bridges
+  {
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957292/copy_of_dental_cleaning1_siotd3.jpg",
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957491/copy_of_dentalcleaning2_dq1qgn.jpg",
+    single: ""
+  }, // 12: Dental Cleaning
 ];
 
 const TREATMENTS_DATA = [
@@ -117,6 +125,7 @@ const TREATMENTS_DATA = [
   { icon: Stethoscope,title: 'Diagnosis of Oral Lesions', description: 'Expert diagnosis and treatment of oral lesions and mucosal diseases.', pair: 9 },
   { icon: Syringe,    title: 'Wisdom Tooth Surgery', description: 'Safe, painless extraction of impacted wisdom teeth by specialists.', pair: 10 },
   { icon: Crown,      title: 'Crowns and Bridges', description: 'Restore damaged or missing teeth with durable, custom-fitted crowns.', pair: 11 },
+  { icon: Sparkles,   title: 'Dental Cleaning',    description: 'Professional cleaning and polishing for a healthy, plaque-free smile.', pair: 12 },
 ];
 
 export default function TreatmentsClient() {
