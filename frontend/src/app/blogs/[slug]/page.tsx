@@ -101,8 +101,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     year: 'numeric',
   });
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": blog.title,
+    "image": blog.coverImage ? [blog.coverImage] : [],
+    "datePublished": blog.createdAt,
+    "dateModified": blog.createdAt,
+    "author": [{
+      "@type": "Person",
+      "name": blog.author
+    }],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Dr. Saachi Shingrani's Dental Clinic",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png"
+      }
+    }
+  };
+
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* Aesthetic Hero Section */}
       <div className="relative pt-24 md:pt-32 pb-12 overflow-hidden bg-[#faf8f5]">
         {/* Background ambient glow/blur */}
@@ -166,8 +191,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           dangerouslySetInnerHTML={{ __html: safeContent }}
         />
 
+        {/* CTA Section */}
+        <div className="mt-16 bg-primary/5 rounded-2xl p-8 border border-primary/10 text-center">
+          <h3 className="text-2xl font-playfair font-semibold text-primary-dark mb-4">Ready to Prioritize Your Smile?</h3>
+          <p className="text-text/70 mb-6 max-w-xl mx-auto">
+            If you have questions about your oral health or need professional advice, Dr. Saachi Shingrani is here to help. Schedule your consultation today for personalized care.
+          </p>
+          <PageLink
+            href="/book"
+            className="inline-block bg-primary text-white font-medium px-8 py-3 rounded-full hover:bg-primary-dark transition-colors shadow-md"
+          >
+            Book an Appointment
+          </PageLink>
+        </div>
+
         {/* Back PageLink */}
-        <div className="mt-12 pt-8 border-t border-gray-100">
+        <div className="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between">
           <PageLink
             href="/blogs"
             className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primaryDark transition-colors"
@@ -176,6 +215,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Blogs
+          </PageLink>
+          <PageLink
+            href="/treatments"
+            className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primaryDark transition-colors"
+          >
+            Explore Treatments
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
           </PageLink>
         </div>
       </div>

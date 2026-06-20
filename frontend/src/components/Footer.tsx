@@ -7,8 +7,8 @@ export default function Footer() {
     <footer className="bg-surface border-t-4 border-t-primary pt-12 pb-6 md:pt-16 md:pb-8">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         
-        {/* Responsive Grid: 1 col (mobile) -> 2 col (tablet) -> 4 col (desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8 lg:gap-12 mb-12">
+        {/* Responsive Grid: 1 col (mobile) -> 2 col (tablet) -> 5 col (desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-8 lg:gap-12 mb-12">
           
           {/* Column 1: Brand & Tagline */}
           <div className="flex flex-col space-y-4">
@@ -71,7 +71,31 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
+          {/* Column 2.5: Top Treatments */}
+          <div>
+            <h3 className="text-lg font-semibold text-text mb-4 lg:mb-6 font-serif tracking-wide border-b border-primary-light pb-2 inline-block">
+              Top Treatments
+            </h3>
+            <ul className="space-y-3">
+              {[
+                { label: "Dental Implants", href: "/treatments/dental-implants" },
+                { label: "Aligners & Braces", href: "/treatments/aligners-and-braces" },
+                { label: "Smile Design", href: "/treatments/smile-design" },
+                { label: "Full Mouth Rehab", href: "/treatments/full-mouth-rehab" },
+                { label: "Wisdom Tooth Surgery", href: "/treatments/wisdom-tooth-surgery" }
+              ].map((link) => (
+                <li key={link.href}>
+                  <PageLink
+                    href={link.href}
+                    className="text-text/80 hover:text-primary transition-colors flex items-center gap-2 group min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover:bg-primary transition-colors" />
+                    {link.label}
+                  </PageLink>
+                </li>
+              ))}
+            </ul>
+          </div>
           {/* Column 3: Opening Hours */}
           <div>
             <h3 className="text-lg font-semibold text-text mb-4 lg:mb-6 font-serif tracking-wide border-b border-primary-light pb-2 inline-block">

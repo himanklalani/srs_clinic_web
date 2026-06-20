@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { treatmentsData } from '@/lib/data/treatments';
 
 export const revalidate = 86400; // Revalidate sitemap at most once per day
 
@@ -11,6 +12,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: route === '' ? 1 : 0.8,
+  }));
+
+  const treatmentRoutes: MetadataRoute.Sitemap = treatmentsData.map((t) => ({
+    url: `${SITE_URL}/treatments/${t.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
   }));
 
   let blogRoutes: MetadataRoute.Sitemap = [];
@@ -34,5 +42,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching blogs for sitemap:', error);
   }
 
-  return [...staticRoutes, ...blogRoutes];
+  return [...staticRoutes, ...treatmentRoutes, ...blogRoutes];
 }

@@ -2,6 +2,7 @@
 
 import { useTransition } from "@/components/providers/TransitionProvider";
 import PageLink from '@/components/PageLink';
+import Link from 'next/link';
 import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
 import { Smile, Activity, Crown, Sparkles, Baby, Leaf, Palette, CalendarCheck, Shield, HeartPulse, Stethoscope, Syringe, Zap } from 'lucide-react';
 import DentalFeaturesSection from "@/components/sections/DentalFeaturesSection";
@@ -16,18 +17,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Marquee } from "@/components/ui/marquee";
 
 const marqueeData = [
-  "Best dental clinic in Bandra?",
-  "How much do invisible aligners cost in Mumbai?",
-  "Is teeth whitening safe for enamel?",
-  "Where can I get a painless root canal?",
-  "What to expect during full mouth rehab?",
-  "How long do dental implants last?",
-  "Best pediatric dentist near me?",
-  "Can cosmetic dentistry fix a gummy smile?",
-  "What is the recovery time for wisdom tooth surgery?",
-  "Are ceramic braces better than metal?",
-  "How to fix bleeding gums naturally?",
-  "Emergency dental clinic open now in Bandra?",
+  { question: "Best dental clinic in Bandra?", slug: "best-dental-clinic-in-bandra" },
+  { question: "How much do invisible aligners cost in Mumbai?", slug: "invisible-aligners-cost-mumbai" },
+  { question: "Is teeth whitening safe for enamel?", slug: "is-teeth-whitening-safe" },
+  { question: "Where can I get a painless root canal?", slug: "painless-root-canal-bandra" },
+  { question: "What to expect during full mouth rehab?", slug: "full-mouth-rehab-expectations" },
+  { question: "How long do dental implants last?", slug: "how-long-do-dental-implants-last" },
+  { question: "Best pediatric dentist near me?", slug: "best-pediatric-dentist-bandra" },
+  { question: "Can cosmetic dentistry fix a gummy smile?", slug: "fix-gummy-smile-cosmetic-dentistry" },
+  { question: "What is the recovery time for wisdom tooth surgery?", slug: "wisdom-tooth-surgery-recovery-time" },
+  { question: "Are ceramic braces better than metal?", slug: "ceramic-vs-metal-braces" },
+  { question: "How to fix bleeding gums naturally?", slug: "how-to-fix-bleeding-gums" },
+  { question: "Emergency dental clinic open now in Bandra?", slug: "emergency-dental-clinic-bandra" },
 ];
 
 const seoFeatures = [
@@ -113,19 +114,19 @@ const BEFORE_AFTER_PAIRS = [
 ];
 
 const TREATMENTS_DATA = [
-  { icon: Palette,    title: 'Smile Design',       description: 'Custom smile makeovers tailored to your unique facial features.',         pair: 0 },
-  { icon: Sparkles,   title: 'Teeth Whitening',    description: 'Brighten your smile with our safe, effective whitening procedures.',       pair: 1 },
-  { icon: Crown,      title: 'Implants',           description: 'Restore missing teeth with durable, natural-looking implants.',            pair: 2 },
-  { icon: Activity,   title: 'Aligners & Braces',  description: 'Invisible, comfortable alignment solutions tailored for both teens and adults.', pair: 3 },
-  { icon: Shield,     title: 'Full Mouth Rehab',   description: 'Comprehensive restoration of your oral health and aesthetics.',          pair: 4 },
-  { icon: Baby,       title: 'Pediatric',          description: 'Gentle, anxiety-free dental care designed exclusively for our youngest patients.', pair: 5 },
-  { icon: Sparkles,   title: 'Cosmetic Dentistry', description: 'Enhance aesthetics with veneers, bonding, and smile redesigns.',          pair: 6 },
-  { icon: Activity,   title: 'Dentures',           description: 'High-quality, comfortable dentures to restore function and confidence.',   pair: 7 },
-  { icon: HeartPulse, title: 'Geriatric',          description: 'Specialized dental care focused on the unique needs of older adults.',     pair: 8 },
-  { icon: Stethoscope,title: 'Diagnosis of Oral Lesions', description: 'Expert diagnosis and treatment of oral lesions and mucosal diseases.', pair: 9 },
-  { icon: Syringe,    title: 'Wisdom Tooth Surgery', description: 'Safe, painless extraction of impacted wisdom teeth by specialists.', pair: 10 },
-  { icon: Crown,      title: 'Crowns and Bridges', description: 'Restore damaged or missing teeth with durable, custom-fitted crowns.', pair: 11 },
-  { icon: Sparkles,   title: 'Dental Cleaning',    description: 'Professional cleaning and polishing for a healthy, plaque-free smile.', pair: 12 },
+  { slug: 'smile-design', icon: Palette,    title: 'Smile Design',       description: 'Custom smile makeovers tailored to your unique facial features.',         pair: 0 },
+  { slug: 'teeth-whitening', icon: Sparkles,   title: 'Teeth Whitening',    description: 'Brighten your smile with our safe, effective whitening procedures.',       pair: 1 },
+  { slug: 'dental-implants', icon: Crown,      title: 'Implants',           description: 'Restore missing teeth with durable, natural-looking implants.',            pair: 2 },
+  { slug: 'aligners-and-braces', icon: Activity,   title: 'Aligners & Braces',  description: 'Invisible, comfortable alignment solutions tailored for both teens and adults.', pair: 3 },
+  { slug: 'full-mouth-rehab', icon: Shield,     title: 'Full Mouth Rehab',   description: 'Comprehensive restoration of your oral health and aesthetics.',          pair: 4 },
+  { slug: 'pediatric-dentistry', icon: Baby,       title: 'Pediatric',          description: 'Gentle, anxiety-free dental care designed exclusively for our youngest patients.', pair: 5 },
+  { slug: 'cosmetic-dentistry', icon: Sparkles,   title: 'Cosmetic Dentistry', description: 'Enhance aesthetics with veneers, bonding, and smile redesigns.',          pair: 6 },
+  { slug: 'dentures', icon: Activity,   title: 'Dentures',           description: 'High-quality, comfortable dentures to restore function and confidence.',   pair: 7 },
+  { slug: 'geriatric-dentistry', icon: HeartPulse, title: 'Geriatric',          description: 'Specialized dental care focused on the unique needs of older adults.',     pair: 8 },
+  { slug: 'diagnosis-of-oral-lesions', icon: Stethoscope,title: 'Diagnosis of Oral Lesions', description: 'Expert diagnosis and treatment of oral lesions and mucosal diseases.', pair: 9 },
+  { slug: 'wisdom-tooth-surgery', icon: Syringe,    title: 'Wisdom Tooth Surgery', description: 'Safe, painless extraction of impacted wisdom teeth by specialists.', pair: 10 },
+  { slug: 'crowns-and-bridges', icon: Crown,      title: 'Crowns and Bridges', description: 'Restore damaged or missing teeth with durable, custom-fitted crowns.', pair: 11 },
+  { slug: 'dental-cleaning', icon: Sparkles,   title: 'Dental Cleaning',    description: 'Professional cleaning and polishing for a healthy, plaque-free smile.', pair: 12 },
 ];
 
 export default function TreatmentsClient() {
@@ -200,16 +201,18 @@ export default function TreatmentsClient() {
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: (idx % 4) * 0.1, ease: "easeOut" }}
                   key={t.title}
-                  className="bg-white rounded-2xl shadow-sm border border-surface/50 overflow-hidden flex flex-col hover:shadow-md transition-shadow group h-full"
+                  className="bg-white rounded-2xl shadow-sm border border-surface/50 overflow-hidden flex flex-col hover:shadow-md transition-shadow group h-full cursor-pointer relative"
                 >
+                  <Link href={`/treatments/${t.slug}`} className="absolute inset-0 z-10" aria-label={`View ${t.title} Details`} />
+                  
                   {/* Before / After Slider or Single Image */}
-                  <div className="w-full rounded-t-2xl overflow-hidden border-b border-primary/10">
+                  <div className="w-full rounded-t-2xl overflow-hidden border-b border-primary/10 relative z-0">
                     {pair.single ? (
                       <div className="aspect-[4/3] w-full relative">
                         <img 
                           src={pair.single} 
                           alt={t.title} 
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"
                           decoding="async"
                         />
@@ -238,10 +241,11 @@ export default function TreatmentsClient() {
                   </div>
 
                   {/* Card Content */}
-                  <div className="p-3 sm:p-5 flex flex-col items-center text-center flex-1">
-                    <t.icon className="h-6 w-6 sm:h-8 sm:w-8 text-primary mb-2 sm:mb-3 mt-1" />
-                    <h3 className="text-sm sm:text-base font-semibold text-text mb-1 sm:mb-2 leading-tight">{t.title}</h3>
+                  <div className="p-3 sm:p-5 flex flex-col items-center text-center flex-1 z-0">
+                    <t.icon className="h-6 w-6 sm:h-8 sm:w-8 text-primary mb-2 sm:mb-3 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-sm sm:text-base font-semibold text-text mb-1 sm:mb-2 leading-tight group-hover:text-primary transition-colors">{t.title}</h3>
                     <p className="text-text/60 text-[10px] sm:text-xs leading-relaxed line-clamp-3">{t.description}</p>
+                    <span className="mt-auto pt-3 text-[10px] font-semibold text-primary uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Learn More</span>
                   </div>
                 </motion.div>
               );
@@ -298,39 +302,42 @@ export default function TreatmentsClient() {
             {/* Row 1 — left */}
             <Marquee className="[--duration:38s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={5}>
               {marqueeData.slice(0, 4).map((q) => (
-                <div
-                  key={q}
-                  className="flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm select-none pointer-events-none shrink-0"
+                <Link
+                  href={`/blogs/${q.slug}`}
+                  key={q.slug}
+                  className="flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm hover:bg-white transition-colors cursor-pointer shrink-0"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0" />
-                  {q}
-                </div>
+                  {q.question}
+                </Link>
               ))}
             </Marquee>
 
             {/* Row 2 — right */}
             <Marquee className="[--duration:48s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={5} reverse>
               {marqueeData.slice(4, 8).map((q) => (
-                <div
-                  key={q}
-                  className="flex items-center gap-2 rounded-full border border-accent/30 bg-primary/5 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm select-none pointer-events-none shrink-0"
+                <Link
+                  href={`/blogs/${q.slug}`}
+                  key={q.slug}
+                  className="flex items-center gap-2 rounded-full border border-accent/30 bg-primary/5 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm hover:bg-primary/10 transition-colors cursor-pointer shrink-0"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                  {q}
-                </div>
+                  {q.question}
+                </Link>
               ))}
             </Marquee>
 
             {/* Row 3 — left */}
             <Marquee className="[--duration:43s] [--gap:0.5rem] sm:[--gap:1rem]" repeat={5}>
               {marqueeData.slice(8, 12).map((q) => (
-                <div
-                  key={q}
-                  className="flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm select-none pointer-events-none shrink-0"
+                <Link
+                  href={`/blogs/${q.slug}`}
+                  key={q.slug}
+                  className="flex items-center gap-2 rounded-full border border-primary/15 bg-white/70 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 text-primary-dark text-xs sm:text-sm font-medium whitespace-nowrap shadow-sm hover:bg-white transition-colors cursor-pointer shrink-0"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/30 shrink-0" />
-                  {q}
-                </div>
+                  {q.question}
+                </Link>
               ))}
             </Marquee>
           </div>

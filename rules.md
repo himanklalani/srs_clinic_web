@@ -427,7 +427,7 @@ NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dswvmoboh
 | **Blog pagination** | ✅ Completed | Backend supports `page` and `limit` query parameters |
 | **Real appointment booking backend** | ⏳ Planned | `/book` form is frontend-only. Need to build: `POST /api/v1/bookings`, mongoose model, email notification via `nodemailer` |
 | **Email notifications** | ⏳ Planned | After contact form submissions or bookings, the doctor should receive an email. Use `nodemailer` with an SMTP provider (Gmail App Password or SendGrid) |
-| **SEO sitemap** | ⏳ Planned | Add `src/app/sitemap.ts` to auto-generate XML sitemap from blog slugs. `robots.ts` stub already exists |
+| **SEO sitemap** | ✅ Completed | Static `sitemap.ts` via ISR (`revalidate: 86400`) implemented. Uses canonical domain `https://www.srsdentalcare.in` |
 | **Treatment detail pages** | ⏳ Partial | `/treatments` page exists; individual treatment sub-pages with rich content may need expansion |
 
 ---
@@ -451,3 +451,24 @@ npm run dev          # → http://localhost:3000
 | `http://localhost:3000` | Main website |
 | `http://localhost:3000/blog-admin/super_secret_dynamic_admin_token_for_dental_clinic_123456` | Admin panel |
 | `http://localhost:5000/api/v1/health` | Backend health check |
+
+---
+
+## 17. Canonical Domain & SEO Setup
+
+**Canonical Production URL:** `https://www.srsdentalcare.in`
+
+### Tracking & Analytics
+- **Google Tag Manager (GTM):** Configured with Container ID `GTM-PBQKZ359`.
+- **Google Analytics (GA4):** Configured via GTM with Measurement ID `G-4R8VZE70PT`.
+- **Google Search Console & Bing Webmaster Tools:** Ownership verified via HTML file (`google8b0d761ff20a3dc3.html`).
+
+### Data Privacy & GDPR Compliance
+- **Cookie Consent Banner:** The website utilizes a strictly enforced, GDPR-compliant custom `CookieBanner`. 
+- **Analytics Firing Rules:** The GTM script inside `GoogleAnalytics.tsx` will **only** load and fire if the user explicitly clicks "Accept All" or opts-in to the Analytics category inside the cookie preferences.
+- **Content Security Policy (CSP):** `middleware.ts` dynamically adjusts the site's CSP headers based on the presence of the `cookie_consent` value to ensure strict script enforcement.
+
+### Sitemap & Metadata
+- **Sitemap Generation:** Uses Next.js Incremental Static Regeneration (ISR) inside `src/app/sitemap.ts` (`revalidate: 86400`) to prevent dynamic server-rendering 404s on Vercel. 
+- **Hardcoded URLs:** To satisfy Google Search Console indexing constraints, the URL string `https://www.srsdentalcare.in` is strictly hardcoded as the canonical root in `layout.tsx` (JSON-LD schema), `sitemap.ts`, and `robots.ts` (instead of relying on the Vercel branch preview URL environment variables).
+- **LLM/AI Indexing:** Contains a `/llms.txt` file structured according to standard AI recommendations for better search ranking across LLM platforms like ChatGPT and Perplexity.
