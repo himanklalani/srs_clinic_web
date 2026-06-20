@@ -3,18 +3,18 @@ import { notFound } from 'next/navigation';
 import { treatmentsData } from '@/lib/data/treatments';
 import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
 import PageLink from '@/components/PageLink';
-import { CalendarCheck, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ChevronRight, CheckCircle2 } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
 
-export const revalidate = 0;
 export const dynamic = 'force-dynamic';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const treatment = treatmentsData.find((t) => t.slug === params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const treatment = treatmentsData.find((t) => t.slug === slug);
 
   if (!treatment) {
     return { title: 'Treatment Not Found' };
@@ -30,8 +30,9 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function TreatmentPage({ params }: Props) {
-  const treatment = treatmentsData.find((t) => t.slug === params.slug);
+export default async function TreatmentPage({ params }: Props) {
+  const { slug } = await params;
+  const treatment = treatmentsData.find((t) => t.slug === slug);
 
   if (!treatment) {
     notFound();
