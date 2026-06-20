@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 
+export const revalidate = 86400; // Revalidate sitemap at most once per day
+
 const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://srsdentalcare.in';
 
@@ -14,7 +16,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogRoutes: MetadataRoute.Sitemap = [];
 
   try {
-    const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/blogs`, { cache: 'no-store' });
+    const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/blogs`, {
+      next: { revalidate: 86400 } // Cache and revalidate once per day
+    });
     if (res.ok) {
       const respJson = await res.json();
       const blogs = Array.isArray(respJson) ? respJson : (respJson.data || respJson.blogs || []);
