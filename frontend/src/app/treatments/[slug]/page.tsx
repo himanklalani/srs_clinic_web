@@ -6,17 +6,11 @@ import PageLink from '@/components/PageLink';
 import { CalendarCheck, ChevronRight, CheckCircle2 } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
 
-export const revalidate = 60;
-export const dynamicParams = true;
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: { slug: string };
-}
-
-export function generateStaticParams() {
-  return treatmentsData.map((t) => ({
-    slug: t.slug,
-  }));
 }
 
 export function generateMetadata({ params }: Props): Metadata {
