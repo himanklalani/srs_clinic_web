@@ -24,6 +24,7 @@ if (secret.length < 32) {
 }
 
 const app = express();
+app.set('trust proxy', 1); // Trust Render's load balancer to get correct client IPs for rate limiting
 const PORT = process.env.PORT || 5000;
 
 // ─── Security: Helmet with full CSP ──────────────────────────────────────────
@@ -91,6 +92,11 @@ app.use(
   })
 );
 
+// Health Check Route — no sensitive data (Bypasses rate limiting to prevent Render 429 errors)
+app.get('/api/v1/health', (_req: Request, res: Response) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 // ─── Global Rate Limiter: 100 req/15min ───────────────────────────────────────
 const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -110,11 +116,6 @@ app.use(cookieParser());
 // ─── Routes ───────────────────────────────────────────────────────────────────
 app.use('/api/v1/blogs', blogRoutes);
 app.use('/api/v1/contacts', contactRoutes);
-
-// Health Check Route — no sensitive data
-app.get('/api/v1/health', (_req: Request, res: Response) => {
-  res.status(200).json({ status: 'ok' });
-});
 
 // ─── MongoDB Connection ───────────────────────────────────────────────────────
 if (process.env.NODE_ENV !== 'test') {
