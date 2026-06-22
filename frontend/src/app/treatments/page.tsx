@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Explore the range of dental treatments we offer, from whitening to implants.',
 };
 
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
 
 export default function TreatmentsPage() {
