@@ -220,7 +220,7 @@ export default function TreatmentsClient() {
                       </div>
                     ) : pair.before && pair.after ? (
                       <>
-                        <ImageComparison className="aspect-[4/3] w-full" enableHover>
+                        <ImageComparison className="aspect-[4/3] w-full relative z-20" enableHover>
                           <ImageComparisonImage src={pair.before} alt={`${t.title} Before`} position="left" />
                           <ImageComparisonImage src={pair.after}  alt={`${t.title} After`}  position="right" />
                           <ImageComparisonSlider className="w-1 bg-white/60 backdrop-blur-sm shadow-md">

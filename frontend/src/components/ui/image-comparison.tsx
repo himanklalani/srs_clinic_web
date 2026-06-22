@@ -91,8 +91,8 @@ const ImageComparisonImage = ({
   position: "left" | "right";
 }) => {
   const { motionSliderPosition } = useContext(ImageComparisonContext)!;
-  const leftClipPath = useTransform(motionSliderPosition, (value) => `inset(0 0 0 ${value}%)`);
-  const rightClipPath = useTransform(
+  const rightClipPath = useTransform(motionSliderPosition, (value) => `inset(0 0 0 ${value}%)`);
+  const leftClipPath = useTransform(
     motionSliderPosition,
     (value) => `inset(0 ${100 - value}% 0 0)`
   );
