@@ -18,10 +18,10 @@ export function TreatmentsTransitionPanel() {
 
   const TREATMENTS = [
     {
-      title: "Smile Design",
-      description: "Custom smile makeovers tailored to your unique facial features and aesthetic goals.",
-      beforeImage: "",
-      afterImage: "",
+      title: "Full Mouth Rehab",
+      description: "Comprehensive restoration of your oral health and aesthetics for a perfect smile.",
+      beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950607/fmg_after_pnqadw.png",
+      afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950606/fmh_before_lzmnze.png",
     },
     {
       title: "Teeth Whitening",
@@ -42,11 +42,10 @@ export function TreatmentsTransitionPanel() {
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952072/after_a_b_pkbkea.heic",
     },
     {
-      title: "Full Mouth Rehab",
-      description: "Comprehensive restoration of your oral health and aesthetics for a perfect smile.",
-      beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950607/fmg_after_pnqadw.png",
-      afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950606/fmh_before_lzmnze.png",
-      
+      title: "Smile Design",
+      description: "Custom smile makeovers tailored to your unique facial features and aesthetic goals.",
+      beforeImage: "",
+      afterImage: "",
     },
     {
       title: "Pediatric",
