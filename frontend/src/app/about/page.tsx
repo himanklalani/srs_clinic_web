@@ -58,7 +58,8 @@ export default function AboutPage() {
       {/* Main Content Area without Hero */}
       <section className="pt-16 pb-2 sm:pt-32 sm:pb-20">
         <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-          <h2 className="text-2xl font-semibold text-primary mb-4">Our Story</h2>
+          <h1 className="text-4xl sm:text-5xl font-playfair font-bold text-primary mb-6">About Dr. Saachi Shingrani's Dental Clinic</h1>
+          <h2 className="text-2xl font-semibold text-text mb-4">Our Story</h2>
           <p className="text-text/80 mb-4">
             Welcome to Dr. Saachi Shingrani’s Dental Care, located at the heart of Mumbai City, Bandra West. Officially opened on August 2020, we provide a wide range of oral health care services to patients from dental implants and smile designing to invisible aligners, to braces, pain free root canals, not only treating dangerous oral lesions to even treating pediatric and geriatric care with highly competitive pricing.
           </p>
