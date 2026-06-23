@@ -228,6 +228,11 @@ export default function BookingForm() {
               <option value="Cosmetic Dentistry" className="bg-primary-dark">Cosmetic Dentistry</option>
               <option value="Orthodontic" className="bg-primary-dark">Orthodontic Treatment</option>
               <option value="Periodontal Care" className="bg-primary-dark">Periodontal Therapy</option>
+              <option value="Crown & Bridges" className="bg-primary-dark">Crown & Bridges</option>
+              <option value="Cavity" className="bg-primary-dark">Cavity</option>
+              <option value="Wisdom Tooth" className="bg-primary-dark">Wisdom Tooth</option>
+              <option value="Normal Tooth" className="bg-primary-dark">Normal Tooth</option>
+              <option value="Minor Surgery" className="bg-primary-dark">Minor Surgery</option>
               <option value="Other" className="bg-primary-dark">Other / Consult</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-primary-light/40 group-hover:text-primary-light transition-colors">
