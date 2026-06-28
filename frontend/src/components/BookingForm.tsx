@@ -26,12 +26,12 @@ export default function BookingForm() {
         const apiUrl = process.env.NEXT_PUBLIC_BOOKING_API_URL || 'https://review-booking-system.onrender.com';
         const cleanApiUrl = apiUrl.endsWith('/api') ? apiUrl.slice(0, -4) : apiUrl;
         
-        const res = await fetch(`${cleanApiUrl}/api/public/business/${businessId}`);
+        const res = await fetch(`${cleanApiUrl}/api/business/${businessId}`);
         if (res.ok) {
           const data = await res.json();
-          if (data.business) {
-            setHolidays(data.business.holidays || []);
-            setBlockedShifts(data.business.blocked_shifts || []);
+          if (data) {
+            setHolidays(data.holidays || []);
+            setBlockedShifts(data.blocked_shifts || []);
           }
         }
       } catch (error) {
