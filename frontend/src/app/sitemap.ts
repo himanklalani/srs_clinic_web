@@ -7,7 +7,7 @@ const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost
 const SITE_URL = 'https://www.srsdentalcare.in';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ['', '/about', '/treatments', '/blogs', '/contact', '/book'].map((route) => ({
+  const staticRoutes = ['', '/about', '/treatments', '/blogs', '/contact', '/book', '/privacy-policy'].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
