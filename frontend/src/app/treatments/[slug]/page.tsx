@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: treatment.shortDescription,
     keywords: treatment.seoKeywords,
     alternates: {
-      canonical: `https://www.srsdentalcare.in/treatments/${treatment.slug}`,
+      canonical: `/treatments/${treatment.slug}`,
     },
   };
 }

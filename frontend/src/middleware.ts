@@ -3,6 +3,30 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get('host') || '';
+  const protocol = request.headers.get('x-forwarded-proto') || 'http';
+
+  // Redirect to HTTPS and WWW for the primary domain in production
+  if (process.env.NODE_ENV === 'production') {
+    let redirectNeeded = false;
+    let targetHost = host;
+
+    if (host === 'srsdentalcare.in') {
+      targetHost = 'www.srsdentalcare.in';
+      redirectNeeded = true;
+    }
+
+    if (protocol === 'http') {
+      redirectNeeded = true;
+    }
+
+    if (redirectNeeded) {
+      return NextResponse.redirect(
+        `https://${targetHost}${request.nextUrl.pathname}${request.nextUrl.search}`,
+        301
+      );
+    }
+  }
 
   // 1. Check for cookie consent
   const cookieConsent = request.cookies.get('cookie_consent')?.value;

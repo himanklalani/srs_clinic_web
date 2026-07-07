@@ -25,6 +25,10 @@ const instrument = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.srsdentalcare.in'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     template: "%s | Dr. Saachi Shingranis Dental Clinic",
     default: "Dr. Saachi Shingranis Dental Clinic | Your Smile, Our Priority",

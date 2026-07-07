@@ -49,21 +49,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const blog = await getBlog(slug);
   if (!blog) return { title: 'Blog Not Found' };
 
-  const siteUrl = 'https://srsdentalcare.in';
-  const currentUrl = `${siteUrl}/blogs/${slug}`;
-
   return {
     title: `${blog.title} | Dr. Saachi Shingrani's Dental Clinic`,
     description: blog.excerpt,
     keywords: blog.tags.length > 0 ? blog.tags.join(', ') : 'dental blog, oral health, Dr Saachi Shingrani',
     authors: [{ name: blog.author }],
     alternates: {
-      canonical: currentUrl,
+      canonical: `/blogs/${slug}`,
     },
     openGraph: {
       title: blog.title,
       description: blog.excerpt,
-      url: currentUrl,
+      url: `/blogs/${slug}`,
       siteName: "Dr. Saachi Shingrani's Dental Clinic",
       images: blog.coverImage ? [
         {

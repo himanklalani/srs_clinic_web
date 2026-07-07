@@ -9,6 +9,9 @@ import { Timeline, TimelineItem } from "@/components/ui/modern-timeline";
 export const metadata: Metadata = {
   title: 'About Us | Dr. Saachi Shingranis Dental Clinic',
   description: 'Learn about Dr. Saachi Shingranis Dental Clinic, our story, team, and values.',
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export const revalidate = 86400;

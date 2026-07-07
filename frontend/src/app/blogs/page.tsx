@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: 'Health Blogs | Dr. Saachi Shingrani\'s Dental Clinic',
   description: 'Read expert dental health tips, treatment guides, and clinic news from Dr. Saachi Shingrani.',
   alternates: {
-    canonical: 'https://srsdentalcare.in/blogs',
+    canonical: '/blogs',
   },
   openGraph: {
     title: 'Health Blogs | Dr. Saachi Shingrani\'s Dental Clinic',
     description: 'Read expert dental health tips, treatment guides, and clinic news from Dr. Saachi Shingrani.',
-    url: 'https://srsdentalcare.in/blogs',
+    url: '/blogs',
     siteName: "Dr. Saachi Shingrani's Dental Clinic",
     type: 'website',
   },

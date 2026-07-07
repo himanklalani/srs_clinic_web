@@ -5,6 +5,9 @@ import CookieSettingsTrigger from "@/components/CookieSettingsTrigger";
 export const metadata: Metadata = {
   title: "Privacy Policy | Dr. Saachi Shingranis Dental Clinic",
   description: "Learn about how we protect your data and privacy at Dr. Saachi Shingrani's Dental Clinic. GDPR and India IT Act compliant.",
+  alternates: {
+    canonical: '/privacy-policy',
+  },
 };
 
 export default function PrivacyPolicyPage() {

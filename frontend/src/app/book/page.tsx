@@ -7,6 +7,9 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Book Appointment | Dr. Saachi Shingranis Dental Clinic',
   description: 'Schedule your private dental suite appointment seamlessly.',
+  alternates: {
+    canonical: '/book',
+  },
 };
 
 export default function BookPage() {
