@@ -136,7 +136,7 @@ These are usually the highest-leverage, lowest-effort fixes. Do these first once
 
 ---
 
-## PHASE 6 — High-Volume / Adjacent Keyword Content **[ ] PENDING**
+## PHASE 6 — High-Volume / Adjacent Keyword Content **[x] DONE**
 
 If there's search volume adjacent to your core business (e.g. a B2B supplier also wants to catch consumer searches like "best laptop under 50,000"):
 
