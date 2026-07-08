@@ -133,7 +133,7 @@ export const TransitionProvider = ({ children }: { children: React.ReactNode }) 
                 />
               </div>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-white tracking-tight leading-none drop-shadow-lg text-center px-4">
-              Dr. Saachi Shingrani's Clinic
+              Dr. Saachi Shingrani's Dental Care
             </h1>
             <div className="h-0.5 w-16 bg-white/40 mx-auto mt-4 rounded-full" />
           </motion.div>

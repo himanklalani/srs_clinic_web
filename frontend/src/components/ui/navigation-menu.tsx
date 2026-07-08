@@ -177,7 +177,7 @@ export function AnimatedNavFramer() {
           >
             <img
               src="https://res.cloudinary.com/dswvmoboh/image/upload/w_80,q_auto,f_auto/ce42deb6-628f-42c0-bfe0-584a1bd0c22d_fno5wf.png"
-              alt="Dr. Saachi Shingrani Dental Clinic logo"
+              alt="Dr. Saachi Shingrani's Dental Care logo"
               width={40}
               height={40}
               className="h-10 w-10 object-contain drop-shadow-md"

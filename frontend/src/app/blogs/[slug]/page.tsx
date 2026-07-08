@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!blog) return { title: 'Blog Not Found' };
 
   return {
-    title: `${blog.title} | Dr. Saachi Shingrani's Dental Clinic`,
+    title: blog.title,
     description: blog.excerpt,
     keywords: blog.tags.length > 0 ? blog.tags.join(', ') : 'dental blog, oral health, Dr Saachi Shingrani',
     authors: [{ name: blog.author }],
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: blog.title,
       description: blog.excerpt,
       url: `/blogs/${slug}`,
-      siteName: "Dr. Saachi Shingrani's Dental Clinic",
+      siteName: "Dr. Saachi Shingrani's Dental Care",
       images: blog.coverImage ? [
         {
           url: blog.coverImage,
@@ -111,7 +111,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }],
     "publisher": {
       "@type": "Organization",
-      "name": "Dr. Saachi Shingrani's Dental Clinic",
+      "name": "Dr. Saachi Shingrani's Dental Care",
       "logo": {
         "@type": "ImageObject",
         "url": "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png"

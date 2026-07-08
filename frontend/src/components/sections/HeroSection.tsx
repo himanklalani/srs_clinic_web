@@ -28,7 +28,7 @@ export default function HeroSection() {
         className="hero-text-wrapper relative z-10 w-full h-full flex flex-col items-center justify-center px-4 text-center pointer-events-none"
       >
         <span className="text-white/90 uppercase tracking-[0.2em] text-[10px] sm:text-xs md:text-sm font-medium mb-4 sm:mb-6 animate-fade-in pointer-events-auto">
-          Dr. Saachi Shingrani's Dental Clinic
+          Dr. Saachi Shingrani's Dental Care
         </span>
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white max-w-5xl leading-[1.15] md:leading-[1.1] mb-6 sm:mb-8 font-instrument tracking-tight drop-shadow-md pointer-events-auto">
           A Smile That Goes<br className="hidden md:block" /> An Extra Mile

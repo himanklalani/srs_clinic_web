@@ -10,7 +10,7 @@ import { Phone } from "lucide-react";
 export default function FloatingContactButtons() {
   const phoneNumber = "919004402797";
   const whatsappMessage = encodeURIComponent(
-    "Hello! I'd like to book an appointment at Dr. Saachi Shingrani's Dental Clinic."
+    "Hello! I'd like to book an appointment at Dr. Saachi Shingrani's Dental Care."
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
   const callUrl = `tel:+${phoneNumber}`;

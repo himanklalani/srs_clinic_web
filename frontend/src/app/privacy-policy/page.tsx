@@ -3,8 +3,8 @@ import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
 import CookieSettingsTrigger from "@/components/CookieSettingsTrigger";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Dr. Saachi Shingranis Dental Clinic",
-  description: "Learn about how we protect your data and privacy at Dr. Saachi Shingrani's Dental Clinic. GDPR and India IT Act compliant.",
+  title: "Privacy Policy",
+  description: "Learn about how we protect your data and privacy at Dr. Saachi Shingrani's Dental Care. GDPR and India IT Act compliant.",
   alternates: {
     canonical: '/privacy-policy',
   },
@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
         
         <h2 className="text-2xl font-serif text-text font-bold mb-4 mt-8">1. Introduction</h2>
         <p className="text-text/80 mb-4 leading-relaxed">
-          Welcome to Dr. Saachi Shingrani's Dental Clinic. We respect your privacy and are committed to protecting your personal data in compliance with the General Data Protection Regulation (GDPR) and the Information Technology Act (India). This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights.
+          Welcome to Dr. Saachi Shingrani's Dental Care. We respect your privacy and are committed to protecting your personal data in compliance with the General Data Protection Regulation (GDPR) and the Information Technology Act (India). This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights.
         </p>
 
         <h2 className="text-2xl font-serif text-text font-bold mb-4 mt-8">2. The Data We Collect About You</h2>

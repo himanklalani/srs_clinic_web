@@ -31,7 +31,7 @@ export default function LocationSection() {
                 title: "Address",
                 content: (
                   <>
-                    Dr. Saachi Shingrani&apos;s, B-1 Nutan Nagar Society,<br />
+                    Dr. Saachi Shingrani&apos;s Dental Care, B-1 Nutan Nagar Society,<br />
                     Gurunanak Rd, opposite Bandra Talao,<br />
                     Bandra West, Mumbai 400050.
                   </>
@@ -86,7 +86,7 @@ export default function LocationSection() {
           <ScrollReveal direction="right" className="w-full lg:w-1/2">
             <div className="w-full h-64 sm:h-80 lg:h-full min-h-[320px] rounded-2xl overflow-hidden shadow-lg border border-primary/10">
               <iframe
-                title="Dr. Saachi Shingrani's Dental Clinic Location"
+                title="Dr. Saachi Shingrani's Dental Care Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.66343830134!2d72.8362814!3d19.0563638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c93c3609a259%3A0x70aa9dc20ce34be!2sDr.%20Saachi%20Shingrani&#39;s!5e0!3m2!1sen!2sin!4v1"
                 width="100%"
                 height="100%"

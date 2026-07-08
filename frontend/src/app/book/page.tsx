@@ -5,8 +5,8 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Book Appointment | Dr. Saachi Shingranis Dental Clinic',
-  description: 'Schedule your private dental suite appointment seamlessly.',
+  title: 'Book an Appointment',
+  description: "Book your appointment with Dr. Saachi Shingrani in Bandra West, Mumbai for dental implants, aligners, teeth whitening, and premium general dental care.",
   alternates: {
     canonical: '/book',
   },
@@ -49,7 +49,7 @@ export default function BookPage() {
               <div>
                 <p className="font-medium tracking-wide text-white/90 text-sm mb-1 uppercase">Our Clinic</p>
                 <p className="text-sm text-white/80 font-light">
-                  Dr. Saachi Shingrani&apos;s, B-1 Nutan Nagar Society,<br />
+                  Dr. Saachi Shingrani&apos;s Dental Care, B-1 Nutan Nagar Society,<br />
                   Gurunanak Rd, opposite Bandra Talao,<br />
                   Bandra West, Mumbai 400050.
                 </p>

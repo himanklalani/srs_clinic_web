@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   title: {
-    template: "%s | Dr. Saachi Shingranis Dental Clinic",
-    default: "Dr. Saachi Shingranis Dental Clinic | Your Smile, Our Priority",
+    template: "%s | Dr. Saachi Shingrani's Dental Care",
+    default: "Dr. Saachi Shingrani's Dental Care | Your Smile, Our Priority",
   },
-  description: "Experience world-class dental care with a gentle touch at Dr. Saachi Shingrani's Dental Clinic in Mumbai.",
+  description: "Experience world-class dental care with a gentle touch at Dr. Saachi Shingrani's Dental Care in Mumbai.",
   keywords: ["dentist", "dental clinic", "teeth whitening", "Mumbai dentist"],
 };
 
@@ -64,7 +64,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Dentist",
-              "name": "Dr. Saachi Shingrani's Dental Clinic",
+              "name": "Dr. Saachi Shingrani's Dental Care",
               "image": "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png",
               "url": "https://www.srsdentalcare.in",
               "telephone": "+919004402797",

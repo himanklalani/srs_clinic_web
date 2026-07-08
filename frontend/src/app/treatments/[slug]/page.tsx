@@ -57,7 +57,7 @@ export default async function TreatmentPage({ params }: Props) {
     "serviceType": treatment.title,
     "provider": {
       "@type": "Dentist",
-      "name": "Dr. Saachi Shingrani's Dental Clinic"
+      "name": "Dr. Saachi Shingrani's Dental Care"
     },
     "areaServed": {
       "@type": "City",

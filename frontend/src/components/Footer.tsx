@@ -12,10 +12,10 @@ export default function Footer() {
           
           {/* Column 1: Brand & Tagline */}
           <div className="flex flex-col space-y-4">
-          <PageLink href="/" className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md">
+            <PageLink href="/" className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md">
               <img
                 src="https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/w_280/v1775975864/03b2bf11-e510-43ef-96cd-872fde8826b1_yhsftd.png"
-                alt="Dr. Saachi Shingrani Dental Clinic"
+                alt="Dr. Saachi Shingrani's Dental Care"
                 width={280}
                 height={144}
                 className="h-24 sm:h-28 md:h-36 w-auto object-contain max-w-[280px]"
@@ -46,10 +46,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick PageLinks */}
+          {/* Column 2: Quick Links */}
           <div>
             <h3 className="text-lg font-semibold text-text mb-4 lg:mb-6 font-serif tracking-wide border-b border-primary-light pb-2 inline-block">
-              Quick PageLinks
+              Quick Links
             </h3>
             <ul className="space-y-3">
               {[
@@ -71,55 +71,73 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          {/* Column 2.5: Top Treatments */}
-          <div>
+
+          {/* Columns 3 & 4 (Combined col-span-2): Our Treatments */}
+          <div className="lg:col-span-2">
             <h3 className="text-lg font-semibold text-text mb-4 lg:mb-6 font-serif tracking-wide border-b border-primary-light pb-2 inline-block">
-              Top Treatments
+              Our Treatments
             </h3>
-            <ul className="space-y-3">
-              {[
-                { label: "Dental Implants", href: "/treatments/dental-implants" },
-                { label: "Aligners & Braces", href: "/treatments/aligners-and-braces" },
-                { label: "Smile Design", href: "/treatments/smile-design" },
-                { label: "Full Mouth Rehab", href: "/treatments/full-mouth-rehab" },
-                { label: "Wisdom Tooth Surgery", href: "/treatments/wisdom-tooth-surgery" }
-              ].map((link) => (
-                <li key={link.href}>
-                  <PageLink
-                    href={link.href}
-                    className="text-text/80 hover:text-primary transition-colors flex items-center gap-2 group min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover:bg-primary transition-colors" />
-                    {link.label}
-                  </PageLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* Column 3: Opening Hours */}
-          <div>
-            <h3 className="text-lg font-semibold text-text mb-4 lg:mb-6 font-serif tracking-wide border-b border-primary-light pb-2 inline-block">
-              Working Hours
-            </h3>
-            <ul className="space-y-4 text-text/80 text-[15px]">
-              <li className="flex justify-between items-center bg-white px-3 py-2 rounded-md shadow-sm border border-primary-light/30">
-                <span className="font-medium">Mon - Sat</span>
-                <span className="text-primary font-semibold">10:00 AM - 8:00 PM</span>
-              </li>
-              
-            </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+              <div>
+                <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">Cosmetic & Restoration</h4>
+                <ul className="space-y-2">
+                  {[
+                    { label: "Smile Design", href: "/treatments/smile-design" },
+                    { label: "Teeth Whitening", href: "/treatments/teeth-whitening" },
+                    { label: "Dental Implants", href: "/treatments/dental-implants" },
+                    { label: "Aligners & Braces", href: "/treatments/aligners-and-braces" },
+                    { label: "Full Mouth Rehab", href: "/treatments/full-mouth-rehab" },
+                    { label: "Cosmetic Dentistry", href: "/treatments/cosmetic-dentistry" },
+                  ].map((link) => (
+                    <li key={link.href}>
+                      <PageLink
+                        href={link.href}
+                        className="text-text/80 hover:text-primary transition-colors flex items-center gap-2 group min-h-[32px] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover:bg-primary transition-colors" />
+                        {link.label}
+                      </PageLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">General & Specialized</h4>
+                <ul className="space-y-2">
+                  {[
+                    { label: "Dental Cleaning", href: "/treatments/dental-cleaning" },
+                    { label: "Crowns & Bridges", href: "/treatments/crowns-and-bridges" },
+                    { label: "Dentures", href: "/treatments/dentures" },
+                    { label: "Pediatric Dentistry", href: "/treatments/pediatric-dentistry" },
+                    { label: "Geriatric Dentistry", href: "/treatments/geriatric-dentistry" },
+                    { label: "Wisdom Tooth Surgery", href: "/treatments/wisdom-tooth-surgery" },
+                    { label: "Diagnosis of Oral Lesions", href: "/treatments/diagnosis-of-oral-lesions" }
+                  ].map((link) => (
+                    <li key={link.href}>
+                      <PageLink
+                        href={link.href}
+                        className="text-text/80 hover:text-primary transition-colors flex items-center gap-2 group min-h-[32px] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover:bg-primary transition-colors" />
+                        {link.label}
+                      </PageLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
-          {/* Column 4: Contact Info */}
+          {/* Column 5: Contact & Working Hours */}
           <div>
             <h3 className="text-lg font-semibold text-text mb-4 lg:mb-6 font-serif tracking-wide border-b border-primary-light pb-2 inline-block">
-              Contact Us
+              Contact & Hours
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="text-primary mt-1 shrink-0" size={18} />
                 <span className="text-text/80 text-[15px] leading-relaxed">
-                    Dr. Saachi Shingrani&apos;s, B-1 Nutan Nagar Society,<br />
+                    Dr. Saachi Shingrani&apos;s Dental Care, B-1 Nutan Nagar Society,<br />
                     Gurunanak Rd, opposite Bandra Talao,<br />
                     Bandra West, Mumbai 400050.
                 </span>
@@ -136,6 +154,13 @@ export default function Footer() {
                   srsdentalcare@gmail.com
                 </a>
               </li>
+              <li className="border-t border-primary/10 pt-3 mt-3">
+                <span className="text-xs font-semibold text-primary uppercase tracking-wider block mb-2">Working Hours</span>
+                <div className="flex justify-between items-center bg-white px-3 py-2 rounded-md shadow-sm border border-primary-light/30 text-sm">
+                  <span className="font-medium text-text/80">Mon - Sat</span>
+                  <span className="text-primary font-semibold">10:00 AM - 8:00 PM</span>
+                </div>
+              </li>
             </ul>
           </div>
 
@@ -145,7 +170,7 @@ export default function Footer() {
         <div className="border-t border-primary/20 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-col items-center md:items-start gap-1">
             <p className="text-text/60 text-sm text-center md:text-left">
-              &copy; 2025 Dr. Saachi Shingrani&apos;s Dental Clinic. All rights reserved.
+              &copy; 2026 Dr. Saachi Shingrani&apos;s Dental Care. All rights reserved.
             </p>
             <p className="text-text/50 text-[11px] font-bold text-center md:text-left">
               Developed by <a href="mailto:himanklalani@gmail.com" className="hover:text-primary transition-colors underline decoration-primary/20 underline-offset-2">himanklalani@gmail.com</a>

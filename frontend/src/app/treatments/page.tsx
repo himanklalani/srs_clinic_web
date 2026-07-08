@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import TreatmentsClient from '@/components/TreatmentsClient';
 
 export const metadata: Metadata = {
-  title: 'Dental Treatments & Services | Dr. Saachi Shingrani',
+  title: 'Dental Treatments & Services',
   description: 'Explore our range of premium dental treatments in Bandra, Mumbai: smile design, root canals, dental implants, teeth whitening, veneers, and pediatric care.',
   alternates: {
     canonical: '/treatments',

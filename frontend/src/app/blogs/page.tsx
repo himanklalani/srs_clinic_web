@@ -5,21 +5,21 @@ import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
 import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Health Blogs | Dr. Saachi Shingrani\'s Dental Clinic',
+  title: 'Health Blogs',
   description: 'Read expert dental health tips, treatment guides, and clinic news from Dr. Saachi Shingrani.',
   alternates: {
     canonical: '/blogs',
   },
   openGraph: {
-    title: 'Health Blogs | Dr. Saachi Shingrani\'s Dental Clinic',
+    title: "Health Blogs | Dr. Saachi Shingrani's Dental Care",
     description: 'Read expert dental health tips, treatment guides, and clinic news from Dr. Saachi Shingrani.',
     url: '/blogs',
-    siteName: "Dr. Saachi Shingrani's Dental Clinic",
+    siteName: "Dr. Saachi Shingrani's Dental Care",
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Health Blogs | Dr. Saachi Shingrani\'s Dental Clinic',
+    title: "Health Blogs | Dr. Saachi Shingrani's Dental Care",
     description: 'Read expert dental health tips, treatment guides, and clinic news from Dr. Saachi Shingrani.',
   },
 };

@@ -88,7 +88,7 @@ export default function ContactClient() {
                 <MapPin className="w-5 h-5 text-blue-500" />
               </div>
               <span className="leading-relaxed">
-                Dr. Saachi Shingrani&apos;s, B-1 Nutan Nagar Society,<br />
+                Dr. Saachi Shingrani&apos;s Dental Care, B-1 Nutan Nagar Society,<br />
                 Gurunanak Rd, opposite Bandra Talao,<br />
                 Bandra West, Mumbai 400050.
               </span>

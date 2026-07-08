@@ -58,6 +58,13 @@ export function TreatmentsTransitionPanel() {
       description: "Professional cleaning and polishing for a healthy, plaque-free smile and optimal gum health.",
       beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957292/copy_of_dental_cleaning1_siotd3.jpg",
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957491/copy_of_dentalcleaning2_dq1qgn.jpg",
+    },
+    {
+      title: "Looking for Wisdom Tooth Surgery or Crowns?",
+      description: "Discover all 13 specialized treatments here [View Full List →]",
+      beforeImage: "",
+      afterImage: "",
+      isCustomLink: true
     }
   ];
 
@@ -134,65 +141,80 @@ export function TreatmentsTransitionPanel() {
           }
         }}
       >
-        {TREATMENTS.map((treatment, index) => (
-          <div key={index} className="px-6 py-12 md:p-16 lg:p-24 text-center flex flex-col items-center justify-center min-h-[300px]" ref={ref}>
-            <span className="text-primary font-medium tracking-widest text-[10px] sm:text-xs md:text-sm uppercase mb-3 sm:mb-4 block">
-              Treatment Category
-            </span>
-            <h3 className="mb-6 text-4xl sm:text-5xl md:text-6xl font-semibold font-playfair text-text">
-              {treatment.title}
-            </h3>
-            <p className="text-lg sm:text-xl font-light text-text/70 leading-relaxed mb-8 max-w-2xl mx-auto">
-              {treatment.description}
-            </p>
-            <PageLink 
-              href="/book" 
-              className="inline-flex items-center justify-center bg-primary text-white text-sm sm:text-base font-medium py-3 px-8 rounded-full hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg hover:-translate-y-1 will-change-transform mb-8"
-            >
-              Book Consultation
-            </PageLink>
-            
-            {typeof treatment.beforeImage === 'string' && treatment.beforeImage !== '' && typeof treatment.afterImage === 'string' && treatment.afterImage !== '' && (
-              <div 
-                className="w-full max-w-2xl mx-auto rounded-xl overflow-hidden shadow-lg border border-primary/20"
-                onPointerDownCapture={(e) => e.stopPropagation()}
-              >
-                <ImageComparison className="aspect-[16/9] w-full" enableHover>
-                  <ImageComparisonImage
-                    src={treatment.beforeImage}
-                    alt={`${treatment.title} Before`}
-                    position="left"
-                  />
-                  <ImageComparisonImage
-                    src={treatment.afterImage}
-                    alt={`${treatment.title} After`}
-                    position="right"
-                  />
-                  <ImageComparisonSlider className="w-1 bg-white/50 backdrop-blur-sm shadow-md">
-                    <div className="absolute top-1/2 left-1/2 h-8 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white flex items-center justify-center shadow-lg border border-primary/10">
-                      <div className="flex gap-[2px]">
-                        <div className="w-[2px] h-3 bg-primary/40 rounded-full" />
-                        <div className="w-[2px] h-3 bg-primary/40 rounded-full" />
+        {TREATMENTS.map((treatment, index) => {
+          const isCustom = 'isCustomLink' in treatment && treatment.isCustomLink;
+          return (
+            <div key={index} className="px-6 py-12 md:p-16 lg:p-24 text-center flex flex-col items-center justify-center min-h-[300px]" ref={ref}>
+              <span className="text-primary font-medium tracking-widest text-[10px] sm:text-xs md:text-sm uppercase mb-3 sm:mb-4 block">
+                {isCustom ? "Discover More" : "Treatment Category"}
+              </span>
+              <h3 className="mb-6 text-4xl sm:text-5xl md:text-6xl font-semibold font-playfair text-text leading-tight max-w-2xl">
+                {treatment.title}
+              </h3>
+              <p className="text-lg sm:text-xl font-light text-text/70 leading-relaxed mb-8 max-w-2xl mx-auto">
+                {isCustom ? "We offer a complete range of general, cosmetic, and surgical dental solutions." : treatment.description}
+              </p>
+              
+              {!isCustom ? (
+                <>
+                  <PageLink 
+                    href="/book" 
+                    className="inline-flex items-center justify-center bg-primary text-white text-sm sm:text-base font-medium py-3 px-8 rounded-full hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg hover:-translate-y-1 will-change-transform mb-8"
+                  >
+                    Book Consultation
+                  </PageLink>
+                  
+                  {typeof treatment.beforeImage === 'string' && treatment.beforeImage !== '' && typeof treatment.afterImage === 'string' && treatment.afterImage !== '' && (
+                    <div 
+                      className="w-full max-w-2xl mx-auto rounded-xl overflow-hidden shadow-lg border border-primary/20"
+                      onPointerDownCapture={(e) => e.stopPropagation()}
+                    >
+                      <ImageComparison className="aspect-[16/9] w-full" enableHover>
+                        <ImageComparisonImage
+                          src={treatment.beforeImage}
+                          alt={`${treatment.title} Before`}
+                          position="left"
+                        />
+                        <ImageComparisonImage
+                          src={treatment.afterImage}
+                          alt={`${treatment.title} After`}
+                          position="right"
+                        />
+                        <ImageComparisonSlider className="w-1 bg-white/50 backdrop-blur-sm shadow-md">
+                          <div className="absolute top-1/2 left-1/2 h-8 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white flex items-center justify-center shadow-lg border border-primary/10">
+                            <div className="flex gap-[2px]">
+                              <div className="w-[2px] h-3 bg-primary/40 rounded-full" />
+                              <div className="w-[2px] h-3 bg-primary/40 rounded-full" />
+                            </div>
+                          </div>
+                        </ImageComparisonSlider>
+                      </ImageComparison>
+                      <div className="flex justify-between px-4 py-2 bg-surface text-xs font-medium text-primary">
+                        <span>Before</span>
+                        <span>After</span>
                       </div>
                     </div>
-                  </ImageComparisonSlider>
-                </ImageComparison>
-                <div className="flex justify-between px-4 py-2 bg-surface text-xs font-medium text-primary">
-                  <span>Before</span>
-                  <span>After</span>
-                </div>
-              </div>
-            )}
+                  )}
+                </>
+              ) : (
+                <PageLink 
+                  href="/treatments" 
+                  className="inline-flex items-center justify-center bg-primary text-white text-sm sm:text-base font-medium py-3 px-8 rounded-full hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg hover:-translate-y-1 will-change-transform mb-8"
+                >
+                  {treatment.description}
+                </PageLink>
+              )}
 
-            <PageLink 
-              href="/treatments" 
-              className="mt-6 md:mt-8 inline-flex items-center gap-1.5 text-primary hover:text-primary-dark font-medium transition-colors text-sm sm:text-base group"
-            >
-              View all treatments
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </PageLink>
-          </div>
-        ))}
+              <PageLink 
+                href="/treatments" 
+                className="mt-6 md:mt-8 inline-flex items-center gap-1.5 text-primary hover:text-primary-dark font-medium transition-colors text-sm sm:text-base group"
+              >
+                View all treatments
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </PageLink>
+            </div>
+          );
+        })}
       </TransitionPanel>
       <div className="flex items-center justify-center p-6 sm:p-8 bg-[#faf8f5]/50 border-t border-primary/10">
         <div className="flex gap-2 sm:gap-3 justify-center">

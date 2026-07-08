@@ -3,8 +3,8 @@ import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
 import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Dr. Saachi Shingranis Dental Clinic',
-  description: 'Get in touch with us for emergency dental care, questions, or appointment scheduling in Bandra West, Mumbai.',
+  title: 'Contact Us',
+  description: "Get in touch with us for emergency dental care, questions, or appointment scheduling in Bandra West, Mumbai.",
   alternates: {
     canonical: '/contact',
   },
