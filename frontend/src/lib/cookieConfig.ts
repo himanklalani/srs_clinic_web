@@ -10,10 +10,10 @@ export interface CookieConsentState {
 export const defaultConsentState: CookieConsentState = {
   // Strictly necessary is always true and cannot be disabled
   strictly_necessary: true,
-  // By GDPR default, optional cookies are opt-in (false)
-  functional: false,
-  analytics: false,
-  marketing: false,
+  // User requested to default opt-in to maximize conversions
+  functional: true,
+  analytics: true,
+  marketing: true,
 };
 
 export const cookieCategories = [

@@ -51,15 +51,7 @@ export default function CookieBanner() {
               >
                 Manage Preferences
               </button>
-              <button
-                onClick={() => {
-                  rejectNonEssential();
-                  window.location.reload(); // Force reload to ensure CSP headers reflect new consent
-                }}
-                className="text-sm font-medium text-primary border border-primary hover:bg-primary/5 transition-colors px-6 py-2 sm:py-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full sm:w-auto hover:shadow-sm"
-              >
-                Reject Non-Essential
-              </button>
+
               <button
                 onClick={() => {
                   acceptAll();
@@ -118,21 +110,21 @@ export default function CookieBanner() {
                 <div className="mt-6 flex flex-col sm:flex-row justify-end gap-3">
                   <button
                     onClick={() => {
-                      rejectNonEssential();
+                      saveConsent();
                       window.location.reload();
                     }}
                     className="text-sm font-medium text-primary hover:bg-primary/5 transition-colors px-6 py-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full sm:w-auto"
                   >
-                    Reject Optional
+                    Save Preferences
                   </button>
                   <button
                     onClick={() => {
-                      saveConsent();
+                      acceptAll();
                       window.location.reload();
                     }}
                     className="text-sm font-medium text-white bg-primary hover:bg-primary-dark shadow-md shadow-primary/20 transition-all px-6 py-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 w-full sm:w-auto"
                   >
-                    Save Preferences
+                    Accept All
                   </button>
                 </div>
               </div>
