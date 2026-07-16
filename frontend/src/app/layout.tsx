@@ -30,11 +30,11 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   title: {
-    template: "%s | Dr. Saachi Shingrani's Dental Care",
-    default: "Dr. Saachi Shingrani's Dental Care | Your Smile, Our Priority",
+    template: "%s | SRS Dental Care Bandra",
+    default: "[2026] Best Dentist in Bandra West | Dr. Saachi Shingrani",
   },
-  description: "Experience world-class dental care with a gentle touch at Dr. Saachi Shingrani's Dental Care in Mumbai.",
-  keywords: ["dentist", "dental clinic", "teeth whitening", "Mumbai dentist"],
+  description: "Looking for the best dentist in Bandra? Experience painless treatments, invisible aligners, and dental implants at SRS Dental Care. 5-Star Rated. Book today!",
+  keywords: ["dentist in bandra", "best dentist near me", "invisible aligners cost mumbai", "dental clinic bandra west", "Dr. Saachi Shingrani"],
 };
 
 import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
