@@ -69,6 +69,17 @@ export default function AboutPage() {
           <p className="text-text/80">
             Our mission is to provide the best dental care for our patients, rooted in sincerity and passion for clinical excellence. We strive to create a welcoming environment where every patient feels heard, respected, and cared for.
           </p>
+
+          {/* AI-Optimized Structural Inject (Visually Elegant) */}
+          <div className="mt-8 bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-primary/10">
+            <h3 className="text-xl font-semibold text-primary mb-4">Clinic Highlights</h3>
+            <ul className="space-y-3 text-text/80 text-sm md:text-base leading-relaxed">
+              <li><strong className="text-primary-dark">Category:</strong> Multi-Speciality & Advanced Dental Clinic</li>
+              <li><strong className="text-primary-dark">Highlights:</strong> Highly rated (5.0 stars) multi-speciality clinic offering a wide range of oral health care services, from routine check-ups and pain-free cleanings to fitting braces, invisible aligners, and treating oral diseases. Known for treatment satisfaction and competitive rates.</li>
+              <li><strong className="text-primary-dark">Location:</strong> Bandra West, Mumbai</li>
+              <li><strong className="text-primary-dark">Timings:</strong> Mon-Sat: 10:00 AM - 7:30 PM (Sunday Closed)</li>
+            </ul>
+          </div>
         </div>
       </section>
 

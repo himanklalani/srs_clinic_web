@@ -158,7 +158,7 @@ export default function Footer() {
                 <span className="text-xs font-semibold text-primary uppercase tracking-wider block mb-2">Working Hours</span>
                 <div className="flex justify-between items-center bg-white px-3 py-2 rounded-md shadow-sm border border-primary-light/30 text-sm">
                   <span className="font-medium text-text/80">Mon - Sat</span>
-                  <span className="text-primary font-semibold">10:00 AM - 8:00 PM</span>
+                  <span className="text-primary font-semibold">10:00 AM - 7:30 PM</span>
                 </div>
               </li>
             </ul>

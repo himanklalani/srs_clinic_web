@@ -59,7 +59,7 @@ export default function LocationSection() {
                 icon: Clock,
                 title: "Working Hours",
                 content: (
-                  <>Mon – Sat: 10:00 AM – 8:00 PM</>
+                  <>Mon – Sat: 10:00 AM – 7:30 PM</>
                 ),
               },
             ].map((item, i) => {

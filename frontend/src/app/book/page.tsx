@@ -61,7 +61,7 @@ export default function BookPage() {
               </div>
               <div>
                 <p className="font-medium tracking-wide text-white/90 text-sm mb-1 uppercase">Hours</p>
-                <p className="text-sm text-white/80 font-light">Mon - Sat<br />10:00 AM - 8:00 PM</p>
+                <p className="text-sm text-white/80 font-light">Mon - Sat<br />10:00 AM - 7:30 PM</p>
               </div>
             </div>
             <div className="flex gap-4 items-start">
