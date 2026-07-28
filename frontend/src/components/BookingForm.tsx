@@ -285,6 +285,7 @@ export default function BookingForm() {
             >
               <option value="" disabled className="bg-primary-dark">Select a treatment...</option>
               <option value="Routine Checkup" className="bg-primary-dark">Routine Checkup</option>
+              <option value="Teeth Cleaning" className="bg-primary-dark">Teeth Cleaning</option>
               <option value="Teeth Whitening" className="bg-primary-dark">Teeth Whitening</option>
               <option value="Dental Implants" className="bg-primary-dark">Dental Implants</option>
               <option value="Invisible Braces" className="bg-primary-dark">Invisible Braces (Invisalign)</option>

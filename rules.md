@@ -207,6 +207,8 @@ The `cookie-parser` middleware is already included in the backend to support JWT
 | `/book` | Client | Appointment booking form (frontend-only form; backend route not yet wired) |
 | `/contact` | Client | Patient enquiry/contact form — submits to `POST /api/v1/contacts` |
 | `/blog-admin/[token]` | Client | Admin dashboard — create, edit, delete blogs; view contact submissions |
+| `/areas/[location]` | Server | Dynamic local SEO area pages (e.g., dentist in Andheri) |
+| `/privacy-policy` | Server | Static privacy policy page |
 
 ---
 
@@ -273,9 +275,15 @@ src/components/
 ├── Footer.tsx              ← Full footer with nav links and social icons
 ├── HomeClient.tsx          ← 'use client' wrapper orchestrating the entire homepage
 ├── BlogCard.tsx            ← Card used on /blogs listing page
+├── BlogCoverImage.tsx      ← Renders optimized blog cover images
+├── BookingForm.tsx         ← Appointment booking form logic and UI
+├── CookieBanner.tsx        ← GDPR-compliant cookie consent banner
+├── CookieSettingsTrigger.tsx ← Trigger button to reopen cookie settings
+├── GoogleAnalytics.tsx     ← GA4 script injection based on cookie consent
 ├── HeroBanner.tsx          ← Simpler banner used on inner pages (about, treatments, etc.)
 ├── Breadcrumb.tsx          ← Breadcrumb nav for inner pages
-└── PageLink.tsx            ← Client-side link wrapper (uses Next.js router.push)
+├── PageLink.tsx            ← Client-side link wrapper (uses Next.js router.push)
+└── TreatmentsClient.tsx    ← Main wrapper for treatments page content
 ```
 
 ---

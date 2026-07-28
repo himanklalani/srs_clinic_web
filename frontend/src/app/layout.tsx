@@ -26,9 +26,6 @@ const instrument = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.srsdentalcare.in'),
-  alternates: {
-    canonical: '/',
-  },
   title: {
     template: "%s | SRS Dental Care Bandra",
     default: "[2026] Best Dentist in Bandra West | Dr. Saachi Shingrani",
