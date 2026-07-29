@@ -119,12 +119,35 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
   };
 
+  const faqMatches = [...blog.content.matchAll(/<h3>(.*?)<\/h3>\s*<p>(.*?)<\/p>/gi)];
+  let faqSchema = null;
+  if (faqMatches.length > 0) {
+    faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqMatches.map(m => ({
+        "@type": "Question",
+        "name": m[1].replace(/<[^>]*>?/gm, '').trim(),
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": m[2].replace(/<[^>]*>?/gm, '').trim()
+        }
+      }))
+    };
+  }
+
   return (
     <main className="min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       {/* Aesthetic Hero Section */}
       <div className="relative pt-24 md:pt-32 pb-12 overflow-hidden bg-[#faf8f5]">
         {/* Background ambient glow/blur */}

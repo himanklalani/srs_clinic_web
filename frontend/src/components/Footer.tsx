@@ -70,6 +70,25 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            
+            <h3 className="text-lg font-semibold text-text mt-8 mb-4 lg:mb-6 font-serif tracking-wide border-b border-primary-light pb-2 inline-block">
+              Areas We Serve
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { label: "Bandra West", href: "/areas/bandra-west" },
+                { label: "Pali Hill", href: "/areas/pali-hill" },
+                { label: "Mumbai", href: "/areas/mumbai" }
+              ].map((link) => (
+                <PageLink
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs font-medium text-text/70 bg-white border border-primary/10 hover:border-primary/40 hover:text-primary hover:bg-primary/5 px-3 py-1.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-sm hover:shadow"
+                >
+                  {link.label}
+                </PageLink>
+              ))}
+            </div>
           </div>
 
           {/* Columns 3 & 4 (Combined col-span-2): Our Treatments */}
