@@ -31,7 +31,7 @@ const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
 async function getBlog(slug: string): Promise<Blog | null> {
   try {
     const res = await fetch(`${API_URL}/api/v1/blogs/${slug}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 0 },
     });
     if (!res.ok) return null;
     const data = await res.json();
@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
   };
 
-  const faqMatches = [...blog.content.matchAll(/<h3>(.*?)<\/h3>\s*<p>(.*?)<\/p>/gi)];
+  const faqMatches = [...blog.content.matchAll(/<h3>(.*?)<\/h3>\s*<p>(.*?)<\/p>/gis)];
   let faqSchema = null;
   if (faqMatches.length > 0) {
     faqSchema = {
