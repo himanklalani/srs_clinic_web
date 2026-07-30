@@ -5,8 +5,42 @@ import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
 import PageLink from '@/components/PageLink';
 import { ChevronRight, CheckCircle2 } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
+import BlogCard from '@/components/BlogCard';
 
 export const dynamic = 'force-dynamic';
+
+interface Blog {
+  _id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  coverImage: string;
+  author: string;
+  tags: string[];
+  createdAt: string;
+}
+
+async function getRelatedBlogs(treatmentTitle: string): Promise<Blog[]> {
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+    const res = await fetch(`${apiUrl}/api/v1/blogs?limit=20`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const blogs: Blog[] = data.blogs || [];
+    
+    // Filter based on keywords in title
+    const keywords = treatmentTitle.toLowerCase().split(' ').filter(k => k.length > 3);
+    const related = blogs.filter(b => {
+      const searchSpace = (b.title + ' ' + b.tags.join(' ')).toLowerCase();
+      return keywords.some(k => searchSpace.includes(k));
+    });
+    return related.slice(0, 3);
+  } catch {
+    return [];
+  }
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -37,6 +71,8 @@ export default async function TreatmentPage({ params }: Props) {
   if (!treatment) {
     notFound();
   }
+
+  const relatedBlogs = await getRelatedBlogs(treatment.title);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -164,12 +200,34 @@ export default async function TreatmentPage({ params }: Props) {
                 <h3 className="text-2xl font-playfair font-semibold mb-2 relative z-10">Ready to transform your smile?</h3>
                 <p className="text-white/70 mb-8 text-sm relative z-10">Book a consultation for {treatment.title.toLowerCase()} today.</p>
                 <div className="relative z-10">
-                  <BookingForm />
+                  <BookingForm defaultTreatment={treatment.title} />
                 </div>
               </div>
             </div>
 
           </div>
+
+          {/* Related Articles */}
+          {relatedBlogs.length > 0 && (
+            <div className="mt-20 border-t border-primary/10 pt-16">
+              <h2 className="text-3xl font-playfair font-semibold text-primary-dark mb-8 text-center">Related Articles</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {relatedBlogs.map((blog) => (
+                  <BlogCard
+                    key={blog._id}
+                    title={blog.title}
+                    slug={blog.slug}
+                    excerpt={blog.excerpt}
+                    coverImage={blog.coverImage}
+                    author={blog.author}
+                    tags={blog.tags}
+                    createdAt={blog.createdAt}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
         </div>
       </section>
     </main>

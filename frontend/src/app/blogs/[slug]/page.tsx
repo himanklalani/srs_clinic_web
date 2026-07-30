@@ -4,6 +4,7 @@ import PageLink from "@/components/PageLink";
 import BlogCoverImage from '@/components/BlogCoverImage';
 import sanitizeHtml from 'sanitize-html';
 import ScrollReveal from '@/components/animations/ScrollReveal';
+import { treatmentsData } from '@/lib/data/treatments';
 
 interface Blog {
   _id: string;
@@ -136,6 +137,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     };
   }
 
+  const getRelatedTreatment = () => {
+    const searchSpace = (blog.title + ' ' + blog.tags.join(' ')).toLowerCase();
+    for (const treatment of treatmentsData) {
+      if (searchSpace.includes(treatment.title.toLowerCase())) {
+        return treatment;
+      }
+    }
+    for (const treatment of treatmentsData) {
+      if (treatment.seoKeywords.some(kw => searchSpace.includes(kw.toLowerCase()))) {
+        return treatment;
+      }
+    }
+    return null;
+  };
+
+  const relatedTreatment = getRelatedTreatment();
+
   return (
     <main className="min-h-screen">
       <script
@@ -212,18 +230,57 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         />
 
         {/* CTA Section */}
-        <div className="mt-16 bg-primary/5 rounded-2xl p-8 border border-primary/10 text-center">
-          <h3 className="text-2xl font-playfair font-semibold text-primary-dark mb-4">Ready to Prioritize Your Smile?</h3>
-          <p className="text-text/70 mb-6 max-w-xl mx-auto">
-            If you have questions about your oral health or need professional advice, Dr. Saachi Shingrani is here to help. Schedule your consultation today for personalized care.
-          </p>
-          <PageLink
-            href="/book"
-            className="inline-block bg-primary text-white font-medium px-8 py-3 rounded-full hover:bg-primary-dark transition-colors shadow-md"
-          >
-            Book an Appointment
-          </PageLink>
-        </div>
+        {relatedTreatment ? (
+          <div className="mt-16 bg-primary/5 rounded-3xl p-8 md:p-12 border border-primary/10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
+            <div className="flex-1 text-center md:text-left">
+              <span className="text-[10px] uppercase tracking-widest font-bold text-primary mb-2 block">Related Treatment</span>
+              <h3 className="text-3xl font-playfair font-semibold text-primary-dark mb-4">{relatedTreatment.title}</h3>
+              <p className="text-text/70 mb-6 max-w-xl text-lg">
+                {relatedTreatment.shortDescription}
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+                <PageLink
+                  href={`/book?treatment=${encodeURIComponent(relatedTreatment.title)}`}
+                  className="inline-flex items-center justify-center bg-primary text-white font-medium px-8 py-3 rounded-full hover:bg-primary-dark transition-colors shadow-md w-full sm:w-auto"
+                >
+                  Book Consultation
+                </PageLink>
+                <PageLink
+                  href={`/treatments/${relatedTreatment.slug}`}
+                  className="inline-flex items-center justify-center bg-surface border-2 border-primary/20 text-primary hover:bg-primary/5 font-medium px-8 py-2.5 rounded-full transition-all hover:border-primary/40 w-full sm:w-auto"
+                >
+                  Learn More
+                </PageLink>
+              </div>
+            </div>
+            {relatedTreatment.procedureSteps && relatedTreatment.procedureSteps.length > 0 && (
+               <div className="hidden lg:block w-72 bg-white rounded-2xl p-6 shadow-sm border border-primary/10">
+                 <h4 className="font-semibold text-primary-dark mb-4">Treatment Steps:</h4>
+                 <ul className="space-y-3">
+                   {relatedTreatment.procedureSteps.slice(0, 3).map((step, i) => (
+                     <li key={i} className="flex gap-3 text-sm text-text/70 items-start">
+                       <span className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[10px] shrink-0">{i+1}</span>
+                       <span className="leading-tight pt-0.5">{step.title}</span>
+                     </li>
+                   ))}
+                 </ul>
+               </div>
+            )}
+          </div>
+        ) : (
+          <div className="mt-16 bg-primary/5 rounded-2xl p-8 border border-primary/10 text-center">
+            <h3 className="text-2xl font-playfair font-semibold text-primary-dark mb-4">Ready to Prioritize Your Smile?</h3>
+            <p className="text-text/70 mb-6 max-w-xl mx-auto">
+              If you have questions about your oral health or need professional advice, Dr. Saachi Shingrani is here to help. Schedule your consultation today for personalized care.
+            </p>
+            <PageLink
+              href="/book"
+              className="inline-block bg-primary text-white font-medium px-8 py-3 rounded-full hover:bg-primary-dark transition-colors shadow-md"
+            >
+              Book an Appointment
+            </PageLink>
+          </div>
+        )}
 
         {/* Back PageLink */}
         <div className="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between">

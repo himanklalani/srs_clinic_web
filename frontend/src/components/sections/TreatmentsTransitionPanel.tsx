@@ -18,48 +18,56 @@ export function TreatmentsTransitionPanel() {
 
   const TREATMENTS = [
     {
+      slug: "full-mouth-rehab",
       title: "Full Mouth Rehab",
       description: "Comprehensive restoration of your oral health and aesthetics for a perfect smile.",
       beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950607/fmg_after_pnqadw.png",
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779950606/fmh_before_lzmnze.png",
     },
     {
+      slug: "teeth-whitening",
       title: "Teeth Whitening",
       description: "Professional brightening for a radiant, confident smile using high-end gentle formulas.",
       beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952394/copy_of_img_1456_yqfusi.heic",
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953394/IMG_1441_xrzlbm.heic",
     },
     {
-      title: "Implants",
+      slug: "dental-implants",
+      title: "Dental Implants",
       description: "Permanent, natural-looking tooth replacements ensuring lifelong durability.",
       beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781958221/Untitled_design_8_mlx0xp.png",
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781958221/Untitled_design_9_vlxwjp.png",
     },
     {
+      slug: "aligners-and-braces",
       title: "Aligners & Braces",
       description: "Invisible, comfortable alignment solutions tailored for both teens and adults.",
       beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952235/IMG_0992_vow8gg.heic",
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952072/after_a_b_pkbkea.heic",
     },
     {
+      slug: "smile-design",
       title: "Smile Design",
       description: "Custom smile makeovers tailored to your unique facial features and aesthetic goals.",
       beforeImage: "",
       afterImage: "",
     },
     {
-      title: "Pediatric",
+      slug: "pediatric-dentistry",
+      title: "Pediatric Dentistry",
       description: "Gentle, anxiety-free dental care designed exclusively for our youngest patients.",
       beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952763/Untitled_design_3_iqtn8x.png",
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952763/Untitled_design_2_dgnbgf.png",
     },
     {
+      slug: "dental-cleaning",
       title: "Dental Cleaning",
       description: "Professional cleaning and polishing for a healthy, plaque-free smile and optimal gum health.",
       beforeImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957292/copy_of_dental_cleaning1_siotd3.jpg",
       afterImage: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957491/copy_of_dentalcleaning2_dq1qgn.jpg",
     },
     {
+      slug: "",
       title: "Looking for Wisdom Tooth Surgery or Crowns?",
       description: "Discover all 13 specialized treatments here [View Full List →]",
       beforeImage: "",
@@ -157,12 +165,20 @@ export function TreatmentsTransitionPanel() {
               
               {!isCustom ? (
                 <>
-                  <PageLink 
-                    href="/book" 
-                    className="inline-flex items-center justify-center bg-primary text-white text-sm sm:text-base font-medium py-3 px-8 rounded-full hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg hover:-translate-y-1 will-change-transform mb-8"
-                  >
-                    Book Consultation
-                  </PageLink>
+                  <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mb-8">
+                    <PageLink 
+                      href={`/book?treatment=${encodeURIComponent(treatment.title)}`} 
+                      className="inline-flex items-center justify-center bg-primary text-white text-sm sm:text-base font-medium py-3 px-8 rounded-full hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg hover:-translate-y-1 will-change-transform w-full sm:w-auto"
+                    >
+                      Book Consultation
+                    </PageLink>
+                    <PageLink 
+                      href={`/treatments/${treatment.slug}`}
+                      className="inline-flex items-center justify-center bg-surface border-2 border-primary/20 text-primary hover:bg-primary/5 text-sm sm:text-base font-medium py-2.5 px-8 rounded-full transition-all hover:border-primary/40 w-full sm:w-auto"
+                    >
+                      Learn More
+                    </PageLink>
+                  </div>
                   
                   {typeof treatment.beforeImage === 'string' && treatment.beforeImage !== '' && typeof treatment.afterImage === 'string' && treatment.afterImage !== '' && (
                     <div 

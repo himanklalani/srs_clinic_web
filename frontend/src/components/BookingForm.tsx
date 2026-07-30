@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import confetti from "canvas-confetti";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Textarea from "@/components/ui/Textarea";
+import { useSearchParams } from "next/navigation";
 
-export default function BookingForm() {
+function BookingFormInner({ defaultTreatment, variant = 'default' }: { defaultTreatment?: string, variant?: 'default' | 'transparent' }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [cooldown, setCooldown] = useState(0);
@@ -16,6 +17,23 @@ export default function BookingForm() {
   const [holidays, setHolidays] = useState<string[]>([]);
   const [blockedShifts, setBlockedShifts] = useState<BlockedShift[]>([]);
   const [selectedDate, setSelectedDate] = useState<string>("");
+  
+  const searchParams = useSearchParams();
+  const urlTreatment = searchParams?.get("treatment");
+  let initialTreatment = defaultTreatment || urlTreatment || "";
+  
+  // Map new page titles to the old dropdown values to match backend schema
+  const treatmentMap: Record<string, string> = {
+    "Dental Cleaning": "Teeth Cleaning",
+    "Aligners & Braces": "Invisible Braces (Invisalign)",
+    "Root Canal": "Root Canal Treatment",
+    "Crowns and Bridges": "Crown & Bridges",
+    "Wisdom Tooth Surgery": "Wisdom Tooth Removal"
+  };
+
+  if (treatmentMap[initialTreatment]) {
+    initialTreatment = treatmentMap[initialTreatment];
+  }
 
   useEffect(() => {
     const fetchOverrides = async () => {
@@ -54,13 +72,36 @@ export default function BookingForm() {
     try {
       const formData = new FormData(e.target as HTMLFormElement);
       
+      let serviceType = formData.get("treatment") as string;
+      let notes = formData.get("notes") as string || "";
+      
+      const strictAllowedValues = [
+        "Routine Checkup", "Teeth Cleaning", "Teeth Whitening", "Dental Implants",
+        "Invisible Braces (Invisalign)", "Root Canal Treatment", "Cosmetic Dentistry",
+        "Orthodontic Treatment", "Periodontal Therapy", "Crown & Bridges",
+        "Cavity Treatment", "Wisdom Tooth Removal", "Normal Tooth Treatment/Removal",
+        "Minor Surgery", "Other / Consult"
+      ];
+      
+      if (!strictAllowedValues.includes(serviceType)) {
+        notes = `[Original Selection: ${serviceType}]\n${notes}`.trim();
+        
+        if (serviceType === "Smile Design") serviceType = "Cosmetic Dentistry";
+        else if (serviceType === "Full Mouth Rehab") serviceType = "Other / Consult";
+        else if (serviceType === "Pediatric Dentistry") serviceType = "Other / Consult";
+        else if (serviceType === "Dentures") serviceType = "Other / Consult";
+        else if (serviceType === "Geriatric Dentistry") serviceType = "Other / Consult";
+        else if (serviceType === "Diagnosis of Oral Lesions") serviceType = "Other / Consult";
+        else serviceType = "Other / Consult";
+      }
+
       const payload = {
         name: formData.get("name"),
         phone: formData.get("phone"),
         date: new Date(formData.get("date") as string).toISOString(),
-        service_type: formData.get("treatment"),
+        service_type: serviceType,
         preferred_slot: formData.get("slot"),
-        notes: formData.get("notes"),
+        notes: notes,
         business_id: process.env.NEXT_PUBLIC_BOOKING_BUSINESS_ID,
         api_key: process.env.NEXT_PUBLIC_BOOKING_API_KEY
       };
@@ -136,7 +177,7 @@ export default function BookingForm() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <form onSubmit={handleSubmit} className="flex w-full flex-col gap-6 rounded-3xl border border-primary-light/10 glass-dark p-8 sm:p-10 shadow-2xl relative overflow-hidden glow-card">
+      <form onSubmit={handleSubmit} className={`flex w-full flex-col gap-4 sm:gap-5 relative overflow-hidden ${variant === 'default' ? 'rounded-3xl border border-primary-light/10 glass-dark p-8 sm:p-10 shadow-2xl glow-card' : ''}`}>
         
         {/* Animated Success Overlay */}
         <AnimatePresence>
@@ -173,13 +214,15 @@ export default function BookingForm() {
           )}
         </AnimatePresence>
 
-        <div className="mb-2">
-          <h3 className="text-2xl font-playfair text-white mb-1">Patient Details</h3>
-          <p className="text-sm font-light text-primary-light/60">Please provide your contact information.</p>
-        </div>
+        {variant === 'default' && (
+          <div className="mb-2">
+            <h3 className="text-2xl font-playfair text-white mb-1">Your Details</h3>
+            <p className="text-sm font-light text-primary-light/60">Let us know how we can reach you to confirm your slot.</p>
+          </div>
+        )}
 
         {/* Form Inputs */}
-        <div className="flex flex-col sm:flex-row gap-6">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
           <div className="grid w-full items-center gap-2">
             <Label htmlFor="name" className="text-[10px] uppercase tracking-widest font-semibold text-primary-light/80">
               Full Name <span aria-hidden="true" className="text-red-400">*</span>
@@ -195,110 +238,120 @@ export default function BookingForm() {
             <Input required aria-required="true" type="tel" id="phone" name="phone" placeholder="+91 00000 00000" className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-ring focus:border-primary-mid h-12 rounded-xl" />
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row gap-6">
-          <div className="grid w-full items-center gap-2">
-            <Label htmlFor="date" className="text-[10px] uppercase tracking-widest font-semibold text-primary-light/80">
-              Preferred Date <span aria-hidden="true" className="text-red-400">*</span>
-              <span className="sr-only">(required)</span>
-            </Label>
-            <Input 
-              required 
-              type="date" 
-              id="date" 
-              name="date" 
-              min={new Date().toISOString().split("T")[0]}
-              onChange={(e) => {
-                const val = e.target.value;
-                const selectedDateObj = new Date(val);
-                
-                // 1. Sunday check
-                if (selectedDateObj.getDay() === 0) {
-                  alert("Clinic is closed on Sundays. Please select another day.");
-                  e.target.value = "";
-                  setSelectedDate("");
-                  return;
-                }
+        
+        {/* Date in separate row */}
+        <div className="grid w-full items-center gap-2">
+          <Label htmlFor="date" className="text-[10px] uppercase tracking-widest font-semibold text-primary-light/80">
+            Preferred Date <span aria-hidden="true" className="text-red-400">*</span>
+            <span className="sr-only">(required)</span>
+          </Label>
+          <Input 
+            required 
+            type="date" 
+            id="date" 
+            name="date" 
+            min={new Date().toISOString().split("T")[0]}
+            onChange={(e) => {
+              const val = e.target.value;
+              const selectedDateObj = new Date(val);
+              
+              if (selectedDateObj.getDay() === 0) {
+                alert("Clinic is closed on Sundays. Please select another day.");
+                e.target.value = "";
+                setSelectedDate("");
+                return;
+              }
 
-                // 2. Holiday check
-                if (holidays.some(h => h.startsWith(val))) {
-                  alert("The clinic is closed on this date (Holiday). Please select another day.");
-                  e.target.value = "";
-                  setSelectedDate("");
-                  return;
-                }
-                
-                setSelectedDate(val);
-              }}
-              className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-ring focus:border-primary-mid h-12 rounded-xl [color-scheme:dark]" 
-            />
-          </div>
-          <fieldset className="grid w-full items-center gap-2">
-            <legend className="text-[10px] uppercase tracking-widest font-semibold text-primary-light/80 mb-2">
-              Preferred Slot <span aria-hidden="true" className="text-red-400">*</span>
-              <span className="sr-only">(required)</span>
-            </legend>
-            <div className="flex bg-white/5 border border-white/10 rounded-xl p-1 h-14">
-              {(() => {
-                const currentBlockedShifts = blockedShifts.find(bs => bs.date.startsWith(selectedDate))?.shifts || [];
-                const isMorningBlocked = currentBlockedShifts.includes("Morning");
-                const isAfternoonBlocked = currentBlockedShifts.includes("Afternoon");
-                const isEveningBlocked = currentBlockedShifts.includes("Evening");
-
-                return (
-                  <>
-                    <label className={`flex-1 relative ${isMorningBlocked ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
-                      <input type="radio" name="slot" value="Morning" className="peer sr-only" defaultChecked={!isMorningBlocked} disabled={isMorningBlocked} />
-                      <div className="w-full h-full flex flex-col items-center justify-center text-white/50 peer-checked:text-white peer-checked:bg-white/15 peer-checked:shadow-sm rounded-lg transition-all duration-300">
-                        <span className="text-[11px] sm:text-xs font-semibold">Morning</span>
-                        <span className="text-[8px] sm:text-[9px] opacity-70 font-light">10am - 1:45pm</span>
-                      </div>
-                    </label>
-                    <label className={`flex-1 relative ${isAfternoonBlocked ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
-                      <input type="radio" name="slot" value="Afternoon" className="peer sr-only" disabled={isAfternoonBlocked} />
-                      <div className="w-full h-full flex flex-col items-center justify-center text-white/50 peer-checked:text-white peer-checked:bg-white/15 peer-checked:shadow-sm rounded-lg transition-all duration-300">
-                        <span className="text-[11px] sm:text-xs font-semibold">Afternoon</span>
-                        <span className="text-[8px] sm:text-[9px] opacity-70 font-light">2pm - 5:15pm</span>
-                      </div>
-                    </label>
-                    <label className={`flex-1 relative ${isEveningBlocked ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
-                      <input type="radio" name="slot" value="Evening" className="peer sr-only" disabled={isEveningBlocked} />
-                      <div className="w-full h-full flex flex-col items-center justify-center text-white/50 peer-checked:text-white peer-checked:bg-white/15 peer-checked:shadow-sm rounded-lg transition-all duration-300">
-                        <span className="text-[11px] sm:text-xs font-semibold">Evening</span>
-                        <span className="text-[8px] sm:text-[9px] opacity-70 font-light">5:30pm - 7:30pm</span>
-                      </div>
-                    </label>
-                  </>
-                );
-              })()}
-            </div>
-          </fieldset>
+              if (holidays.some(h => h.startsWith(val))) {
+                alert("The clinic is closed on this date (Holiday). Please select another day.");
+                e.target.value = "";
+                setSelectedDate("");
+                return;
+              }
+              
+              setSelectedDate(val);
+            }}
+            className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-ring focus:border-primary-mid h-12 rounded-xl [color-scheme:dark]" 
+          />
         </div>
-        <div className="grid w-full items-center gap-2 mt-2">
+
+        {/* Slot in separate row */}
+        <fieldset className="grid w-full items-center gap-2">
+          <legend className="text-[10px] uppercase tracking-widest font-semibold text-primary-light/80 mb-2">
+            Preferred Slot <span aria-hidden="true" className="text-red-400">*</span>
+            <span className="sr-only">(required)</span>
+          </legend>
+          <div className="flex bg-white/5 border border-white/10 rounded-xl p-1 h-14">
+            {(() => {
+              const currentBlockedShifts = blockedShifts.find(bs => bs.date.startsWith(selectedDate))?.shifts || [];
+              const isMorningBlocked = currentBlockedShifts.includes("Morning");
+              const isAfternoonBlocked = currentBlockedShifts.includes("Afternoon");
+              const isEveningBlocked = currentBlockedShifts.includes("Evening");
+
+              return (
+                <>
+                  <label className={`flex-1 relative ${isMorningBlocked ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
+                    <input type="radio" name="slot" value="Morning" className="peer sr-only" defaultChecked={!isMorningBlocked} disabled={isMorningBlocked} />
+                    <div className="w-full h-full flex flex-col items-center justify-center text-white/50 peer-checked:text-white peer-checked:bg-white/15 peer-checked:shadow-sm rounded-lg transition-all duration-300">
+                      <span className="text-[11px] sm:text-xs font-semibold">Morning</span>
+                      <span className="text-[8px] sm:text-[9px] opacity-70 font-light">10am - 1:45pm</span>
+                    </div>
+                  </label>
+                  <label className={`flex-1 relative ${isAfternoonBlocked ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
+                    <input type="radio" name="slot" value="Afternoon" className="peer sr-only" disabled={isAfternoonBlocked} />
+                    <div className="w-full h-full flex flex-col items-center justify-center text-white/50 peer-checked:text-white peer-checked:bg-white/15 peer-checked:shadow-sm rounded-lg transition-all duration-300">
+                      <span className="text-[11px] sm:text-xs font-semibold">Afternoon</span>
+                      <span className="text-[8px] sm:text-[9px] opacity-70 font-light">2pm - 5:15pm</span>
+                    </div>
+                  </label>
+                  <label className={`flex-1 relative ${isEveningBlocked ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
+                    <input type="radio" name="slot" value="Evening" className="peer sr-only" disabled={isEveningBlocked} />
+                    <div className="w-full h-full flex flex-col items-center justify-center text-white/50 peer-checked:text-white peer-checked:bg-white/15 peer-checked:shadow-sm rounded-lg transition-all duration-300">
+                      <span className="text-[11px] sm:text-xs font-semibold">Evening</span>
+                      <span className="text-[8px] sm:text-[9px] opacity-70 font-light">5:30pm - 7:30pm</span>
+                    </div>
+                  </label>
+                </>
+              );
+            })()}
+          </div>
+        </fieldset>
+        
+        <div className="grid w-full items-center gap-2 mt-1">
           <Label htmlFor="treatment" className="text-[10px] uppercase tracking-widest font-semibold text-primary-light/80">Treatment Type</Label>
           <div className="relative group">
             <select 
               id="treatment" 
               name="treatment" 
               required
-              defaultValue=""
+              defaultValue={initialTreatment}
               className="w-full bg-white/5 border border-white/10 text-white focus-ring focus:border-primary-mid h-12 rounded-xl px-4 appearance-none cursor-pointer outline-none transition-all"
             >
               <option value="" disabled className="bg-primary-dark">Select a treatment...</option>
+              {/* Original Old Options */}
               <option value="Routine Checkup" className="bg-primary-dark">Routine Checkup</option>
               <option value="Teeth Cleaning" className="bg-primary-dark">Teeth Cleaning</option>
               <option value="Teeth Whitening" className="bg-primary-dark">Teeth Whitening</option>
               <option value="Dental Implants" className="bg-primary-dark">Dental Implants</option>
-              <option value="Invisible Braces" className="bg-primary-dark">Invisible Braces (Invisalign)</option>
-              <option value="Root Canal" className="bg-primary-dark">Root Canal Treatment</option>
+              <option value="Invisible Braces (Invisalign)" className="bg-primary-dark">Invisible Braces (Invisalign)</option>
+              <option value="Root Canal Treatment" className="bg-primary-dark">Root Canal Treatment</option>
               <option value="Cosmetic Dentistry" className="bg-primary-dark">Cosmetic Dentistry</option>
-              <option value="Orthodontic" className="bg-primary-dark">Orthodontic Treatment</option>
-              <option value="Periodontal Care" className="bg-primary-dark">Periodontal Therapy</option>
+              <option value="Orthodontic Treatment" className="bg-primary-dark">Orthodontic Treatment</option>
+              <option value="Periodontal Therapy" className="bg-primary-dark">Periodontal Therapy</option>
               <option value="Crown & Bridges" className="bg-primary-dark">Crown & Bridges</option>
               <option value="Cavity Treatment" className="bg-primary-dark">Cavity Treatment</option>
               <option value="Wisdom Tooth Removal" className="bg-primary-dark">Wisdom Tooth Removal</option>
               <option value="Normal Tooth Treatment/Removal" className="bg-primary-dark">Normal Tooth Treatment/Removal</option>
               <option value="Minor Surgery" className="bg-primary-dark">Minor Surgery</option>
-              <option value="Other" className="bg-primary-dark">Other / Consult</option>
+              {/* Extra New Options */}
+              <option value="Smile Design" className="bg-primary-dark">Smile Design</option>
+              <option value="Full Mouth Rehab" className="bg-primary-dark">Full Mouth Rehab</option>
+              <option value="Pediatric Dentistry" className="bg-primary-dark">Pediatric Dentistry</option>
+              <option value="Dentures" className="bg-primary-dark">Dentures</option>
+              <option value="Geriatric Dentistry" className="bg-primary-dark">Geriatric Dentistry</option>
+              <option value="Diagnosis of Oral Lesions" className="bg-primary-dark">Diagnosis of Oral Lesions</option>
+              {/* Default */}
+              <option value="Other / Consult" className="bg-primary-dark">Other / Consult</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-primary-light/40 group-hover:text-primary-light transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -331,5 +384,13 @@ export default function BookingForm() {
         </div>
       </form>
     </motion.div>
+  );
+}
+
+export default function BookingForm({ defaultTreatment, variant = 'default' }: { defaultTreatment?: string, variant?: 'default' | 'transparent' }) {
+  return (
+    <Suspense fallback={<div className="h-[600px] w-full animate-pulse bg-primary-dark/20 rounded-3xl" />}>
+      <BookingFormInner defaultTreatment={defaultTreatment} variant={variant} />
+    </Suspense>
   );
 }
