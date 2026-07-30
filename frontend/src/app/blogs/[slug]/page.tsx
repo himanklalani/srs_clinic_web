@@ -31,7 +31,7 @@ const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
 async function getBlog(slug: string): Promise<Blog | null> {
   try {
     const res = await fetch(`${API_URL}/api/v1/blogs/${slug}`, {
-      next: { revalidate: 0 },
+      next: { revalidate: 3600 },
     });
     if (!res.ok) return null;
     const data = await res.json();
