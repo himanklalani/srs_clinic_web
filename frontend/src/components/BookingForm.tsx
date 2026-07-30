@@ -20,20 +20,7 @@ function BookingFormInner({ defaultTreatment, variant = 'default' }: { defaultTr
   
   const searchParams = useSearchParams();
   const urlTreatment = searchParams?.get("treatment");
-  let initialTreatment = defaultTreatment || urlTreatment || "";
-  
-  // Map new page titles to the old dropdown values to match backend schema
-  const treatmentMap: Record<string, string> = {
-    "Dental Cleaning": "Teeth Cleaning",
-    "Aligners & Braces": "Invisible Braces (Invisalign)",
-    "Root Canal": "Root Canal Treatment",
-    "Crowns and Bridges": "Crown & Bridges",
-    "Wisdom Tooth Surgery": "Wisdom Tooth Removal"
-  };
-
-  if (treatmentMap[initialTreatment]) {
-    initialTreatment = treatmentMap[initialTreatment];
-  }
+  const initialTreatment = defaultTreatment || urlTreatment || "";
 
   useEffect(() => {
     const fetchOverrides = async () => {
@@ -72,36 +59,13 @@ function BookingFormInner({ defaultTreatment, variant = 'default' }: { defaultTr
     try {
       const formData = new FormData(e.target as HTMLFormElement);
       
-      let serviceType = formData.get("treatment") as string;
-      let notes = formData.get("notes") as string || "";
-      
-      const strictAllowedValues = [
-        "Routine Checkup", "Teeth Cleaning", "Teeth Whitening", "Dental Implants",
-        "Invisible Braces (Invisalign)", "Root Canal Treatment", "Cosmetic Dentistry",
-        "Orthodontic Treatment", "Periodontal Therapy", "Crown & Bridges",
-        "Cavity Treatment", "Wisdom Tooth Removal", "Normal Tooth Treatment/Removal",
-        "Minor Surgery", "Other / Consult"
-      ];
-      
-      if (!strictAllowedValues.includes(serviceType)) {
-        notes = `[Original Selection: ${serviceType}]\n${notes}`.trim();
-        
-        if (serviceType === "Smile Design") serviceType = "Cosmetic Dentistry";
-        else if (serviceType === "Full Mouth Rehab") serviceType = "Other / Consult";
-        else if (serviceType === "Pediatric Dentistry") serviceType = "Other / Consult";
-        else if (serviceType === "Dentures") serviceType = "Other / Consult";
-        else if (serviceType === "Geriatric Dentistry") serviceType = "Other / Consult";
-        else if (serviceType === "Diagnosis of Oral Lesions") serviceType = "Other / Consult";
-        else serviceType = "Other / Consult";
-      }
-
       const payload = {
         name: formData.get("name"),
         phone: formData.get("phone"),
         date: new Date(formData.get("date") as string).toISOString(),
-        service_type: serviceType,
+        service_type: formData.get("treatment"),
         preferred_slot: formData.get("slot"),
-        notes: notes,
+        notes: formData.get("notes"),
         business_id: process.env.NEXT_PUBLIC_BOOKING_BUSINESS_ID,
         api_key: process.env.NEXT_PUBLIC_BOOKING_API_KEY
       };
