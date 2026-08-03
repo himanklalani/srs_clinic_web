@@ -23,6 +23,15 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/areas/:path*',
+        destination: '/',
+        permanent: true, // 301 Redirect for SEO consolidation
+      },
+    ];
+  },
   async headers() {
     return [
       // Immutable cache for hashed static assets

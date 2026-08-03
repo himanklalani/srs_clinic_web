@@ -98,6 +98,23 @@ export default function LocationSection() {
             </div>
           </ScrollReveal>
         </div>
+
+        {/* Areas We Serve (Consolidated SEO Mega-Page Strategy) */}
+        <ScrollReveal>
+          <div className="mt-16 pt-10 border-t border-primary/10">
+            <h3 className="text-xl font-semibold text-center text-primary-dark mb-6">Areas We Proudly Serve</h3>
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
+              {['Bandra West', 'Bandra East', 'Khar West', 'Santacruz West', 'Mahim', 'Pali Hill', 'Juhu'].map((area) => (
+                <span 
+                  key={area}
+                  className="px-4 py-2 bg-[#faf8f5] text-text/80 rounded-full text-sm font-medium border border-primary/5 hover:border-primary/20 transition-colors shadow-sm"
+                >
+                  {area}
+                </span>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
