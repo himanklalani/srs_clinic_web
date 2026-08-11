@@ -133,39 +133,6 @@ export const treatmentsData: TreatmentDetail[] = [
     pairIndex: 3
   },
   {
-    slug: 'invisible-aligners',
-    title: 'Invisible Aligners',
-    shortDescription: 'Virtually invisible, removable clear aligner therapy to discreetly straighten your smile without metal wires or brackets.',
-    fullDescription: [
-      'Invisible aligners are a revolutionary orthodontic treatment that has completely transformed how we straighten teeth. Instead of metal brackets and wires, you wear a series of custom-fabricated, crystal-clear thermoplastic trays that are virtually undetectable when worn. Each tray in your series is slightly different, applying gentle, mathematically precise pressure to move specific teeth in specific directions over time.',
-      'At SRS Dental Care, we begin every aligner journey with a state-of-the-art 3D intraoral scan. This eliminates the need for uncomfortable, messy putty impressions and creates a highly accurate digital model of your bite in minutes. Our specialized software then plans the complete movement of every tooth and generates a 3D simulation of your final result before you even begin wearing a single tray.',
-      'Every patient receives a complete, individually customized series of trays. Depending on your prescription, you will wear each aligner for 7 to 10 days before progressing to the next one. Over 5 to 8 months for most cases, these incremental shifts add up to a fully corrected, beautifully aligned smile. Because the trays are removable, your diet and oral hygiene routine remain completely unrestricted. Invisalign is the most premium brand globally, while high-quality domestic aligner systems offer excellent results at a more accessible price point.'
-    ],
-    benefits: [
-      'Virtually invisible during treatment, ideal for working professionals and adults',
-      'Removable design means zero dietary restrictions throughout the entire process',
-      'Smooth thermoplastic edges prevent the painful mouth sores caused by metal brackets',
-      'Full digital smile simulation lets you see your final result before starting',
-      'Fewer clinic visits required compared to traditional braces'
-    ],
-    procedureSteps: [
-      { title: '3D Intraoral Scanning', desc: 'A fast, comfortable digital scan replaces messy putty impressions to capture a precise 3D model of your bite.' },
-      { title: 'Digital Smile Simulation', desc: 'Every tooth movement is planned digitally and an animated simulation of your final smile is generated for your approval.' },
-      { title: 'Custom Aligner Manufacturing', desc: 'Your full series of precision-made clear trays is fabricated in a specialized laboratory according to your unique treatment plan.' },
-      { title: 'Wearing Your Trays', desc: 'You wear each aligner for 7 to 10 days (as prescribed) for 20 to 22 hours a day, removing only to eat, drink, and brush.' },
-      { title: 'Progress Monitoring', desc: 'Brief clinic check-ins every 6 to 8 weeks confirm your teeth are tracking perfectly to the digital plan.' },
-      { title: 'Retainers for Lasting Results', desc: 'On completion, custom retainers are made to permanently hold your new smile in place for life.' }
-    ],
-    faqs: [
-      { question: 'How much do invisible aligners cost in Mumbai?', answer: 'Domestic clear aligner brands start from Rs. 80,000 onwards, while premium Invisalign treatment starts from Rs. 1,50,000 onwards. The exact cost depends on your case complexity and the brand recommended after your assessment.' },
-      { question: 'Is Invisalign better than domestic clear aligners?', answer: 'Invisalign uses patented SmartTrack material and has the most clinical research backing. However, high-quality domestic brands deliver excellent results for mild to moderate cases at a significantly more accessible price. Your dentist will recommend the best option for you.' },
-      { question: 'How many hours a day do I need to wear them?', answer: 'For the treatment to track correctly, aligners must be worn for 20 to 22 hours every day. You remove them only to eat, drink anything other than water, and to brush and floss.' },
-      { question: 'How long will my aligner treatment take?', answer: 'Most mild to moderate cases are complete in 5 to 8 months. Complex cases involving significant bite correction may take up to 12 to 18 months.' }
-    ],
-    seoKeywords: ['Invisible aligners Mumbai', 'Invisalign cost Bandra', 'Clear aligners price India', 'Invisible braces Mumbai', 'Teeth aligner cost 2025', 'Invisalign vs braces Mumbai'],
-    pairIndex: 13
-  },
-  {
     slug: 'full-mouth-rehab',
     title: 'Full Mouth Rehab',
     shortDescription: 'Comprehensive, multi disciplinary restoration of severely worn, damaged, or missing teeth.',

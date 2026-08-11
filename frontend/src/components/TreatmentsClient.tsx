@@ -112,11 +112,6 @@ const BEFORE_AFTER_PAIRS = [
     after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957491/copy_of_dentalcleaning2_dq1qgn.jpg",
     single: ""
   }, // 12: Dental Cleaning
-  {
-    before: "",
-    after: "",
-    single: ""
-  }, // 13: Invisible Aligners
 ];
 
 const TREATMENTS_DATA = [
@@ -133,7 +128,6 @@ const TREATMENTS_DATA = [
   { slug: 'wisdom-tooth-surgery', icon: Syringe,    title: 'Wisdom Tooth Surgery', description: 'Safe, painless extraction of impacted wisdom teeth by specialists.', pair: 10 },
   { slug: 'crowns-and-bridges', icon: Crown,      title: 'Crowns and Bridges', description: 'Restore damaged or missing teeth with durable, custom-fitted crowns.', pair: 11 },
   { slug: 'dental-cleaning', icon: Sparkles,   title: 'Dental Cleaning',    description: 'Professional cleaning and polishing for a healthy, plaque-free smile.', pair: 12 },
-  { slug: 'invisible-aligners', icon: Sparkles,  title: 'Invisible Aligners', description: 'Virtually invisible clear aligner therapy. Domestic brands from Rs. 80,000. Invisalign from Rs. 1.5L.', pair: 13 },
 ];
 
 export default function TreatmentsClient() {
