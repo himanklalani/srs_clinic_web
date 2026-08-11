@@ -105,6 +105,7 @@ export default function Footer() {
                     { label: "Teeth Whitening", href: "/treatments/teeth-whitening" },
                     { label: "Dental Implants", href: "/treatments/dental-implants" },
                     { label: "Aligners & Braces", href: "/treatments/aligners-and-braces" },
+                    { label: "Invisible Aligners", href: "/treatments/invisible-aligners" },
                     { label: "Full Mouth Rehab", href: "/treatments/full-mouth-rehab" },
                     { label: "Cosmetic Dentistry", href: "/treatments/cosmetic-dentistry" },
                   ].map((link) => (

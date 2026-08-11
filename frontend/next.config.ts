@@ -30,6 +30,11 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true, // 301 Redirect for SEO consolidation
       },
+      {
+        source: '/blogs/how-much-do-invisible-aligners-cost-in-mumbai',
+        destination: '/blogs/invisible-aligners-vs-braces-cost',
+        permanent: true,
+      },
     ];
   },
   async headers() {

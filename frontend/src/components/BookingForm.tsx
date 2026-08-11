@@ -297,6 +297,7 @@ function BookingFormInner({ defaultTreatment, variant = 'default' }: { defaultTr
               <option value="Teeth Cleaning" className="bg-primary-dark">Teeth Cleaning</option>
               <option value="Teeth Whitening" className="bg-primary-dark">Teeth Whitening</option>
               <option value="Dental Implants" className="bg-primary-dark">Dental Implants</option>
+              <option value="Aligners & Braces" className="bg-primary-dark">Aligners & Braces</option>
               <option value="Invisible Braces (Invisalign)" className="bg-primary-dark">Invisible Braces (Invisalign)</option>
               <option value="Root Canal Treatment" className="bg-primary-dark">Root Canal Treatment</option>
               <option value="Cosmetic Dentistry" className="bg-primary-dark">Cosmetic Dentistry</option>
