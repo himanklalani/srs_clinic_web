@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const DR_IMAGES = [
   {
-    src: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964875/IMG_2462_lmkz3y.jpg',
+    src: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786965339/IMG_2462_vak3t7.avif',
     alt: 'Dr. Saachi Shingrani at SRS Dental Care',
   },
   {
