@@ -56,7 +56,10 @@ const seoFeatures = [
 ];
 
 const BEFORE_AFTER_PAIRS = [
-  { before: "", after: "" }, // 0: Smile Design
+  { 
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964200/Untitled-design-_3__p6serw.avif", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964200/Untitled-design-_2__we4fz7.avif" 
+  }, // 0: Smile Design
   { 
     before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779952394/copy_of_img_1456_yqfusi.heic", 
     after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953394/IMG_1441_xrzlbm.heic" 

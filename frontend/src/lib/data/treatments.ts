@@ -47,7 +47,11 @@ export const treatmentsData: TreatmentDetail[] = [
       { question: 'Is the procedure painful?', answer: 'No. We use profound local anesthesia and offer sedation options for anxious patients. The preparation process is extremely gentle.' }
     ],
     seoKeywords: ['Digital smile design Mumbai', 'Best cosmetic dentist Bandra', 'Smile makeover cost India', 'Porcelain veneers clinic near me', 'Hollywood smile treatment Mumbai'],
-    pairIndex: 0
+    pairIndex: 0,
+    beforeAndAfter: {
+      before: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964200/Untitled-design-_3__p6serw.avif',
+      after: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964200/Untitled-design-_2__we4fz7.avif'
+    }
   },
   {
     slug: 'teeth-whitening',
