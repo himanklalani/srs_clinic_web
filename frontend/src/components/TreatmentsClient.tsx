@@ -103,8 +103,8 @@ const BEFORE_AFTER_PAIRS = [
     single: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1779953151/37D41653-0775-4AAE-9998-96BF037F70B6_xeclpj.jpg" 
   }, // 10: Wisdom Tooth Surgery
   { 
-    before: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961016/before_hiepru.png", 
-    after: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961023/after_jxfig2.png"
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961023/after_jxfig2.png", 
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961016/before_hiepru.png"
   }, // 11: Crowns and Bridges
   {
     before: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957292/copy_of_dental_cleaning1_siotd3.jpg",

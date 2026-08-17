@@ -368,8 +368,8 @@ export const treatmentsData: TreatmentDetail[] = [
     seoKeywords: ['Zirconia crowns cost Mumbai', 'Best dental bridges Bandra', 'Emax crown clinic near me', 'Tooth cap price India', 'Metal free dental crowns'],
     pairIndex: 11,
     beforeAndAfter: {
-      before: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961016/before_hiepru.png',
-      after: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961023/after_jxfig2.png'
+      before: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961023/after_jxfig2.png',
+      after: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961016/before_hiepru.png'
     }
   },
   {
