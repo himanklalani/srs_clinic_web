@@ -9,7 +9,7 @@ import { Card, CardContent } from '@/components/ui/shadcn-card';
 import { ShieldCheck, Users, Stethoscope, Sparkles } from 'lucide-react';
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import PageLink from '@/components/PageLink';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,25 +36,23 @@ function DrCarousel() {
 
   return (
     <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.7, ease: 'easeInOut' }}
-          className="absolute inset-0"
+      {/* All images rendered in DOM simultaneously — they all preload in parallel */}
+      {DR_IMAGES.map((img, i) => (
+        <div
+          key={img.src}
+          className="absolute inset-0 transition-opacity duration-700"
+          style={{ opacity: i === active ? 1 : 0, zIndex: i === active ? 1 : 0 }}
         >
           <Image
-            src={DR_IMAGES[active].src}
-            alt={DR_IMAGES[active].alt}
+            src={img.src}
+            alt={img.alt}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
-            priority={active === 0}
+            priority={i === 0}
           />
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      ))}
 
       {/* Dot indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">

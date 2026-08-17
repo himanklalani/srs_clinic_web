@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 
 const ABOUT_IMAGES = [
   {
@@ -31,25 +30,23 @@ export default function AboutDoctorCarousel() {
 
   return (
     <div className="flex-1 w-full relative rounded-xl overflow-hidden shadow-lg" style={{ minHeight: "260px" }}>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.97 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="absolute inset-0"
+      {/* All images rendered in DOM simultaneously — they all preload in parallel */}
+      {ABOUT_IMAGES.map((img, i) => (
+        <div
+          key={img.src}
+          className="absolute inset-0 transition-opacity duration-700"
+          style={{ opacity: i === active ? 1 : 0, zIndex: i === active ? 1 : 0 }}
         >
           <Image
-            src={ABOUT_IMAGES[active].src}
-            alt={ABOUT_IMAGES[active].alt}
+            src={img.src}
+            alt={img.alt}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover rounded-xl"
-            priority={active === 0}
+            priority={i === 0}
           />
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      ))}
 
       {/* Dot indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
