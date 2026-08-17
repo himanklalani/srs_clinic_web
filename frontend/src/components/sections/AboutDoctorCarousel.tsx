@@ -15,6 +15,7 @@ const ABOUT_IMAGES = [
   {
     src: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786965681/IMG_2470_crq3c3.avif",
     alt: "Modern Dental Clinic in Bandra, Mumbai",
+    objectPosition: "top", // Prevent cutting off the top of the head
   },
 ];
 
@@ -43,6 +44,7 @@ export default function AboutDoctorCarousel() {
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover rounded-xl"
+            style={{ objectPosition: img.objectPosition || "center" }}
             priority={i === 0}
           />
         </div>
