@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PageLink from '@/components/PageLink';
 import Image from 'next/image';
 import GallerySection from '@/components/sections/GallerySection';
+import AboutDoctorCarousel from '@/components/sections/AboutDoctorCarousel';
 
 import { Heart, Cpu, DollarSign } from 'lucide-react';
 import { Timeline, TimelineItem } from "@/components/ui/modern-timeline";
@@ -97,15 +98,7 @@ export default function AboutPage() {
             &quot;Providing the best dental care for my patients.&quot;
           </p>
         </div>
-        <div className="flex-1 w-full h-64 relative">
-          <Image
-            src="https://ui-avatars.com/api/?name=Dr+Saachi+Shingrani&size=256"
-            alt="Dr. Saachi Shingrani"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover rounded-lg"
-          />
-        </div>
+        <AboutDoctorCarousel />
       </section>
 
       {/* Our Journey Timeline */}
