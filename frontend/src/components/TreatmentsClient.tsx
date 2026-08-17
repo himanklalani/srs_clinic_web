@@ -111,6 +111,10 @@ const BEFORE_AFTER_PAIRS = [
     after: "https://res.cloudinary.com/dswvmoboh/image/upload/q_auto/f_auto/v1781957491/copy_of_dentalcleaning2_dq1qgn.jpg",
     single: ""
   }, // 12: Dental Cleaning
+  {
+    before: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786962538/IMG_2104_ufedhd.avif",
+    after: "https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786962537/IMG_2103_wdufpz.avif"
+  }, // 13: Cavity Treatment
 ];
 
 const TREATMENTS_DATA = [
@@ -127,6 +131,7 @@ const TREATMENTS_DATA = [
   { slug: 'wisdom-tooth-surgery', icon: Syringe,    title: 'Wisdom Tooth Surgery', description: 'Safe, painless extraction of impacted wisdom teeth by specialists.', pair: 10 },
   { slug: 'crowns-and-bridges', icon: Crown,      title: 'Crowns and Bridges', description: 'Restore damaged or missing teeth with durable, custom-fitted crowns.', pair: 11 },
   { slug: 'dental-cleaning', icon: Sparkles,   title: 'Dental Cleaning',    description: 'Professional cleaning and polishing for a healthy, plaque-free smile.', pair: 12 },
+  { slug: 'cavity-treatment', icon: Shield,     title: 'Cavity Treatment',   description: 'Painless, tooth colored composite fillings to stop decay and restore your smile.', pair: 13 },
 ];
 
 export default function TreatmentsClient() {

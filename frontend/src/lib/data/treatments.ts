@@ -400,5 +400,39 @@ export const treatmentsData: TreatmentDetail[] = [
     ],
     seoKeywords: ['Professional teeth cleaning Bandra', 'Dental scaling cost Mumbai', 'Bleeding gums treatment near me', 'Plaque and tartar removal', 'Bad breath cure dentist'],
     pairIndex: 12
+  },
+  {
+    slug: 'cavity-treatment',
+    title: 'Cavity Treatment',
+    shortDescription: 'Painless, tooth colored restorations that stop decay in its tracks and restore your tooth to full strength.',
+    fullDescription: [
+      'Dental cavities (dental caries) are one of the most prevalent chronic conditions worldwide, yet they are entirely preventable and highly treatable when caught early. A cavity is a permanently damaged area in the hard surface of your tooth that develops into a tiny hole. Left untreated, decay penetrates deeper through the enamel and into the sensitive inner dentin and eventually the pulp, transforming a simple, inexpensive filling into a complex root canal procedure.',
+      'At our clinic, we believe no cavity treatment should ever be painful. Using ultra fine needles, buffered anesthetic solutions, and a gentle slow delivery technique, we ensure you feel nothing beyond mild pressure. For highly anxious patients, we offer additional sedation options to make the experience completely stress free.',
+      'We exclusively place tooth colored composite resin restorations. These white fillings are bonded directly to the tooth structure using advanced adhesive protocols, requiring far less removal of healthy enamel compared to old silver amalgam fillings. The result is a restoration that is virtually invisible, structurally strong, and free of mercury. For cavities involving larger portions of the tooth, we may recommend an inlay or onlay — a precision milled ceramic restoration that provides superior longevity and protection.'
+    ],
+    benefits: [
+      'Completely painless procedure using advanced anesthetic techniques',
+      'Tooth colored composite fillings that are invisible and mercury free',
+      'Minimal removal of healthy tooth structure with modern bonding protocols',
+      'Stops decay progression permanently, preventing costly root canal treatment'
+    ],
+    procedureSteps: [
+      { title: 'Clinical Detection', desc: 'We use a combination of visual examination, dental explorers, and digital X rays to identify all cavities, including hidden interproximal decay between teeth.' },
+      { title: 'Profound Anesthesia', desc: 'The tooth and surrounding gum tissue are completely numbed using buffered local anesthetic, ensuring zero pain throughout the procedure.' },
+      { title: 'Precise Decay Removal', desc: 'Using high speed and slow speed handpieces, all infected dentin is removed while meticulously preserving the maximum amount of healthy tooth structure.' },
+      { title: 'Composite Bonding', desc: 'The cavity is conditioned, a bonding agent is applied, and tooth colored composite resin is carefully layered and sculpted to restore the tooth to its original anatomy before being hardened with a curing light.' }
+    ],
+    faqs: [
+      { question: 'How do I know if I have a cavity?', answer: 'Early cavities often have no symptoms at all, which is why regular dental checkups are so important. As they progress, you may notice sensitivity to cold, sweet foods, or spontaneous toothache. A dental X ray is the only definitive way to detect cavities between teeth.' },
+      { question: 'Do composite white fillings last as long as silver fillings?', answer: 'Modern composite resins have advanced dramatically. With proper care, small to medium composite fillings last 7 to 10 years or more. For very large cavities, a ceramic inlay or onlay may be recommended for superior durability.' },
+      { question: 'Will the filling hurt after the anesthesia wears off?', answer: 'Some mild sensitivity to temperature for a few days after placement is normal and resolves on its own. If you experience persistent pain or sensitivity, please contact us — it may simply require a minor bite adjustment.' },
+      { question: 'Can I eat immediately after a filling?', answer: 'With composite fillings, the material is fully hardened by the curing light before you leave the chair. We recommend waiting until the anesthesia wears off completely (about 2 hours) to avoid accidentally biting your cheek.' }
+    ],
+    seoKeywords: ['Cavity filling Mumbai', 'Painless tooth filling Bandra', 'White composite filling near me', 'Tooth decay treatment cost', 'Dental caries treatment clinic'],
+    pairIndex: 13,
+    beforeAndAfter: {
+      before: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786962538/IMG_2104_ufedhd.avif',
+      after: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786962537/IMG_2103_wdufpz.avif'
+    }
   }
 ];
