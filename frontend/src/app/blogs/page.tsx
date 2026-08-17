@@ -4,6 +4,8 @@ import BlogCard from '@/components/BlogCard';
 import { AnimatedNavFramer } from "@/components/ui/navigation-menu";
 import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Health Blogs',
   description: 'Read expert dental health tips, treatment guides, and clinic news from Dr. Saachi Shingrani.',
@@ -47,13 +49,15 @@ interface BlogsResponse {
 
 async function getBlogs(page: number): Promise<BlogsResponse> {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+    const apiUrl = baseUrl.replace(/\/$/, '');
     const res = await fetch(`${apiUrl}/api/v1/blogs?page=${page}&limit=6`, {
       next: { revalidate: 0 },
     });
-    if (!res.ok) throw new Error('Failed to fetch blogs');
+    if (!res.ok) throw new Error(`Failed to fetch blogs: ${res.status} ${res.statusText}`);
     return res.json();
-  } catch {
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
     return {
       blogs: [],
       pagination: { page: 1, limit: 6, total: 0, totalPages: 0 },

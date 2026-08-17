@@ -13,6 +13,10 @@ export interface TreatmentDetail {
   faqs: FAQ[];
   seoKeywords: string[];
   pairIndex: number;
+  beforeAndAfter?: {
+    before: string;
+    after: string;
+  };
 }
 
 export const treatmentsData: TreatmentDetail[] = [
@@ -362,7 +366,11 @@ export const treatmentsData: TreatmentDetail[] = [
       { question: 'Is a bridge better than a dental implant?', answer: 'Implants are the gold standard as they preserve jawbone and do not require filing down adjacent teeth. However, if the adjacent teeth are heavily filled and already need crowns, a bridge is an excellent, faster, and cost effective alternative.' }
     ],
     seoKeywords: ['Zirconia crowns cost Mumbai', 'Best dental bridges Bandra', 'Emax crown clinic near me', 'Tooth cap price India', 'Metal free dental crowns'],
-    pairIndex: 11
+    pairIndex: 11,
+    beforeAndAfter: {
+      before: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961016/before_hiepru.png',
+      after: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961023/after_jxfig2.png'
+    }
   },
   {
     slug: 'dental-cleaning',

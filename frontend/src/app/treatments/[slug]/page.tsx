@@ -6,6 +6,7 @@ import PageLink from '@/components/PageLink';
 import { ChevronRight, CheckCircle2 } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
 import BlogCard from '@/components/BlogCard';
+import Image from 'next/image';
 
 export const dynamic = 'force-dynamic';
 
@@ -178,6 +179,38 @@ export default async function TreatmentPage({ params }: Props) {
                   ))}
                 </div>
               </div>
+
+              {treatment.beforeAndAfter && (
+                <div>
+                  <h2 className="text-3xl font-playfair font-semibold text-primary-dark mb-6">Before & After Results</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-primary/10">
+                    <div className="flex flex-col gap-3">
+                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-surface/50">
+                        <Image 
+                          src={treatment.beforeAndAfter.before} 
+                          alt="Before Treatment" 
+                          fill 
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                      <p className="text-center font-medium text-text/80">Before</p>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-surface/50">
+                        <Image 
+                          src={treatment.beforeAndAfter.after} 
+                          alt="After Treatment" 
+                          fill 
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                      <p className="text-center font-medium text-text/80">After</p>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div>
                 <h2 className="text-3xl font-playfair font-semibold text-primary-dark mb-6">Frequently Asked Questions</h2>
