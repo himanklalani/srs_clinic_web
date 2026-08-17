@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,9 +9,69 @@ import { Card, CardContent } from '@/components/ui/shadcn-card';
 import { ShieldCheck, Users, Stethoscope, Sparkles } from 'lucide-react';
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import PageLink from '@/components/PageLink';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const DR_IMAGES = [
+  {
+    src: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964875/IMG_2462_lmkz3y.jpg',
+    alt: 'Dr. Saachi Shingrani at SRS Dental Care',
+  },
+  {
+    src: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964875/IMG_2549_caqa6p.avif',
+    alt: 'Dr. Saachi Shingrani - Dental Surgeon',
+  },
+];
+
+function DrCarousel() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % DR_IMAGES.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.7, ease: 'easeInOut' }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={DR_IMAGES[active].src}
+            alt={DR_IMAGES[active].alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+            priority={active === 0}
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {DR_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            aria-label={`Slide ${i + 1}`}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              i === active ? 'bg-white scale-125 shadow' : 'bg-white/50'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function AboutDoctorSection() {
     const container = useRef<HTMLElement>(null);
@@ -185,15 +245,7 @@ export default function AboutDoctorSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center mt-12 sm:mt-24">
                     
                     <div className="lg:col-span-5 relative about-content max-w-sm sm:max-w-md mx-auto lg:mx-0 w-full">
-                        <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                            <Image
-                                src="https://ui-avatars.com/api/?name=Dr+Saachi+Shingrani&size=512&background=ede9fe&color=7c3aed"
-                                alt="Dr. Saachi Shingrani"
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-cover"
-                            />
-                        </div>
+                        <DrCarousel />
                         
                         {/* Experience Badge - Adjusted for mobile to avoid overflow */}
                         <div className="absolute bottom-2 right-2 sm:-bottom-6 sm:-right-6 md:-bottom-8 md:-right-8 bg-white p-3 sm:p-6 md:p-8 rounded-full shadow-xl flex flex-col items-center justify-center w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 border border-surface z-10">
