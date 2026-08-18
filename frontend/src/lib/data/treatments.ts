@@ -47,11 +47,7 @@ export const treatmentsData: TreatmentDetail[] = [
       { question: 'Is the procedure painful?', answer: 'No. We use profound local anesthesia and offer sedation options for anxious patients. The preparation process is extremely gentle.' }
     ],
     seoKeywords: ['Digital smile design Mumbai', 'Best cosmetic dentist Bandra', 'Smile makeover cost India', 'Porcelain veneers clinic near me', 'Hollywood smile treatment Mumbai'],
-    pairIndex: 0,
-    beforeAndAfter: {
-      before: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964200/Untitled-design-_3__p6serw.avif',
-      after: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964200/Untitled-design-_2__we4fz7.avif'
-    }
+    pairIndex: 0
   },
   {
     slug: 'teeth-whitening',
@@ -370,11 +366,7 @@ export const treatmentsData: TreatmentDetail[] = [
       { question: 'Is a bridge better than a dental implant?', answer: 'Implants are the gold standard as they preserve jawbone and do not require filing down adjacent teeth. However, if the adjacent teeth are heavily filled and already need crowns, a bridge is an excellent, faster, and cost effective alternative.' }
     ],
     seoKeywords: ['Zirconia crowns cost Mumbai', 'Best dental bridges Bandra', 'Emax crown clinic near me', 'Tooth cap price India', 'Metal free dental crowns'],
-    pairIndex: 11,
-    beforeAndAfter: {
-      before: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961023/after_jxfig2.png',
-      after: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786961016/before_hiepru.png'
-    }
+    pairIndex: 11
   },
   {
     slug: 'dental-cleaning',
@@ -433,10 +425,6 @@ export const treatmentsData: TreatmentDetail[] = [
       { question: 'Can I eat immediately after a filling?', answer: 'With composite fillings, the material is fully hardened by the curing light before you leave the chair. We recommend waiting until the anesthesia wears off completely (about 2 hours) to avoid accidentally biting your cheek.' }
     ],
     seoKeywords: ['Cavity filling Mumbai', 'Painless tooth filling Bandra', 'White composite filling near me', 'Tooth decay treatment cost', 'Dental caries treatment clinic'],
-    pairIndex: 13,
-    beforeAndAfter: {
-      before: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786962538/IMG_2104_ufedhd.avif',
-      after: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786962537/IMG_2103_wdufpz.avif'
-    }
+    pairIndex: 13
   }
 ];
