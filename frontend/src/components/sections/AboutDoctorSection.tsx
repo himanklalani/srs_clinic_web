@@ -15,11 +15,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const DR_IMAGES = [
   {
-    src: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786965339/IMG_2462_vak3t7.avif',
+    src: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964875/IMG_2549_caqa6p.avif',
     alt: 'Dr. Saachi Shingrani at SRS Dental Care',
   },
   {
-    src: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto,q_auto/v1786964875/IMG_2549_caqa6p.avif',
+    src: 'https://res.cloudinary.com/dswvmoboh/image/upload/f_auto/q_auto/v1787039832/IMG_2551_axbm8h.avif',
     alt: 'Dr. Saachi Shingrani - Dental Surgeon',
   },
 ];

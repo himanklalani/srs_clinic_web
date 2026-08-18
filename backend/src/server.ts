@@ -88,14 +88,15 @@ app.use(
       return callback(new Error('Not allowed by CORS'), false);
     },
     credentials: true,
-    methods: ['GET', 'POST', 'DELETE', 'PUT'],
+    methods: ['GET','POST', 'DELETE','PUT'],
   })
 );
 
-// Health Check Route — no sensitive data (Bypasses rate limiting to prevent Render 429 errors)
+// Health Check Route 
 app.get('/api/v1/health', (_req: Request, res: Response) => {
   res.status(200).json({ status: 'ok' });
 });
+
 
 // ─── Global Rate Limiter: 100 req/15min ───────────────────────────────────────
 const globalLimiter = rateLimit({
